@@ -1,0 +1,39 @@
+{# templates/home/home.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+{# Contenu spécifique - page 'home' #}
+{% block body %}
+        
+    {{page_title}}
+    
+    <section id="home_activités">
+        <h2>Mes activités de développeur web</h2>
+        <hr>
+    </section>
+
+    <section id="home_profil">
+        <h2>Qui suis-je ?</h2>
+        <hr>
+    </section>
+
+    <section id="home_parcours">
+        <h2>Mon parcours</h2>
+
+        <article id="home_experiences">
+            <h3>Expériences professionnelles</h3>
+        </article>
+         <article id="home_formations">
+            <h3>Mes qualifications</h3>
+        </article>
+        <hr>
+    </section>
+
+{% endblock body %}
+  
+
+
+
+
+      

@@ -1,0 +1,11 @@
+{# templates/article/index_articles.html.twig #}
+
+
+{# Affichage des derniers articles publiés #}
+<ul class="nav nav-pills nav stacked">
+  {% for article in lastArticles %}
+    <li>
+      <a href="{{path('article_view', {'id' : article.id})}}">{{article.title}}</a>
+    </li>
+  {% endfor %}
+</ul>

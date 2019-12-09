@@ -1,0 +1,39 @@
+{# templates/article/index_article.html.twig #}
+
+{# Le template hérite du second template 'père' advertLayout.html.twig  #}
+{% extends 'article/base_article.html.twig' %}
+
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block article_body %}
+
+  <H3>Tous mes articles</h3>
+  
+  {# Affichage de tous les articles publiés #}
+
+  {% for article in articles %} 
+    <article class="card">
+      <div class="card-header">
+        <em>Article publié le {{article.createdAt | date('d/m/Y')}} à {{article.createdAt | date('H:i')}} </em> {# Application d'un filtre de formatage pour l'affichage de la date #}
+      </div>
+      <img src="http://placehold.it/350x150" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"> {{article.title}}</h5>
+        <p class="card-text">{{article.content | raw}}</p> {# Application du filtre raw pour afficher 'tel quel' les paragraphes sans les balises <p> #}
+        <br>
+      </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{path('article_view', {'id' : article.id})}}" class="btn btn-primary">Détail de l'article</a></em>
+      </div>
+    </article>
+    <br>
+    
+    </article> 
+  {% endfor %} 
+
+{% endblock %}

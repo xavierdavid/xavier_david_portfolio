@@ -1,0 +1,42 @@
+{# templates/article/article_view.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes publications{% endblock %}
+
+{% block body %}
+    <div id="header" class="jumbotron">
+        <h1>Mes publications</h1>
+    </div>
+    
+    <div class="row">
+        <div id="admin_menu" class="col-md-3">
+            
+            <h3>Articles</h3>
+            <div class="list-group">
+                <a href="/article" class="list-group-item list-group-item-action">Tous mes articles</a>
+                <a href="#" class="list-group-item list-group-item-action">Ajouter un article</a>
+            </div> 
+            </br>
+            <a href="#" class="btn btn-info">Accueil tableau de bord</a>
+            <hr>
+            <h4>Derniers articles</h4> 
+
+            {# Inclusion d'un template d'index d'article avec les 3 derniers articles#}
+            {# Insertion de la méthode lastArticles du contrôleur ArticleController pour inclure le template last_articles.html.twig avec les 3 derniers articles #}
+            {{render(controller('App\\Controller\\ArticleController::lastArticles', {'limit': 3}))}}
+                  
+        </div>
+        
+        <div id="content" class="col-md-9">
+            {% block article_body %}{% endblock %} 
+        </div>
+
+    </div>
+
+{% endblock %}   
+    
+    
+
+    
+
