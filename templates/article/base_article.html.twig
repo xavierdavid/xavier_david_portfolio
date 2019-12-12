@@ -14,8 +14,8 @@
             
             <h3>Articles</h3>
             <div class="list-group">
-                <a href="/article" class="list-group-item list-group-item-action">Tous mes articles</a>
-                <a href="#" class="list-group-item list-group-item-action">Ajouter un article</a>
+                <a href="{{path('article')}}" class="list-group-item list-group-item-action">Tous mes articles</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
+                <a href="{{path('article_create')}}" class="list-group-item list-group-item-action">Ajouter un article</a> 
             </div> 
             </br>
             <a href="#" class="btn btn-info">Accueil tableau de bord</a>

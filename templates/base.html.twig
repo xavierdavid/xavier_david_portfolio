@@ -28,7 +28,7 @@
 
             <nav> {# Bloc de navigation #}
                 <ul> {# Liens de navigation #}
-                    <li><a href="/">Accueil</a></li>
+                    <li><a href="{{path('home')}}">Accueil</a></li>
                     <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">Connexion</a></li>
@@ -48,7 +48,7 @@
             <!-- Tiny MCE API CDN link -->
             <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
             <script>tinymce.init({
-                selector: '#articleContent',
+                selector: '#article_content',
                 mode:"exact",
                 elements:"contenu",
                 entity_encoding : "raw",

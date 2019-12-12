@@ -6,10 +6,15 @@
 {# Bloc de contenu body spécifique à la vue #}
 {% block article_body %}
 
+    {# On affiche tous les messages flash dont le nom est « info » #}
+    {% for message in app.session.flashbag.get('notice') %}
+      <div class="alert alert-info">Message flash : {{ message }}</div>
+    {% endfor %}
+
     {# Affichage d'un article #}
     <div class="card">
       <div class="card-header">
-      <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} </em>
+      <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
       </div>
       <img src="http://placehold.it/350x150" class="card-img-top" alt="...">
       <div class="card-body">
@@ -19,12 +24,22 @@
       </div>
     </div>
     <hr>
-    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-
-
-
-
-
+    
+    {# Affichage des commentaires associés à l'article #}
+   
+    <section id="commentaire">
+      {% for comment in article.comments %}
+        <div class="comment">
+          <div class="row">
+            <div class="col-3">
+              {{comment.author}} (<small>{{comment.createdAt | date('d/m/Y à H:i')}}</small>)
+            </div>
+            <div class="col-9">
+              {{comment.content | raw}}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
 
 {% endblock %}
