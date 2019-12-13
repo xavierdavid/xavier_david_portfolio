@@ -51,10 +51,6 @@ class Experience
      */
     private $published;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     */
-    private $image;
 
     public function getId(): ?int
     {
@@ -145,15 +141,5 @@ class Experience
         return $this;
     }
 
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
+    
 }

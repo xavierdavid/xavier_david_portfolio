@@ -58,14 +58,11 @@ class Article
     private $comments;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
+    private $imageFilename;
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
+    
 
     public function getId(): ?int
     {
@@ -168,22 +165,23 @@ class Article
             $this->comments->removeElement($comment);
             // set the owning side to null (unless already changed)
             if ($comment->getArticle() === $this) {
-                $comment->setArticle(null);
+                $comment->setArticle(null);            
             }
         }
 
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getImageFilename(): ?string
     {
-        return $this->image;
+        return $this->imageFilename;
     }
 
-    public function setImage(?Image $image): self
+    public function setImageFilename(?string $imageFilename): self
     {
-        $this->image = $image;
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }
+
 }

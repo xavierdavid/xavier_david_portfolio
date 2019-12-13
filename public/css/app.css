@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(252, 250, 250);
+}
+
+header {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 6px;
+    /*position: fixed; /* Positionnement figé du header en haut à gauche de page */
+    top:0px;
+    Left: 0px;
+    width: 100%;
+    background-color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+nav li {
+    margin-right: 30px;
+  }
+
+nav a {
+    text-decoration: none !important;
+}
+
+nav a:hover{
+    color : #3491b2;
+    border-top: 5px #3491b2 solid;
+}
+
+
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

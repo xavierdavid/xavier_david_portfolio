@@ -14,7 +14,8 @@
             {# 'app' must match the first argument to addEntry() in webpack.config.js #}
             {{ encore_entry_link_tags('app') }}
             {# css link #}
-            <link rel="stylesheet" href="/build/app.css">
+            {#<link rel="stylesheet" href="/build/app.css">#}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         {% endblock %}
     </head>
     
@@ -48,7 +49,7 @@
             <!-- Tiny MCE API CDN link -->
             <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
             <script>tinymce.init({
-                selector: '#article_content',
+                selector: '.tinymce',
                 mode:"exact",
                 elements:"contenu",
                 entity_encoding : "raw",

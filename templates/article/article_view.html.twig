@@ -16,14 +16,20 @@
       <div class="card-header">
       <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
       </div>
-      <img src="http://placehold.it/350x150" class="card-img-top" alt="...">
+      <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"> {{article.title}}</h5>
         <p class="card-text">{{article.content | raw}}</p>
         <br>
       </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{path('article_edit', {'id' : article.id})}}" class="btn btn-primary">Modifier l'article</a></em>
+      </div>
+
     </div>
     <hr>
+
+
     
     {# Affichage des commentaires associés à l'article #}
    

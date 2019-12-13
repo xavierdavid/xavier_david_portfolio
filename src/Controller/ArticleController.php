@@ -12,27 +12,48 @@ use Symfony\Component\Routing\Annotation\Route; // Permet de définir les routes
 use Symfony\Component\Form\Extension\Core\Type\TextType; // Permet d'utiliser le champ TextType de la classe Form
 use Symfony\Component\Form\Extension\Core\Type\TextareaType; // Permet d'utiliser les champ TextareaType de la classe Form
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Permet d'utiliser les fonctionnalités du contrôleur Symfony
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article", name="article")
+     * @Route("/article/{page}", name="article", requirements={"page"="\d+"}, defaults={"page" = 1})
      */
-    public function allArticles(){
-        // Méthode qui récupère tous les articles
+    public function allArticles($page){
+        // Méthode qui récupère tous les articles et les affiche avec une pagination définie dans ArticleRepository 
+        // $page est la page en cours. Elle doit obligatoirement être supérieure à 1
+        if ($page<1){
+            // Si $page <1, on déclenche une exception à l'aide de la méthode createNotFoundException de l'objet NotFoundHttpException
+            // ... pour afficher une page d'erreur 404 (qui pourra ensuite être personnalisée)
+            throw $this->createNotFoundException('Page "'.$page.'" inexistante.');
+        }
+
+        // On fixe arbitrairement le nombre d'annonces par page $nbPerPage, à 3
+        // Mais bien sûr, il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
+        $nbPerPage = 2;
+
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Article'
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
         // On récupère tous les articles
-        $articles = $repository->findAll();
+        $articles = $repository->getArticles($page, $nbPerPage);
+
+        // On calcule le nombre total de pages à afficher ...
+        // ... qui retourne le nombre total d'annonces count($listAdverts)
+        // ... et détermine le nombre total de pages à afficher
+        $nbPages = ceil(count($articles) / $nbPerPage);
 
         // Renvoie une réponse : afficher le template article/index.html.twig
         return $this->render('article/all_articles.html.twig', [ 
             'controller_name' => 'ArticleController',
-            'articles' => $articles
+            'articles' => $articles,
+            'nbPages'=>$nbPages,
+            'page' =>$page
         ]);
     }
+
 
 
 
@@ -57,15 +78,39 @@ class ArticleController extends AbstractController
             // On rajoute la date de création de l'article ...  
             $article->setCreatedAt(new \DateTime());
 
+            // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
+            // On le récupère avec la méthode getData()
+            $imageFile = $form['image']->getData();
+
+            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            if($imageFile) {
+                // On récupère le nom original du fichier
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // On laisse symfony affecter la bonne extension au fichier final
+                $newFilename = $originalFilename.'.'. $imageFile->guessExtension();
+
+
+                // On déplace le fichier vers le répertoire où seront stockées les images
+                try {
+                    $imageFile->move($this->getParameter('image_directory'),$newFilename);
+                
+                } catch (FileException $e) {
+                    // ... On lance une exception dans le cas où le téléchargement connaîtrait une anomalie
+                }
+
+                // On met à jour la propriété imageFilename de l'entite Article pour stocker le nom du fichier dans la base de données
+                $article->setImageFilename($newFilename);
+            }
+    
             // On demande au manager de persister l'entité 'article' : on l'enregistre pour qu'elle soit gérée par Doctrine 
             $manager->persist($article);
+
             // On demande au manager d'exécuter la requête ('INSERT INTO')
             $manager->flush();
 
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'Article bien enregistré');
-            
             
             // Après avoir effectué la requête, on redirige vers la route 'article_view' avec en paramètre l'identifiant de l'article qui vient d'être créé
             return $this->redirectToRoute('article_view', [
@@ -78,6 +123,7 @@ class ArticleController extends AbstractController
             'formArticle' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue
         ]);
     }
+
 
 
     /**

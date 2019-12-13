@@ -23,11 +23,11 @@
 
     {# Balises de champ de formulaire #}
     {{ form_row(formArticle.title, {'attr' : {'placeholder': "Titre de l'article"}}) }}
-    {{ form_row(formArticle.category, {'attr' : {'placeholder': "Titre de l'article"}}) }}
+    {{ form_row(formArticle.category, {'attr' : {'placeholder': "Catégorie de l'article"}}) }}
     {{ form_row(formArticle.content, {'attr' : {'placeholder': "Contenu de l'article"}}) }}
-    {{ form_row(formArticle.image, {'attr' : {'placeholder': "Contenu de l'article"}}) }}
+    {{ form_row(formArticle.image) }}
 
-  <button type="submit" class="btn btn-success">Ajouter l'article</button>
+    <button type="submit" class="btn btn-success">Ajouter l'article</button>
 
     {# Balise fermante du formulaire #}
     {{ form_end(formArticle) }}

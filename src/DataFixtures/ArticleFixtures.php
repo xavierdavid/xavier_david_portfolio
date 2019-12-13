@@ -16,7 +16,7 @@ class ArticleFixtures extends Fixture
     {
         // Utilisation de la librairie Faker - On instancie la classe Faker
         // Domaine de nom Faker, classe Factory avec la méthode create() qui prend en paramètre fr_FR (données en français)
-        $faker = \Faker\Factory::create('fr_FR');
+        /*$faker = \Faker\Factory::create('fr_FR');
         
         // Création de 3 catégories Faker à l'aide d'une boucle
         for($i=1; $i <=3; $i++){
@@ -72,7 +72,7 @@ class ArticleFixtures extends Fixture
             
             }
 
-        }  
+        } */ 
 
         $manager->flush(); // On effectue la requête pour envoyer les données dans la base 
     }
