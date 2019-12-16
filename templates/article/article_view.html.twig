@@ -6,7 +6,7 @@
 {# Bloc de contenu body spécifique à la vue #}
 {% block article_body %}
 
-    {# On affiche tous les messages flash dont le nom est « info » #}
+    {# On affiche tous les messages flash dont le nom est « notice » #}
     {% for message in app.session.flashbag.get('notice') %}
       <div class="alert alert-info">Message flash : {{ message }}</div>
     {% endfor %}
@@ -16,14 +16,17 @@
       <div class="card-header">
       <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
       </div>
-      <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
+      <div class="image_block">
+        <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
+      </div>
       <div class="card-body">
         <h5 class="card-title"> {{article.title}}</h5>
         <p class="card-text">{{article.content | raw}}</p>
         <br>
       </div>
       <div class="card-footer text-muted">
-        <em><a href="{{path('article_edit', {'id' : article.id})}}" class="btn btn-primary">Modifier l'article</a></em>
+        <em><a href="{{path('article_edit', {'id' : article.id})}}" class="btn btn-info">Modifier l'article</a></em>
+        <em><a href="{{path('article_delete', {'id' : article.id})}}" class="btn btn-danger">Supprimer l'article</a></em> 
       </div>
 
     </div>

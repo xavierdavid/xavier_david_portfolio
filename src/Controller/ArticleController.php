@@ -3,21 +3,24 @@
 namespace App\Controller;
 
 use App\Form\ArticleType;
+use App\Service\FileUploader;
+use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Article; // Permet d'utiliser la classe 'Article'
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException; // Permet de jeter des exceptions et d'attraper les erreurs
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Routing\Annotation\Route; // Permet de définir les routes grâce aux annotations
 use Symfony\Component\Form\Extension\Core\Type\TextType; // Permet d'utiliser le champ TextType de la classe Form
 use Symfony\Component\Form\Extension\Core\Type\TextareaType; // Permet d'utiliser les champ TextareaType de la classe Form
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException; // Permet de jeter des exceptions et d'attraper les erreurs
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Permet d'utiliser les fonctionnalités du contrôleur Symfony
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
 class ArticleController extends AbstractController
 {
+   
     /**
      * @Route("/article/{page}", name="article", requirements={"page"="\d+"}, defaults={"page" = 1})
      */
@@ -53,7 +56,6 @@ class ArticleController extends AbstractController
             'page' =>$page
         ]);
     }
-
 
 
 
@@ -99,6 +101,7 @@ class ArticleController extends AbstractController
                 }
 
                 // On met à jour la propriété imageFilename de l'entite Article pour stocker le nom du fichier dans la base de données
+                // On utilse la méthode 'setImageFilename' de l'entité 'Article'
                 $article->setImageFilename($newFilename);
             }
     
@@ -127,11 +130,12 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/edit/{id}", name="article_edit")
+     * @Route("/article/edit/{id}", name="article_edit", requirements={"id"="\d+"})
      */
-    public function editArticle($id, Request $request, ObjectManager $manager){
+    public function editArticle($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie un article
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Article'
+        // Injection du service FileUploader
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
         // On récupère tous les articles
@@ -155,6 +159,19 @@ class ArticleController extends AbstractController
             // On rajoute la date de création de l'article ...  
             $article->setUpdatedAt(new \DateTime());
 
+            // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
+            // On le récupère avec la méthode getData()
+            $imageFile = $form['image']->getData();
+
+            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            if($imageFile) {
+                // On utilise le service FileUploader pour télécharger le fichier
+                $newFilename = $fileUploader->upload($imageFile);              
+                
+                // On met à jour la propriété imageFilename de l'entite Article pour stocker le nom du fichier dans la base de données
+                $article->setImageFilename($newFilename);
+            }
+
             // On demande au manager de persister l'entité 'article' : on l'enregistre pour qu'elle soit gérée par Doctrine 
             $manager->persist($article);
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -164,7 +181,6 @@ class ArticleController extends AbstractController
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'Article modifié');
             
-            
             // Après avoir effectué la requête, on redirige vers la route 'article_view' avec en paramètre l'identifiant de l'article qui vient d'être créé
             return $this->redirectToRoute('article_view', [
                 'id' => $article->getId()
@@ -172,16 +188,15 @@ class ArticleController extends AbstractController
         }
 
         return $this->render('article/article_edit.html.twig', [
-            'formArticle' => $form->createView(), // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
-            'editMode' => true // On transmet la variable editMode à 'true' à la vue pour changer le texte du bouton submit du formulaire
+            'formArticle' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
+            //'editMode' => true // On transmet la variable editMode à 'true' à la vue pour changer le texte du bouton submit du formulaire
             ]);
     }
 
 
 
-
     /**
-     * @Route("/article/view/{id}", name="article_view")
+     * @Route("/article/view/{id}", name="article_view", requirements={"id"="\d+"})
      */
     public function articleView($id){
 
@@ -201,7 +216,44 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    
+
+
+    /**
+     * @Route("/article/delete/{id}", name="article_delete", requirements={"id"="\d+"})
+     */
+    public function articleDelete($id, Request $request, ObjectManager $manager){
+        // On sélectionne les données
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $article = $repository->find($id);
+
+        if (null === $article) {
+            throw new NotFoundHttpException(("L'article d'id " .$id." n'existe pas." ));
+        }
+
+        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)     
+        $form = $this->get('form.factory')->create();
+
+        // On fait le lien Requête <-> Formulaire. La variable $article contient alors les valeurs 'vides' du formulaire
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            // On supprime l'article
+            $manager->remove($article);
+            $manager->flush();
+            $request->getSession()->getFlashBag()->add('notice', "L'article a bien été supprimé.");
+        
+            // On redirige vers la route 'article'
+            return $this->redirectToRoute('article');
+        }
+
+        // On appelle le template de suppression d'annonce
+        return $this->render('article/article_delete.html.twig', array(
+            'article' => $article,
+            'form' => $form->createView(),
+        ));
+    }
+
+
     
     public function lastArticles($limit){
         // On récupère le service EntityManager de l'ORM Doctrine

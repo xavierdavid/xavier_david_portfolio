@@ -49,10 +49,21 @@ class ArticleRepository extends ServiceEntityRepository
       // On retourne l'objet Paginator correspondant à la requête construite
       // On n'oublie pas le use correspondant en début de fichier
       return new Paginator($qb, true);
+    }
 
 
 
-
+    public function getLastArticles($limit) {
+        // Méthode qui récupère les '$limit' derniers articles publiés 
+        
+        // Création d'un QueryBuilder
+        return $this->createQueryBuilder('a')
+        // Définition des critères de requête
+            ->where('a.published = 1')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
 

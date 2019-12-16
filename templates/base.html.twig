@@ -6,7 +6,7 @@
         {# Mobile device encode #}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {# Bootstrap link #}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         
         <title>{% block title %}Portfolio de Xavier DAVID{% endblock %}</title>
         
@@ -15,34 +15,49 @@
             {{ encore_entry_link_tags('app') }}
             {# css link #}
             {#<link rel="stylesheet" href="/build/app.css">#}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         {% endblock %}
     </head>
     
     <body>
         
-        {# Header du site #}
-        <header> 
-            <div id="logo_titre"> {# Logo #}
-                <p>Mon logo</p>
-            </div>
+        {# Header du site #}   
+        <div class="container"> 
+            <header> 
+                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">
+                        <img src="{{ asset('uploads/images/' ~ '03.jpeg') }}" width="30" height="30" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            <nav> {# Bloc de navigation #}
-                <ul> {# Liens de navigation #}
-                    <li><a href="{{path('home')}}">Accueil</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Connexion</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        {# Conteneur du bloc 'body' #}
-        <div class="container">  
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('home')}}">Accueil <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('home_article')}}">Publications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline">
+                            <button class="btn btn-sm btn-outline-secondary" type="button">Connexion</button>
+                        </form>
+                    </div>
+                </nav>        
+            </header>
+                
+            {# Conteneur du bloc 'body' #}
             {% block body %}{% endblock %}
         </div>
-
-        
         
         {# Javascript #}
         {% block javascript %}
@@ -50,12 +65,18 @@
             <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
             <script>tinymce.init({
                 selector: '.tinymce',
-                mode:"exact",
-                elements:"contenu",
-                entity_encoding : "raw",
-                encoding: "UTF-8",
-                language : 'fr_FR'
+                //mode:"exact",
+                //elements:"contenu",
+                //entity_encoding : "raw",
+                //encoding: "UTF-8",
+                
             });</script>
+
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
         {% endblock %}
     </body>
 </html>

@@ -1,0 +1,49 @@
+{# templates/article/article_delete.html.twig #}
+
+{% extends 'article/base_article.html.twig' %}
+
+{% block title %}
+  Supprimer une annonce - {{ parent() }}
+{% endblock %}
+
+{% block article_body %}
+
+  
+  <h2>Supprimer une annonce</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer l'annonce "{{ article.title }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('article_delete', {'id': article.id}) }}" method="post">
+    <a href="{{ path('article_view', {'id': article.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à l'article
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

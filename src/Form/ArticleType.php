@@ -7,12 +7,13 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Validator\Constraints\File;
 
 
 class ArticleType extends AbstractType
@@ -21,22 +22,29 @@ class ArticleType extends AbstractType
     {
         // Construction du formulaire des articles
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class,[
+                'label' => 'Titre',
+            ])
             ->add('category', EntityType::class,[
+                'label' => 'Catégorie',
                 'class' => Category::class,
                 'choice_label' => 'title'
             ])
-            ->add('content', TextareaType::class) 
-                //'attr' => ['class' => 'tinymce']) // Utilisation de l'éditeur TinyMCE sur le champ 'textarea'
+            ->add('content', TextareaType::class, [
+                'label' => 'Contenu',
+                'attr' => ['class' => 'tinymce'],
+                'required' => false
+            ]) // Utilisation de l'éditeur TinyMCE sur le champ 'textarea'
+             
             ->add('image', FileType::class,[
-                'label' => 'Image (jpeg or png file)',
+                'label' => 'Image',
                 'mapped' => false, // Ce champs n'est pas associé à une propriété d'entité
                 'required' => false, // Le fait de rendre ce champ facultatif permet d'éviter de re-télécharger l'image en cas d'édition
-                'constraints' => [ // Le champ n'étant pas rattaché à une entité, on ne peux pas définir de contraintes sous forme d'annotations dans l'entité, alors on les définit ici
-                    new File([
-                        'maxSize' => '1024k' // Taille maximum du fichier
-                    ])
-                ],
+                //'constraints' => [ // Le champ n'étant pas rattaché à une entité, on ne peux pas définir de contraintes sous forme d'annotations dans l'entité, alors on les définit ici
+                    //new File([
+                        //'maxSize' => '1024k' // Taille maximum du fichier
+                    //])
+                //],
             ])
             ->add('published')
         ;
