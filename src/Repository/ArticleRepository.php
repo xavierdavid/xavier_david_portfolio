@@ -51,6 +51,18 @@ class ArticleRepository extends ServiceEntityRepository
       return new Paginator($qb, true);
     }
 
+    public function getArticleWithComment(){
+        // Méthode qui récupère l'article associé à un commentaire 
+
+        // Création d'un QueryBuilder 
+        return $this->createQueryBuilder('a')
+        // Définition des critères de recherche : on effectue une jointure entre la table  principale 
+            ->leftJoin('a.comments', 'c')
+            ->addSelect('c')
+            ->getQuery()
+            ->gerResult();
+        }
+
 
 
     public function getLastArticles($limit) {

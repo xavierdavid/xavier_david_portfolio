@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
 use Symfony\Component\Form\Forms;
@@ -199,6 +200,7 @@ class ArticleController extends AbstractController
      * @Route("/article/view/{id}", name="article_view", requirements={"id"="\d+"})
      */
     public function articleView($id){
+        // Méthode qui récupère et affiche un article
 
         //On sélectionne les données avec le repository qui gère l'entité 'Article'
         $repository = $this->getDoctrine()->getRepository(Article::class);
@@ -222,6 +224,8 @@ class ArticleController extends AbstractController
      * @Route("/article/delete/{id}", name="article_delete", requirements={"id"="\d+"})
      */
     public function articleDelete($id, Request $request, ObjectManager $manager){
+        // Méthode qui récupère et supprime une article
+        
         // On sélectionne les données
         $repository = $this->getDoctrine()->getRepository(Article::class);
         $article = $repository->find($id);
@@ -254,6 +258,52 @@ class ArticleController extends AbstractController
     }
 
 
+    /**
+     * @Route("/comment/delete/{id}", name="comment_delete", requirements={"id"="\d+"})
+     */
+    public function commentDelete($id, Request $request, ObjectManager $manager){
+        // Méthode qui récupère et supprime un commentaire 
+
+        // On sélectionne les données du commentaire
+        $repository = $this->getDoctrine()->getRepository(Comment::class);
+        $comment = $repository->find($id);
+
+        // Si le commentaire n'existe pas ... 
+        if(null === $comment) {
+            throw new NotFoundHttpException(("Le commentaire d'id " .$id." n'existe pas." ));
+        }
+
+        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)     
+        $form = $this->get('form.factory')->create();
+
+        // On fait le lien Requête <-> Formulaire. La variable $article contient alors les valeurs 'vides' du formulaire
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            // On supprime le commentaire
+            $manager->remove($comment);
+            $manager->flush();
+            $request->getSession()->getFlashBag()->add('notice', "Le commentaire a bien été supprimé.");
+        
+            // On redirige vers la route 'article'
+            return $this->redirectToRoute('article_view', [
+                'id' => $comment->getArticle()->getId()
+            ]);
+        }
+
+        // On appelle le template de suppression d'annonce
+        return $this->render('article/comment_delete.html.twig', array(
+            'comment' => $comment,
+            'article' => $comment->getArticle($id), // On récupère l'article associé au commentaire
+            'form' => $form->createView()
+        ));
+
+
+
+
+    }
+
+
     
     public function lastArticles($limit){
         // On récupère le service EntityManager de l'ORM Doctrine
@@ -271,6 +321,9 @@ class ArticleController extends AbstractController
             'lastArticles'=> $lastArticles));
             // Intérêt : le contrôleur passe ici les variables nécessaires au template 'index_articles.html.twig'
     }
+
+
+    
 
 
     

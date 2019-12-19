@@ -8,7 +8,7 @@
 
     {# On affiche tous les messages flash dont le nom est « notice » #}
     {% for message in app.session.flashbag.get('notice') %}
-      <div class="alert alert-info">Message flash : {{ message }}</div>
+      <div class="alert alert-info">{{ message }}</div>
     {% endfor %}
 
     {# Affichage d'un article #}
@@ -25,17 +25,13 @@
         <br>
       </div>
       <div class="card-footer text-muted">
-        <em><a href="{{path('article_edit', {'id' : article.id})}}" class="btn btn-info">Modifier l'article</a></em>
-        <em><a href="{{path('article_delete', {'id' : article.id})}}" class="btn btn-danger">Supprimer l'article</a></em> 
+        <em><a href="{{ path('article_edit', {'id' : article.id}) }}" class="btn btn-info">Modifier l'article</a></em>
+        <em><a href="{{ path('article_delete', {'id' : article.id}) }}" class="btn btn-danger">Supprimer l'article</a></em> 
       </div>
-
     </div>
     <hr>
-
-
     
     {# Affichage des commentaires associés à l'article #}
-   
     <section id="commentaire">
       {% for comment in article.comments %}
         <div class="comment">
@@ -45,9 +41,12 @@
             </div>
             <div class="col-9">
               {{comment.content | raw}}
+              <em><a href="{{path('comment_delete', {'id' : comment.id}) }}" class="badge badge-pill badge-danger">Supprimer</a></em>
             </div>
           </div>
         </div>
+        <br>
+        <hr>
       {% endfor %}
     </section>
 

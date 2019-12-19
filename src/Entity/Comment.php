@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; // Permet d'utiliser le Validator pour soumettre des données à des contraintes
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")

@@ -1,0 +1,31 @@
+{# templates/article/comment_delete.html.twig #}
+
+{% extends 'article/base_article.html.twig' %}
+
+{% block title %}
+  Supprimer un commentaire - {{ parent() }}
+{% endblock %}
+
+{% block article_body %}
+
+  
+  <h3>Supprimer un commentaire</h3>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le commentaire écrit par "{{ comment.author }}" le {{comment.createdAt | date('d/m/Y')}} à {{comment.createdAt | date('H:i')}} ?
+  </p>
+
+  {# On met l'id du commentaire dans la route de l'action du formulaire #}
+  <form action="{{ path('comment_delete', {'id': comment.id}) }}" method="post">
+    <a href="{{ path('article_view', {'id': article.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à l'article
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock article_body %}
