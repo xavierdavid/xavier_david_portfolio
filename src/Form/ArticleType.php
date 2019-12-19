@@ -30,6 +30,9 @@ class ArticleType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'title'
             ])
+            ->add('introduction', TextareaType::class,[
+                'label' => 'Introduction'
+            ])
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
                 'attr' => ['class' => 'tinymce'],

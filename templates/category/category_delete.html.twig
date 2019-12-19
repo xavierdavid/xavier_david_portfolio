@@ -1,0 +1,31 @@
+{# templates/article/category_delete.html.twig #}
+
+{% extends 'article/base_article.html.twig' %}
+
+{% block title %}
+  Supprimer une catégorie - {{ parent() }}
+{% endblock %}
+
+{% block article_body %}
+
+  
+  <h3>Supprimer une catégorie</h3>
+
+  <p>
+    Etes-vous certain de vouloir supprimer la catégorie "{{ category.title }}" ?
+  </p>
+
+  {# On met l'id de la catégorie dans la route de l'action du formulaire #}
+  <form action="{{ path('category_delete', {'id': category.id}) }}" method="post">
+    <a href="{{ path('category') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la liste des catégories
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock article_body %}

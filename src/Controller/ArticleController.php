@@ -180,7 +180,7 @@ class ArticleController extends AbstractController
 
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
-            $request->getSession()->getFlashBag()->add('notice', 'Article modifié');
+            $request->getSession()->getFlashBag()->add('notice', "L'article a bien été modifié");
             
             // Après avoir effectué la requête, on redirige vers la route 'article_view' avec en paramètre l'identifiant de l'article qui vient d'être créé
             return $this->redirectToRoute('article_view', [
@@ -291,7 +291,7 @@ class ArticleController extends AbstractController
             ]);
         }
 
-        // On appelle le template de suppression d'annonce
+        // On appelle le template de suppression de commentaire
         return $this->render('article/comment_delete.html.twig', array(
             'comment' => $comment,
             'article' => $comment->getArticle($id), // On récupère l'article associé au commentaire
@@ -311,7 +311,8 @@ class ArticleController extends AbstractController
 
         // On récupère la liste des dernières annonces publiées ($limit)
         $lastArticles = $entityManager->getRepository(Article::class)->findBy(
-            array(), // Pas de critère
+            //array(), // Pas de critère
+            array('published' => '1'), // Articles publiés uniquement
             array('createdAt' => 'desc'), // On trie par date décroissante
             $limit, // On sélectionne $limit annonces
             0 // A partir de la première annonce

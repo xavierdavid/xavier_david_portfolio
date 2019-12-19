@@ -14,18 +14,26 @@
             
             <h3>Articles</h3>
             <div class="list-group">
-                <a href="{{path('article',['page']) }}" class="list-group-item list-group-item-action">Tous mes articles</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
-                <a href="{{path('article_create')}}" class="list-group-item list-group-item-action">Ajouter un article</a> 
+                <a href="{{ path('article',['page']) }}" class="list-group-item list-group-item-action">Tous mes articles</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
+                <a href="{{ path('article_create') }}" class="list-group-item list-group-item-action">Ajouter un article</a> 
             </div> 
             </br>
             <a href="#" class="btn btn-info">Accueil tableau de bord</a>
             <hr>
-            <h4>Derniers articles</h4> 
+            <h4>Articles à la une</h4> 
 
             {# Inclusion d'un template d'index d'article avec les 3 derniers articles#}
             {# Insertion de la méthode lastArticles du contrôleur ArticleController pour inclure le template last_articles.html.twig avec les 3 derniers articles #}
             {{render(controller('App\\Controller\\ArticleController::lastArticles', {'limit': 3}))}}
-                  
+            <br>
+            <hr>
+
+            {# Gestion des catégories #}
+            <h4>Catégories</h4> 
+            <div class="list-group">
+                <a href="{{ path('category') }}" class="list-group-item list-group-item-action">Gérer catégories</a>
+            </div> 
+            </br>  
         </div>
         
         <div id="content" class="col-md-9">

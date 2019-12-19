@@ -19,6 +19,19 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+    
+    public function findMyCategories() {
+        // Méthode qui récupère toutes les catégories par ordre alphabétique
+       
+        // Création d'un QueryBuilder 
+        return $this->createQueryBuilder('c')
+        // Définition des critères de recherche : on effectue une jointure entre la table  principale 
+            ->orderBy('c.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Category[] Returns an array of Category objects
     //  */

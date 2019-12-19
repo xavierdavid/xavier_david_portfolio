@@ -17,6 +17,8 @@
       <div class="card-body">
         <h5 class="card-title"> {{article.title}}</h5>
         <span class="badge badge-pill badge-light">{{article.category.title}}</span>
+        <br>
+        <p><em>{{article.introduction | raw}}</em></p>
         <p class="card-text">{{article.content | raw}}</p>
         <br>
          <a href="{{ path('home_article') }}" class="btn btn-secondary">Retour</a>

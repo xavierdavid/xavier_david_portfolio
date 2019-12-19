@@ -1,0 +1,55 @@
+{# templates/category/all_categories.html.twig #}
+
+{# Le template hérite du second template 'père' base_article.html.twig  #}
+{% extends 'article/base_article.html.twig' %}
+
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block article_body %}
+
+    
+  {# Affichage de toutes les catégories #}
+  <H3>Toutes les catégories</h3>
+
+  {# On affiche tous les messages flash dont le nom est « notice » #}
+  {% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-info">{{ message }}</div>
+  {% endfor %}
+
+
+  {% for category in categories %}
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{category.title}}
+        <span><a href="{{ path('category_delete', {'id' : category.id}) }}" class="badge badge-pill badge-danger">Supprimer</a></span>
+      </li>
+    </ul>
+  {% endfor %}
+
+  <br>
+  <hr>  
+  
+  {# Affichage du formulaire d'ajout de catégories #}
+  <H3>Ajouter une catégorie</h3>
+  {# Balise ouvrante du formulaire #}
+  {{ form_start(formCategory) }}
+
+  {# Balises de champ de formulaire #}
+  {{ form_row(formCategory.title, {'attr': {'placeholder': "Titre de la catégorie"}}) }}
+    
+  <button type="submit" class="btn btn-primary">Envoyer</button>
+
+  {# Balise fermante du formulaire #}
+  {{ form_end(formCategory) }}
+  
+
+
+
+
+
+{% endblock article_body %}

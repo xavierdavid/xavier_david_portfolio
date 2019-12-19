@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use Symfony\Component\Form\Extension\Core\Type\TextType; 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,7 +89,7 @@ class HomeController extends AbstractController
 
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
-            $request->getSession()->getFlashBag()->add('notice', 'Votre commentaire a été enregistré');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre commentaire a bien été enregistré');
 
             // Après avoir effectué la requête, on redirige vers la route 'home_article_view' avec en paramètre l'identifiant de l'article en cours
             return $this->redirectToRoute('home_article_view', [

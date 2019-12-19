@@ -22,7 +22,7 @@ class Project
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -55,6 +55,11 @@ class Project
      * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $introduction;
 
     public function getId(): ?int
     {
@@ -153,6 +158,18 @@ class Project
     public function setImage(?Image $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): self
+    {
+        $this->introduction = $introduction;
 
         return $this;
     }

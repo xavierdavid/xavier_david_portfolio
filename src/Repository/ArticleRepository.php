@@ -60,7 +60,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->leftJoin('a.comments', 'c')
             ->addSelect('c')
             ->getQuery()
-            ->gerResult();
+            ->getResult();
         }
 
 

@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{article.title | raw}}</h5>
                         <span class="badge badge-pill badge-light">{{article.category.title}}</span>
-                        <p class="card-text">{{article.content | raw}}</p>
+                        <p class="card-text">{{article.introduction | raw}}</p>
                         <p class="card-text"><small class="text-muted">Article publié le {{article.createdAt | date('d/m/Y')}}</small></p>
                          <a href="{{ path('home_article_view', {'id' : article.id}) }}" class="btn btn-secondary">Lire la suite</a>
                     </div>

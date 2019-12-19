@@ -1,6 +1,6 @@
-{# templates/article/index_article.html.twig #}
+{# templates/article/all_articles.html.twig #}
 
-{# Le template hérite du second template 'père' advertLayout.html.twig  #}
+{# Le template hérite du second template 'père' base_article.html.twig  #}
 {% extends 'article/base_article.html.twig' %}
 
 
@@ -15,9 +15,9 @@
   <H3>Tous mes articles</h3>
   
   {# On affiche tous les messages flash dont le nom est « notice » #}
-    {% for message in app.session.flashbag.get('notice') %}
-      <div class="alert alert-info">Message flash : {{ message }}</div>
-    {% endfor %}
+  {% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-info">{{ message }}</div>
+  {% endfor %}
   
   {# Affichage de tous les articles publiés #}
   {% for article in articles %} 
@@ -35,7 +35,7 @@
       </div>
      
       <div class="card-footer text-muted">
-        <em><a href="{{path('article_view', {'id' : article.id})}}" class="btn btn-primary">Détail de l'article</a></em>
+        <em><a href="{{ path('article_view', {'id' : article.id}) }}" class="btn btn-primary">Détail de l'article</a></em>
       </div>
     </article>
     <br>
