@@ -40,7 +40,7 @@ class ArticleRepository extends ServiceEntityRepository
         // On définit l'annonce à partir de laquelle commencer la liste
         // Le Paginator retourne une liste de $nbPerPage d'annonce qui s'utilise comme n'importe quel tableau
         // On définit quel doit être le premier résultat à afficher
-        // Ici $nbPerPage est définit arbitrairement à 3 dans le contrôleur ArticleController ...
+        // Ici $nbPerPage est définit arbitrairement à 2 dans le contrôleur ArticleController ...
         // ... Ex: $page = 1, 1er résultat = 0 - $page = 3, 1er résultat = 6
         ->setFirstResult(($page-1) * $nbPerPage)
         // Ainsi que le nombre d'annonce à afficher sur une page

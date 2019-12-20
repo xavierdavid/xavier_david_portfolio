@@ -1,6 +1,6 @@
 {# templates/article/index_article.html.twig #}
 
-{# Le template hérite du second template 'père' advertLayout.html.twig  #}
+{# Le template hérite du second template 'père' base_article.html.twig  #}
 {% extends 'article/base_article.html.twig' %}
 
 {# Bloc de contenu body spécifique à la vue #}
@@ -21,6 +21,7 @@
       </div>
       <div class="card-body">
         <h5 class="card-title"> {{article.title}}</h5>
+        <span class="badge badge-pill badge-light">{{article.category.title}}</span>
         <p class="card-text">{{article.content | raw}}</p>
         <br>
       </div>

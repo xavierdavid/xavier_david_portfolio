@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; // Permet d'utiliser le Validator pour soumettre des données à des contraintes
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -52,14 +53,14 @@ class Project
     private $published;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $introduction;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFilename;
 
     public function getId(): ?int
     {
@@ -150,17 +151,6 @@ class Project
         return $this;
     }
 
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 
     public function getIntroduction(): ?string
     {
@@ -170,6 +160,18 @@ class Project
     public function setIntroduction(string $introduction): self
     {
         $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }

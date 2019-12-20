@@ -1,0 +1,31 @@
+{# templates/project/project_delete.html.twig #}
+
+{% extends 'project/base_project.html.twig' %}
+
+{% block title %}
+  Supprimer un projet - {{ parent() }}
+{% endblock %}
+
+{% block project_body %}
+
+  
+  <h2>Supprimer un projet</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le projet "{{ project.title }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('project_delete', {'id': project.id}) }}" method="post">
+    <a href="{{ path('project_view', {'id': project.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour au projet
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

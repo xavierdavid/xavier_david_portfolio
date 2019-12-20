@@ -24,6 +24,7 @@
          <a href="{{ path('home_article') }}" class="btn btn-secondary">Retour</a>
       </div>  
     </div>
+    
     <hr>
 
     {# On affiche tous les messages flash dont le nom est « notice » #}
@@ -32,8 +33,10 @@
     {% endfor %}
 
     {# Affichage des commentaires associés à l'article #}
-    <h2>{{ article.comments | length }} commentaire(s)</h2>
-
+    <h4>{{ article.comments | length }} commentaire(s)</h4>
+    
+    <br>
+    
     <section id="commentaire">
       {% for comment in article.comments %}
         <div class="comment">
@@ -47,14 +50,18 @@
           </div>
         </div>
         <br>
-        <hr>
       {% endfor %}
     </section>
+    
     <br>
     <hr>
     <br>
     
     {# Affichage du formulaire de commentaires #}
+    <h4>Ajouter un commentaire</h4>
+    
+    <br>
+    
     {# Balise ouvrante du formulaire #}
     {{ form_start(formComment) }}
 

@@ -1,0 +1,11 @@
+{# templates/project/index_projects.html.twig #}
+
+
+{# Affichage des derniers articles publiés #}
+<ul class="nav nav-pills nav stacked">
+  {% for project in lastProjects %}
+    <li>
+      <a href="{{path('project_view', {'id' : project.id})}}">{{project.title}}</a>
+    </li>
+  {% endfor %}
+</ul>

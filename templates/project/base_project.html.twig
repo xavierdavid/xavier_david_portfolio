@@ -1,0 +1,43 @@
+{# templates/project/project_view.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes projets{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Mes projets</h1>
+    </div>
+    
+    <div class="row">
+        <div id="admin_menu" class="col-md-3">
+            
+            <h3>Projets</h3>
+            <div class="list-group">
+                <a href="{{ path('project') }}" class="list-group-item list-group-item-action">Tous mes projets</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
+                <a href="{{ path('project_create') }}" class="list-group-item list-group-item-action">Ajouter un projet</a> 
+            </div> 
+            </br>
+            <a href="#" class="btn btn-info">Accueil tableau de bord</a>
+            <hr>
+            <h4>Projets à la une</h4> 
+
+            {# Inclusion d'un template d'index d'article avec les 3 derniers articles#}
+            {# Insertion de la méthode lastProjects du contrôleur ProjectController pour inclure le template last_articles.html.twig avec les 3 derniers projets publiés #}
+            {{render(controller('App\\Controller\\ProjectController::lastProjects', {'limit': 3}))}}
+            <br>
+            <hr>
+        </div>
+        
+        <div id="content" class="col-md-9">
+            {% block project_body %}{% endblock %} 
+        </div>
+
+    </div>
+
+{% endblock %}   
+    
+    
+
+    
+

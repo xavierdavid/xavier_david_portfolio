@@ -1,0 +1,60 @@
+{# templates/project/all_projects.html.twig #}
+
+{# Le template hérite du second template 'père' base_project.html.twig  #}
+{% extends 'project/base_project.html.twig' %}
+
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block project_body %}
+
+  <H3>Tous mes projets</h3>
+  
+  {# On affiche tous les messages flash dont le nom est « notice » #}
+  {% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-info">{{ message }}</div>
+  {% endfor %}
+  
+  {# Affichage de tous les articles publiés #}
+  {% for project in projects %} 
+    <article class="card">
+      <div class="card-header">
+        <em>Article publié le {{project.createdAt | date('d/m/Y')}} à {{project.createdAt | date('H:i')}} </em> {# Application d'un filtre de formatage pour l'affichage de la date #}
+      </div>
+      <div class="image_block">   
+         <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" class="card-img-top" alt="...">
+      </div>
+      <div class="card-body">
+          <h5 class="card-title"> {{project.title}}</h5>
+          <span class="badge badge-pill badge-light">{{project.period}}</span>
+          <p class="card-text">{{project.content | raw}}</p> {# Application du filtre raw pour afficher 'tel quel' les paragraphes sans les balises <p> #}
+          <br>
+          <a href="{{project.url}}" class="card-link" target="_blank">Lien vers le projet</a>
+      </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{ path('project_view', {'id' : project.id}) }}" class="btn btn-primary">Détail du projet</a></em>
+      </div>
+    </article>
+    <br>
+    
+    </article> 
+  {% endfor %} 
+
+  {# Pagination de l'affichage des résultats #}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {# On utilise la fonction range(a, b) qui créé un tableau de valeurs entre a et b #}
+      {% for p in range(1, nbPages) %}
+        <li {% if p == page %} class="page-item active" aria-current="page" {% endif %}>
+          {# Lien vers la page souhaitée #}
+          <a href="{{path('project', {'page': p})}}" class="page-link">{{p}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+{% endblock %}

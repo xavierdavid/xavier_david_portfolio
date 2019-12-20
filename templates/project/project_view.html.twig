@@ -1,0 +1,36 @@
+{# templates/project/project_view.html.twig #}
+
+{# Le template hérite du second template 'père' base_project.html.twig  #}
+{% extends 'project/base_project.html.twig' %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block project_body %}
+
+    {# On affiche tous les messages flash dont le nom est « notice » #}
+    {% for message in app.session.flashbag.get('notice') %}
+      <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+    {# Affichage d'un article #}
+    <div class="card">
+      <div class="card-header">
+      <em>Projet publié le {{project.createdAt | date('d/m/Y')}} le {{project.createdAt | date('H:i')}}</em>
+      </div>
+      <div class="image_block">
+        <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" class="card-img-top" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> {{project.title}}</h5>
+        <span class="badge badge-pill badge-light">{{project.period}}</span>
+        <p class="card-text">{{project.content | raw}}</p>
+        <br>
+        <a href="{{project.url}}" class="card-link" target="_blank">Lien vers le projet</a>
+      </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{ path('project_edit', {'id' : project.id}) }}" class="btn btn-info">Modifier le projet</a></em>
+        <em><a href="{{ path('project_delete', {'id' : project.id}) }}" class="btn btn-danger">Supprimer le projet</a></em> 
+      </div>
+    </div>
+    <hr>
+
+{% endblock %}

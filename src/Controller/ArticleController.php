@@ -41,11 +41,11 @@ class ArticleController extends AbstractController
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Article'
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
-        // On récupère tous les articles
+        // On récupère tous les articles (méthode getArticles de ArticleRepository)
         $articles = $repository->getArticles($page, $nbPerPage);
 
         // On calcule le nombre total de pages à afficher ...
-        // ... qui retourne le nombre total d'annonces count($listAdverts)
+        // ... qui retourne le nombre total d'articles count($articles)
         // ... et détermine le nombre total de pages à afficher
         $nbPages = ceil(count($articles) / $nbPerPage);
 
@@ -304,7 +304,6 @@ class ArticleController extends AbstractController
     }
 
 
-    
     public function lastArticles($limit){
         // On récupère le service EntityManager de l'ORM Doctrine
         $entityManager = $this->getDoctrine()->getManager();
@@ -322,12 +321,6 @@ class ArticleController extends AbstractController
             'lastArticles'=> $lastArticles));
             // Intérêt : le contrôleur passe ici les variables nécessaires au template 'index_articles.html.twig'
     }
-
-
-    
-
-
-    
-    
+ 
 
 }

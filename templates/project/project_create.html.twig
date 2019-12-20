@@ -1,0 +1,38 @@
+{# templates/project/project_create.html.twig #}
+
+
+{# Le template hérite du second template 'père' base_project.html.twig  #}
+{% extends 'project/base_project.html.twig' %}
+
+{# Application d'un thème bootstrap (défini dans twig.yaml) au formulaire formProject #}
+{% form_theme formProject 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block project_body %}
+
+    <h3>Ajouter un projet</h3>
+
+    {# Affichage du formulaire #}
+    
+    {# Balise ouvrante du formulaire #}
+    {{ form_start(formProject) }}
+
+    {# Balises de champ de formulaire #}
+    {{ form_row(formProject.title, {'attr' : {'placeholder': "Titre du projet"}}) }}
+    {{ form_row(formProject.introduction, {'attr' : {'placeholder': "Chapeau du projet"}}) }}
+    {{ form_row(formProject.content, {'attr' : {'placeholder': "Contenu du projet"}}) }}
+    {{ form_row(formProject.period, {'attr' : {'placeholder': "Période du projet"}}) }}
+    {{ form_row(formProject.url, {'attr' : {'placeholder': "Url du projet"}}) }}
+    {{ form_row(formProject.image, {'attr' : {'placeholder': "Fichier image"}}) }}
+    {{ form_row(formProject.published) }}
+
+    <button type="submit" class="btn btn-primary">Ajouter le projet</button>
+
+    {# Balise fermante du formulaire #}
+    {{ form_end(formProject) }}
+
+{% endblock %}
