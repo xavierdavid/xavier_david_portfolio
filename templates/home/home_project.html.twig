@@ -1,0 +1,70 @@
+{# templates/home/home_project.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+{# Contenu spécifique - page 'home' #}
+{% block body %}
+
+{# Slider des projets #}
+<section class="project_wrap">
+    <div class="project_title">
+        <p>Portofolio</p>
+    </div>
+    
+    <h1>Mes projets</h1>
+    
+    <div class="slider_wrapper">
+
+        {# Flèche gauche du slider #}
+        <div id="arrow_left"> 
+            <p><a href="#"><span class="fa-stack"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-chevron-left fa-stack-1x fa-inverse"></i></span></a></p>
+        </div>
+        
+        <div id="slider_container">
+               
+            <div id="slider"> 
+                {# Eléments projets du slider #}
+                <div class="slider_element">
+                    <img src="{{ asset('uploads/images/' ~ 'Capture d’écran 2019-12-23 à 08.58.25.png') }}" alt="">
+                    <h2>Titre du projet</h2>
+                    <div class="project_period">
+                        <p>Période</p>
+                    </div>   
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <hr>
+                    <div class="project_link">
+                        <a href="#">Plus d'infos ...</a>
+                    </div>
+                </div>
+                <div class="slider_element">
+                    <img src="{{ asset('uploads/images/' ~ 'Capture d’écran 2019-12-23 à 08.58.25.png') }}" alt="">
+                    <h2>Titre du projet</h2>
+                    <p>Période</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <br>
+                    <hr>
+                    <div class="project_link">
+                        <a href="#">Plus dinfos ...</a>
+                    </div>
+                </div>
+            </div>         
+        </div>
+
+        {# Flèche droite du slider #}
+        <div id="arrow_right">
+            <p><a href="#"><span class="fa-stack"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-chevron-right fa-stack-1x fa-inverse"></i></span></a></p>
+        </div>
+    </div>
+
+    {# Bouton 'play' et 'pause' du slider #}
+            <div id="pause">
+                <p><a href="#"><span><i class="fas fa-pause-circle fa-stack-2x"></i></span></a></p>
+            </div>
+            <div id="play">
+                <p><a href="#"><span><i class="fas fa-play-circle fa-stack-2x "></i></span></a></p>
+            </div>   
+      
+</section>
+
+{% endblock %}

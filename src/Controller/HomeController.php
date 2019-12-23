@@ -105,6 +105,24 @@ class HomeController extends AbstractController
     }
 
 
+    /**
+     * @Route("/home_project",  name="home_project")
+     */
+    public function homeProjects(){
+        // Méthode qui récupère et affiche les projets 
+
+
+
+
+
+
+        // Réponse et affichage de la vue
+        return $this->render('home/home_project.html.twig');
+
+
+    }
+
+
 
 
 }

@@ -2,9 +2,19 @@ body {
     background-color: rgb(252, 250, 250);
     width: auto;
     background: #e5e5e5;
+    background: white;
 }
 
-/*Marge sous la barre de navigation */
+p {
+    text-align: justify;
+}
+
+
+/*****************************************************/
+/***        Style de la page des publications      ***/
+/*****************************************************/
+
+/* Marge sous la barre de navigation */
 .jumbotron{
     margin-top:60px;
 }
@@ -40,13 +50,141 @@ body {
 }
 .publication_container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .card-deck {
     width : 25em;
     margin-left: 0.5em;
 }
+
+
+
+/*****************************************************/
+/***          Style de la page des projets         ***/
+/*****************************************************/
+
+.project_wrap {
+    margin-top: 100px;
+}
+
+.project_title p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.project_wrap h1 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+.slider_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#arrow_left, #arrow_right {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.fa-stack-2x {
+    color:#9e9fa3;
+}
+
+
+span.fa-stack {
+    font-size: 25px;
+}
+
+#slider_container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 720px;
+    height: 600px;
+    overflow: hidden;  
+}
+
+#slider {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    width: 720px;
+    height: 600px; 
+}
+
+.slider_element {
+    display: block;
+    width: 720px;
+    height: 600px;
+    justify-content: center;
+}
+
+.slider_element p {
+    text-align: justify;
+}
+
+.slider_element h2 {
+    text-align: center;
+    color: #0e8ca3;
+    font-weight: bold;
+}
+
+.slider_element img {
+    width: 600px;
+    height: 350px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.slider_element h2 {
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+.project_period p {
+    text-align: center;
+    color: #e0ad2c;
+}
+
+.project_link {
+    display: block;
+    width: 150px;
+    height: 26px;
+    background-color: #0e8ca3;
+    border-radius: 30px;
+    text-align: center;
+    margin-bottom: 15px; 
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.project_link a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+.project_link:hover {
+    color: #4f5054;
+    background-color: #e0ad2c;
+    font-weight: bold;
+    /*border: 1px #4f5054 solid;*/
+}
+
+
+
 
 
 
