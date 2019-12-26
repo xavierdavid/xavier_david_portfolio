@@ -51,19 +51,17 @@ class ProjectRepository extends ServiceEntityRepository
     }
 
 
-    public function getLastProjects($limit) {
-        // Méthode qui récupère les '$limit' derniers projets publiés 
+    public function getLastProjects() {
+        // Méthode qui récupère les derniers projets publiés 
         
         // Création d'un QueryBuilder
         return $this->createQueryBuilder('p')
         // Définition des critères de requête
             ->where('p.published = 1')
             ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }
-
 
 
 

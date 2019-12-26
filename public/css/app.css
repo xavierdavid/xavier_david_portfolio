@@ -81,27 +81,6 @@ p {
     font-weight: bold;
 }
 
-.slider_wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#arrow_left, #arrow_right {
-    display: block;
-    width: 50px;
-    height: 50px;
-}
-
-.fa-stack-2x {
-    color:#9e9fa3;
-}
-
-
-span.fa-stack {
-    font-size: 25px;
-}
-
 #slider_container {
     position: relative;
     margin-left: auto;
@@ -113,12 +92,17 @@ span.fa-stack {
 }
 
 #slider {
-    position: absolute;
+    position: relative;
     top: 0px;
-    left: 0px;
+    left: -720px;
     display: flex;
     width: 720px;
-    height: 600px; 
+    height: 600px;
+}
+
+/* Déplacement du slider commandée par Javascript :pour ajouter la classe 'shifting' et définir la valeur de la propriété 'left' */
+#slider .shifting {
+    transition: left .2s ease-out;
 }
 
 .slider_element {
@@ -140,7 +124,7 @@ span.fa-stack {
 
 .slider_element img {
     width: 600px;
-    height: 350px;
+    height: 400px;
     margin-left: 60px;
     margin-right: 60px;
     margin-top: 10px;
@@ -182,6 +166,48 @@ span.fa-stack {
     font-weight: bold;
     /*border: 1px #4f5054 solid;*/
 }
+
+.slider_controll {
+    display: flex;
+    justify-content: center;
+}
+
+#arrow_left, #arrow_right, #play, #pause {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.fas {
+    color:#9e9fa3;
+}
+
+#arrow_left .fas:hover, 
+#arrow_right .fas:hover,
+#play .fas:hover,
+#pause .fas:hover {
+    color:#0e8ca3;   
+}
+
+#arrow_left .fas:active, 
+#arrow_right .fas:active,
+#play .fas:active,
+#pause .fas:active {
+    transform: scale(.8); 
+}
+
+.action_controll {
+    position: relative;
+}
+
+#pause, #play {
+    margin: 0px 10px 0px 10px;
+}
+
+#play {
+    display: none; 
+}
+
+
 
 
 

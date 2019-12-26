@@ -23,7 +23,8 @@
             <h4>Projets à la une</h4> 
 
             {# Inclusion d'un template d'index d'article avec les 3 derniers articles#}
-            {# Insertion de la méthode lastProjects du contrôleur ProjectController pour inclure le template last_articles.html.twig avec les 3 derniers projets publiés #}
+            {# Insertion de la méthode lastProjects du contrôleur ProjectController pour inclure le template index_project.html.twig avec les 3 derniers projets publiés #}
+            {# Inclusion du contrôleur, des données et de la vue '#}
             {{render(controller('App\\Controller\\ProjectController::lastProjects', {'limit': 3}))}}
             <br>
             <hr>

@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Entity\Project;
 use App\Form\CommentType;
-use Symfony\Component\Form\Extension\Core\Type\TextType; 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType; 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
@@ -108,16 +109,18 @@ class HomeController extends AbstractController
     /**
      * @Route("/home_project",  name="home_project")
      */
-    public function homeProjects(){
-        // Méthode qui récupère et affiche les projets 
+    public function homeProjects(Request $request, ObjectManager $manager){
+        // Méthode qui récupère et affiche les projets publiés 
 
-
-
-
-
+        // Sélection des données à l'aide du repository 
+        $repository = $this->getDoctrine()->getRepository(Project::class);
+        // Récupération des projets 
+        $projects = $repository->getLastProjects();
 
         // Réponse et affichage de la vue
-        return $this->render('home/home_project.html.twig');
+        return $this->render('home/home_project.html.twig', [
+            'projects' => $projects
+        ]);
 
 
     }
