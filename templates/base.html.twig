@@ -26,38 +26,34 @@
     <body>
         
         {# Header du site #}   
-        <div class="container"> 
-            <header> 
-                <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                        <img src="{{ asset('uploads/images/' ~ '03.jpeg') }}" width="30" height="30" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarColor02">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{path('home')}}">Accueil <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{path('home_project')}}">Portfolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{path('home_article')}}">Publications</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                            </li>
+        <header>                 
+            <a href="#" id="logo"></a>
+            <div id="hamburger">
+                <div id="hamburger-content">
+                    <nav>
+                        <ul>
+                            <li><a href="{{path('home')}}">Accueil</a></li>
+                            <li><a href="{{path('home_project')}}">Portfolio</a></li>
+                            <li><a href="{{path('home_article')}}">Publications</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
-                        <form class="form-inline">
-                            <button class="btn btn-sm btn-outline-secondary" type="button">Connexion</button>
-                        </form>
+                    </nav>
+                    <div id="connexion">
+                        <a href="#" class="button button-sign-in">Connexion</a>
                     </div>
-                </nav>        
-            </header>
-                
+                </div>
+                <div id="hamburger-button"><i class="fas fa-bars"></i></div> {# Bouton du menu hamburger avec son entité HTML #}
+            
+            </div>
+            
+            <div id="hamburger-sidebar"> {# Menu déroulant à partir du côté qui sera rempli du contenu du menu 'hamburger-content' #}
+                <div id="hamburger-sidebar-header"></div>
+                <div id="hamburger-sidebar-body"></div>
+            </div>
+            <div id="hamburger-overlay"></div> {# Masque de menu en fond #}
+        </header>
+
+        <div class="container">  
             {# Conteneur du bloc 'body' #}
             {% block body %}{% endblock %}
         </div>
@@ -74,8 +70,8 @@
                 encoding: "UTF-8",
             })</script>
 
-            <!-- Project Slider JS -->
-            <script src="{{ asset('js/slider.js') }}"></script>
+            <!-- Menu JS -->
+            <script src="{{ asset('js/menu.js') }}"></script>   
         {% endblock %}
     
     </body>

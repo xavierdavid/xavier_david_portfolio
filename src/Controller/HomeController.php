@@ -34,7 +34,7 @@ class HomeController extends AbstractController
         // Méthode qui récupère et affiche les derniers articles publiés dans la section frontend
 
         // On fixe le nombre d'articles à afficher dans la section frontend 
-        $limit = 3;
+        $limit = 2;
 
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Article'
         $repository = $this->getDoctrine()->getRepository(Article::class);
@@ -46,7 +46,6 @@ class HomeController extends AbstractController
         return $this->render('home/home_article.html.twig', [
             'articles' => $articles
         ]);
-
     }
 
 
@@ -101,8 +100,7 @@ class HomeController extends AbstractController
         return $this->render('home/home_article_view.html.twig', [
             'article' => $article,
             'formComment' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue
-        ]);
-        
+        ]);  
     }
 
 
@@ -121,8 +119,6 @@ class HomeController extends AbstractController
         return $this->render('home/home_project.html.twig', [
             'projects' => $projects
         ]);
-
-
     }
 
 

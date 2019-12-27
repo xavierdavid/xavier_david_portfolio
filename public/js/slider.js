@@ -1,5 +1,4 @@
 
-
 // Identification des éléments du DOM
 
 let slider = document.getElementById("slider");
@@ -27,7 +26,8 @@ class Slider {
         this.posFinal,
         this.threshold = 100,
         this.index = 0, // Index initial
-        this.intervalSlider
+        this.intervalSlider,
+        this.nomGlobal // Variable globale
     }
 
     sliderInit() {
@@ -41,9 +41,22 @@ class Slider {
         // Insertion du clone du dernier élément au début du slider (avant le premier élément)
         slider.insertBefore(cloneLastItem, this.firstItem);
         // Lancement du défilement automatique
-        //this.intervalSlider = setInterval(that.shiftSlide(1),this.timer);
-    }
+        this.intervalSlider = setInterval(this.shiftSlide.bind(this,1),this.timer);
 
+        // Gestion des évènements
+
+        // Mise en pause du slider au clic sur le bouton 'pause'
+        pause.addEventListener("click", this.pauseSlider.bind(this));
+        // Mise en lecture du slider au clic sur le bouton 'play'
+        play.addEventListener("click", this.playSlider.bind(this));
+        // Déplacement vers l'élément suivant au clic sur le bouton 'next'
+        next.addEventListener("click", this.shiftSlide.bind(this,1));
+        // Déplacement vers l'élément précédent au clic sur le bouton 'prev'
+        prev.addEventListener("click", this.shiftSlide.bind(this,-1));
+        // Vérification de l'index à la fin de chaque transition du slider
+        slider.addEventListener("transitionend", this.checkIndex.bind(this)); 
+    }       
+    
     shiftSlide(dir){
         // Méthode permettant de déplacer le slider vers la gauche ou vers la droite
 
@@ -105,14 +118,18 @@ class Slider {
         clearInterval(this.intervalSlider);
         // On masque le bouton 'pause'
         pause.style.display = "none";
+        // On affiche le bouton 'play'
         play.style.display = "block";
     }
 
     playSlider() {
         // Mise en marche du défilement automatique 
-
+        this.intervalSlider = setInterval(this.shiftSlide.bind(this,1),this.timer);
+        // On masque le bouton 'play'
+        play.style.display = "none";
+        // On affiche le bouton 'pause' 
+        pause.style.display = "block";
     }
-
 }
 
 
@@ -122,30 +139,12 @@ let projectSlider = new Slider();
 // Appel de la fonction d'initialisation
 projectSlider.sliderInit();
 
-// Lancement du défilement automatique du slider
-projectSlider.intervalSlider = setInterval("projectSlider.shiftSlide(1)", projectSlider.timer);
-
-// Gestion des événements
-
-// Click events - A chaque click sur les boutons next et prev
-next.addEventListener("click", function(evt){
-    // On déplace le slider vers la gauche 
-    // On définit la direction du déplacement dans le paramètre de la fonction shiftSlide()
-    projectSlider.shiftSlide(1);
-});
-
-prev.addEventListener("click", function(evt){
-    // On déplace le slider vers la droite
-    projectSlider.shiftSlide(-1);
-});
-
-pause.addEventListener("click", function(evt){
-    // On met le slider en pause
-    projectSlider.pauseSlider();
-});
-    
-// Transition Events - A la fin de chaque transition du slider
-slider.addEventListener("transitionend", function(e){
-    // On vérifie l'index à l'aide de la méthode checkIndex()
-    projectSlider.checkIndex();
+// Gestion du slider avec les flèches du clavier 
+document.addEventListener("keydown", function(evt){
+    if(evt.which === 39){ // Flèche droite du clavier
+        projectSlider.shiftSlide(1);
+    }
+    if(evt.which === 37){ // Flèche gauche du clavier
+        projectSlider.shiftSlide(-1);
+    }
 });
