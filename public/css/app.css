@@ -370,6 +370,52 @@ header {
 }
 
 
+/*****************************************************/
+/**          Style de la page de registration       **/
+/*****************************************************/
+
+.registration_wrap {
+    margin-top: 20px;
+}
+
+.registration_title p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.registration_wrap h1 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+
+/*****************************************************/
+/**           Style de la page de connexion         **/
+/*****************************************************/
+
+.identification_wrap {
+    margin-top: 20px;
+}
+
+
+.identification_title p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.identification_wrap h1 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+
+
 
 /*****************************************************/
 /***                  Média Queries                ***/

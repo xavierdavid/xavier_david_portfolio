@@ -1,0 +1,38 @@
+{# templates/security/registration.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+
+{# Contenu spécifique - page 'registration' #}
+{% block body %}
+
+<section class="registration_wrap">
+    {# Titre de la section 'Publications' #}
+    <div class="registration_title">
+        <p>Nouvel utilisateur</p>
+    </div>
+
+    <h1>Inscription</h1>
+
+    {# Affichage du formulaire d'inscription #}
+
+    {# Balise ouvrante du formulaire #}
+    {{ form_start(formRegistration) }}
+
+    {# Balises de champs de formulaire #}
+    {{ form_row(formRegistration.username, {'attr' : {'placeholder': "Votre nom"}}) }}
+    {{ form_row(formRegistration.email, {'attr' : {'placeholder': "Votre email"}}) }}
+    {{ form_row(formRegistration.password, {'attr' : {'placeholder': "Entrez un mot de passe"}}) }}
+    {{ form_row(formRegistration.confirm_password, {'attr' : {'placeholder': "Veuiller ressaisir votre mot de passe"}}) }}
+
+    <button type="submit" class="btn btn-primary">Valider votre inscription</button>
+
+    {# Balise fermante du formulaire #}
+    {{ form_end(formRegistration) }}
+
+</section>
+
+
+
+{% endblock %}

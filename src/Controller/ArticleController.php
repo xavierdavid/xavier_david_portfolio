@@ -23,7 +23,7 @@ class ArticleController extends AbstractController
 {
    
     /**
-     * @Route("/article/{page}", name="article", requirements={"page"="\d+"}, defaults={"page" = 1})
+     * @Route("/admin/article/{page}", name="article", requirements={"page"="\d+"}, defaults={"page" = 1})
      */
     public function allArticles($page){
         // Méthode qui récupère tous les articles et les affiche avec une pagination définie dans ArticleRepository 
@@ -61,7 +61,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/create", name="article_create")
+     * @Route("/admin/article/create", name="article_create")
      */
     public function createArticle(Request $request, ObjectManager $manager) {
         // Méthode qui créé un nouvel article - Injection de l'objet 'Request' et de l'objet 'ObjectManager'
@@ -131,7 +131,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/edit/{id}", name="article_edit", requirements={"id"="\d+"})
+     * @Route("/admin/article/edit/{id}", name="article_edit", requirements={"id"="\d+"})
      */
     public function editArticle($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie un article
@@ -197,7 +197,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/view/{id}", name="article_view", requirements={"id"="\d+"})
+     * @Route("/admin/article/view/{id}", name="article_view", requirements={"id"="\d+"})
      */
     public function articleView($id){
         // Méthode qui récupère et affiche un article
@@ -221,7 +221,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/article/delete/{id}", name="article_delete", requirements={"id"="\d+"})
+     * @Route("/admin/article/delete/{id}", name="article_delete", requirements={"id"="\d+"})
      */
     public function articleDelete($id, Request $request, ObjectManager $manager){
         // Méthode qui récupère et supprime une article
@@ -259,7 +259,7 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/comment/delete/{id}", name="comment_delete", requirements={"id"="\d+"})
+     * @Route("/admin/comment/delete/{id}", name="comment_delete", requirements={"id"="\d+"})
      */
     public function commentDelete($id, Request $request, ObjectManager $manager){
         // Méthode qui récupère et supprime un commentaire 

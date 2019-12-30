@@ -14,7 +14,7 @@
         
         {% block stylesheets %}
             {# 'app' must match the first argument to addEntry() in webpack.config.js #}
-            {{ encore_entry_link_tags('app') }}
+            {# {{ encore_entry_link_tags('app') }}#}
             {#<link rel="stylesheet" href="/build/app.css">#}
             
             {# css link #}
@@ -32,24 +32,34 @@
                 <div id="hamburger-content">
                     <nav>
                         <ul>
-                            <li><a href="{{path('home')}}">Accueil</a></li>
-                            <li><a href="{{path('home_project')}}">Portfolio</a></li>
-                            <li><a href="{{path('home_article')}}">Publications</a></li>
+                            <li><a href="{{ path('home') }}">Accueil</a></li>
+                            <li><a href="{{ path('home_project') }}">Portfolio</a></li>
+                            <li><a href="{{ path('home_article') }}">Publications</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>
-                    <div id="connexion">
-                        <a href="#" class="button button-sign-in">Connexion</a>
-                    </div>
+                    
+                    {# Si l'utilisateur n'est pas connecté, on affiche le bouton 'Connexion' #}
+                    {% if not app.user %}
+                        <div id="login">
+                            <a href="{{ path('security_login') }}" class="button button-sign-in">Connexion</a>
+                        </div>
+                        {# Sinon, si l'utilisateur est connecté, on affiche le bouton 'Déconnexion' #}
+                    {% else %}
+                        <div id="logout">
+                            <a href="{{ path('security_logout') }}" class="button button-sign-in">Déconnexion</a>
+                        </div>
+                    {% endif %}
                 </div>
+                
                 <div id="hamburger-button"><i class="fas fa-bars"></i></div> {# Bouton du menu hamburger avec son entité HTML #}
-            
             </div>
             
             <div id="hamburger-sidebar"> {# Menu déroulant à partir du côté qui sera rempli du contenu du menu 'hamburger-content' #}
                 <div id="hamburger-sidebar-header"></div>
                 <div id="hamburger-sidebar-body"></div>
             </div>
+            
             <div id="hamburger-overlay"></div> {# Masque de menu en fond #}
         </header>
 

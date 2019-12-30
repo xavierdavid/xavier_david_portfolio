@@ -7,6 +7,9 @@
 {% block body %}
     <div class="jumbotron">
         <h1>Mes publications</h1>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <p>Bonjour {{app.user.username}}</p>
+        {% endif %}
     </div>
     
     <div class="row">

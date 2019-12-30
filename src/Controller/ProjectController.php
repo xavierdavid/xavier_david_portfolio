@@ -25,7 +25,7 @@ class ProjectController extends AbstractController
 {
 
     /**
-     * @Route("/project/{page}", name="project", requirements={"page"="\d+"}, defaults={"page" = 1})
+     * @Route("/admin/project/{page}", name="project", requirements={"page"="\d+"}, defaults={"page" = 1})
      */
     public function allProjects($page){
         // Méthode qui récupère tous les projets et les affiche avec une pagination définie dans ProjectRepository 
@@ -62,7 +62,7 @@ class ProjectController extends AbstractController
 
 
     /**
-     * @Route("/project/create", name="project_create")
+     * @Route("/admin/project/create", name="project_create")
      */
     public function createProject(Request $request, ObjectManager $manager) {
         // Méthode qui créé un nouveau projet - Injection de l'objet 'Request' et de l'objet 'ObjectManager'
@@ -131,7 +131,7 @@ class ProjectController extends AbstractController
 
 
     /**
-     * @Route("/project/edit/{id}", name="project_edit", requirements={"id"="\d+"})
+     * @Route("/admin/project/edit/{id}", name="project_edit", requirements={"id"="\d+"})
      */
     public function editProject($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie un projet
@@ -196,7 +196,7 @@ class ProjectController extends AbstractController
 
 
     /**
-     * @Route("/project/view/{id}", name="project_view", requirements={"id"="\d+"})
+     * @Route("/admin/project/view/{id}", name="project_view", requirements={"id"="\d+"})
      */
     public function projectView($id){
         // Méthode qui récupère et affiche un projet
@@ -220,7 +220,7 @@ class ProjectController extends AbstractController
 
 
     /**
-     * @Route("/project/delete/{id}", name="project_delete", requirements={"id"="\d+"})
+     * @Route("/admin/project/delete/{id}", name="project_delete", requirements={"id"="\d+"})
      */
     public function projectDelete($id, Request $request, ObjectManager $manager){
         // Méthode qui récupère et supprime un projet
