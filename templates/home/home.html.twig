@@ -5,9 +5,30 @@
 
 {# Contenu spécifique - page 'home' #}
 {% block body %}
-        
-    {{page_title}}
+
     
+{# Bannière image #}
+<div id="main-banner">
+    <div id="banner-image">
+        <figure>
+            <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+        </figure>  
+    </div>
+
+    <div id="profil-image">
+        <figure>
+            <img src="{{ asset('img/profil-image.jpg') }}" alt="">
+        </figure>  
+    </div>
+
+    <div id="banner-title">
+        <h1>Bienvenue sur mon<span> portfolio</span></h1>
+    </div>
+    
+
+</div>
+
+<div class="container">      
     <section id="home_activités">
         <h2>Mes activités de développeur web</h2>
         <hr>
@@ -29,6 +50,7 @@
         </article>
         <hr>
     </section>
+</div>
 
 {% endblock body %}
   

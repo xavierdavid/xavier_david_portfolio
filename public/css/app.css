@@ -3,6 +3,7 @@
 /*****************************************************/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 
 /*****************************************************/
@@ -160,6 +161,131 @@ header {
     height: auto;
     padding: 10px;
     line-height: inherit;
+}
+
+
+/*****************************************************/
+/***         Style de l'accueil utilisateur        ***/
+/*****************************************************/
+
+
+#user-status {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    
+}
+
+#user-message p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px; 
+}
+
+#user-message p:before {
+    content: ' '; /* Contenu ajouté */
+    width: 24px;
+    height: 24px; 
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 16px;
+    margin-bottom: 4px; 
+}
+
+#user-message p:before {
+    background-image: url('../img/user.png'); 
+}
+
+#admin-access {
+    margin-left: 35px;
+}
+
+#admin-access p {
+    font-weight: bold;
+    margin-bottom: 0px; 
+    text-align: center;   
+}
+
+#admin-access a {
+    text-decoration: none;
+    color: #0e8ca3;
+    font-weight: bold;
+}
+
+#admin-access p:before {
+    content: ' '; /* Contenu ajouté */
+    width: 24px;
+    height: 24px; 
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 4px;   
+}
+
+#admin-access p:before {
+    background-image: url('../img/admin-interface.png'); 
+}
+
+
+/*****************************************************/
+/***           Style de la bannière image          ***/
+/*****************************************************/
+
+#banner-image img {
+    height: 400px;
+    width: 100%;
+}
+
+
+/*****************************************************/
+/***           Style de l'image du profil          ***/
+/*****************************************************/
+
+#main-banner {
+    width: 100%;
+    position: relative;
+    margin-bottom: 180px;
+
+}
+
+#profil-image {
+    position: absolute;
+    top: 95%; /* à 100%/50% du parent référent */
+    left: 50%;    
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+    z-index: 10;
+}
+
+
+#profil-image img {
+    width: 250px;
+    height: 270px;
+    border-radius: 50%;
+    transition: transform .8s ease-in-out;
+}
+
+#profil-image img:hover {
+    transform: rotate(30deg);
+}
+
+#banner-title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+#banner-title h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 50px;
+    z-index: 20;
+}
+
+#banner-title h1 span {
+    color: #e0ad2c;  
 }
 
 
@@ -446,7 +572,7 @@ header {
     #hamburger-sidebar-body ul a {
         text-decoration: none;
         color:  #0e8ca3;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
     }
     

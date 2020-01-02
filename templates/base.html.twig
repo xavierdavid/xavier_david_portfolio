@@ -27,7 +27,9 @@
         
         {# Header du site #}   
         <header>                 
+            {# Logo #}
             <a href="#" id="logo"></a>
+            {# Menu #}
             <div id="hamburger">
                 <div id="hamburger-content">
                     <nav>
@@ -61,12 +63,26 @@
             </div>
             
             <div id="hamburger-overlay"></div> {# Masque de menu en fond #}
+
+            {# Accueil utilisateur - Accès au tableau de bord 'admin' #}
+            <div id="user-status">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <div id="user-message">
+                        <p>Bonjour {{app.user.username}} !</p>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div id="admin-access">
+                            <p><a href="{{ path('article')}}">Tableau de bord</a></p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>    
         </header>
 
-        <div class="container">  
-            {# Conteneur du bloc 'body' #}
-            {% block body %}{% endblock %}
-        </div>
+          
+        {# Conteneur du bloc 'body' #}
+        {% block body %}{% endblock %}
+        
         
         {# Javascript #}
         {% block javascript %}

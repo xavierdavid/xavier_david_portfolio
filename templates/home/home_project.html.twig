@@ -6,62 +6,72 @@
 {# Contenu spécifique - page 'home' #}
 {% block body %}
 
-{# Slider des projets #}
-<section class="project_wrap">
-    <div class="project_title">
-        <p>Portofolio</p>
-    </div>
-    
-    <h1>Mes projets</h1>
-    
-    <div class="slider_wrapper">
-        
-        <div id="slider_container">
-               
-            <div id="slider"> 
-                {% for project in projects %}
-                
-                {# Eléments projets du slider #}
-                <div class="slider_element">
-                    <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" alt="">
-                    <h2>{{project.title}}</h2>
-                    <div class="project_period">
-                        <p>{{project.period}}</p>
-                    </div>   
-                    <p>{{project.introduction}}</p>
-                    <hr>
-                    <div class="project_link">
-                        <a href="{{project.url}}" target="_blank">Plus d'infos ...</a>
-                    </div>
-                </div>
+{# Bannière image #}
+<div id="banner-image">
+    <figure>
+        <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+    </figure>  
+</div>
 
-                {% endfor %}
-            </div>         
+<div class="container"> 
+
+    {# Slider des projets #}
+    <section class="project_wrap">
+        <div class="project_title">
+            <p>Portofolio</p>
         </div>
-    
-        <div class="slider_controll">
-            {# Flèche gauche du slider #}
-            <div id="arrow_left"> 
-                <i class="fas fa-chevron-circle-left fa-lg"></i>
-            </div>
-    
-            {# Bouton 'play' et 'pause' du slider #}
-            <div class="action_controll">
-                <div id="pause">
-                <i class="fas fa-pause-circle fa-lg"></i>
-                </div>
-                <div id="play">
-                    <i class="fas fa-play-circle fa-lg "></i>
-                </div> 
-            </div>
+        
+        <h1>Mes projets</h1>
+        
+        <div class="slider_wrapper">
             
-            {# Flèche droite du slider #}
-            <div id="arrow_right">
-                <a><i class="fas fa-chevron-circle-right fa-lg"></i></a>
+            <div id="slider_container">
+                
+                <div id="slider"> 
+                    {% for project in projects %}
+                    
+                    {# Eléments projets du slider #}
+                    <div class="slider_element">
+                        <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" alt="">
+                        <h2>{{project.title}}</h2>
+                        <div class="project_period">
+                            <p>{{project.period}}</p>
+                        </div>   
+                        <p>{{project.introduction}}</p>
+                        <hr>
+                        <div class="project_link">
+                            <a href="{{project.url}}" target="_blank">Plus d'infos ...</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>         
             </div>
-        </div>
-    </div>     
-</section>
+        
+            <div class="slider_controll">
+                {# Flèche gauche du slider #}
+                <div id="arrow_left"> 
+                    <i class="fas fa-chevron-circle-left fa-lg"></i>
+                </div>
+        
+                {# Bouton 'play' et 'pause' du slider #}
+                <div class="action_controll">
+                    <div id="pause">
+                    <i class="fas fa-pause-circle fa-lg"></i>
+                    </div>
+                    <div id="play">
+                        <i class="fas fa-play-circle fa-lg "></i>
+                    </div> 
+                </div>
+                
+                {# Flèche droite du slider #}
+                <div id="arrow_right">
+                    <a><i class="fas fa-chevron-circle-right fa-lg"></i></a>
+                </div>
+            </div>
+        </div>     
+    </section>
+</div>
 
 <!-- Project Slider JS -->          
 <script src="{{ asset('js/slider.js') }}"></script>

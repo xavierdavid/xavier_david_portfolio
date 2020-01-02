@@ -7,54 +7,55 @@
 {# Contenu spécifique - page 'login' #}
 {% block body %}
 
-<section class="identification_wrap">
-    {# Titre de la section 'Publications' #}
-    <div class="identification_title">
-        <p>Login</p>
-    </div>
+<div class="container"> 
 
-    <h1>Identification</h1>
-
-    {# On affiche tous les messages flash dont le nom est « notice » #}
-    {% for message in app.session.flashbag.get('notice') %}
-      <div class="alert alert-info">{{ message }}</div>
-    {% endfor %}
-
-
-
-    {# Formulaire d'identification #}
-
-    {# En cas d'erreur d'identification #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {# On indique le chemin vers le traitement des données, ainsi que la méthode 'post' pour la transmission #}
-    <form action="{{ path('security_login') }}" method="post">
-        <div class="form-group">
-            <label for="email">Email</label>
-            {# Le nom du champ input doit obligatoirement être '_username' pour la prise en compte de la connexion par Symfony #}
-            <input type="email" class="form-control" id="email"  name="_username"  placeholder="Votre email..." value="{{ last_username }}" required>
+    <section class="identification_wrap">
+        {# Titre de la section 'Publications' #}
+        <div class="identification_title">
+            <p>Login</p>
         </div>
-        <div class="form-group">
-            <label for="email">Mot de passe</label>
-            {# Le nom du champ input doit obligatoirement être '_password' pour la prise en compte de la connexion par Symfony #}
-            <input type="password" class="form-control" id="email"  name="_password"  placeholder="Votre mot de passe..." required>
-        </div>     
-        
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <div class="checkbox mb-3">
-            <label>
-                {# Le nom du champ input doit obligatoirement être '_remember_me' pour la mémorisation des paramètres d'identification #}
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-            </label>
-        </div>
-        
+        <h1>Identification</h1>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Connexion</button>
-        </div>    
-    </form>
+        {# On affiche tous les messages flash dont le nom est « notice » #}
+        {% for message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
 
+
+        {# Formulaire d'identification #}
+
+        {# En cas d'erreur d'identification #}
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {# On indique le chemin vers le traitement des données, ainsi que la méthode 'post' pour la transmission #}
+        <form action="{{ path('security_login') }}" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                {# Le nom du champ input doit obligatoirement être '_username' pour la prise en compte de la connexion par Symfony #}
+                <input type="email" class="form-control" id="email"  name="email"  placeholder="Votre email..." value="{{ last_username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Mot de passe</label>
+                {# Le nom du champ input doit obligatoirement être '_password' pour la prise en compte de la connexion par Symfony #}
+                <input type="password" class="form-control" id="email"  name="password"  placeholder="Votre mot de passe..." required>
+            </div>     
+            
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <div class="checkbox mb-3">
+                <label>
+                    {# Le nom du champ input doit obligatoirement être '_remember_me' pour la mémorisation des paramètres d'identification #}
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Connexion</button>
+            </div>    
+        </form>
+    </section>
+</div>
 {% endblock %}

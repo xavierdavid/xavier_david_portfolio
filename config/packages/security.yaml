@@ -34,7 +34,7 @@ security:
                 # Localisation de la vérification des données du formulaire de login : nom de la route #
                 check_path: 'security_login'
                 # Nom de la route en cas de connexion validée
-                default_target_path: 'article'
+                default_target_path: 'home'
             # Gestion de la déconnexion #
             logout:
                 # Nom de la route de déconnexion #
@@ -46,6 +46,11 @@ security:
                 secret: '%kernel.secret%'
                 lifetime: 604800 # Délais de mémorisation d'une semaine en secondes
                 path: /
+            
+            # Authentification
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
