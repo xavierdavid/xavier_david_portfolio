@@ -90,7 +90,6 @@ class SecurityController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/logout", name="security_logout")
      */
@@ -98,18 +97,13 @@ class SecurityController extends AbstractController
         // Méthode qui gère la déconnexion
     }
 
-    
-    
-    
-    
-    
+
     /**
-     * @Route("/security", name="security")
+     * @Route("/admin/dashboard", name="admin_dashboard")
      */
-    /*public function index()
-    {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
-    }*/
+    public function adminDashboard(){
+        
+        return $this->render('security/admin_dashboard.html.twig');  
+    }
+
 }

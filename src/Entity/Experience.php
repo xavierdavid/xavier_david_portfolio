@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; 
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ExperienceRepository")
@@ -27,9 +29,16 @@ class Experience
     private $company;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
-    private $period;
+    private $periodStart;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
+     */
+    private $periodEnd;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -47,7 +56,7 @@ class Experience
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $published;
 
@@ -55,6 +64,16 @@ class Experience
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageFilename;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ongoing;
 
 
     public function getId(): ?int
@@ -86,17 +105,31 @@ class Experience
         return $this;
     }
 
-    public function getPeriod(): ?string
+    public function getPeriodStart(): ?\DateTimeInterface
     {
-        return $this->period;
+        return $this->periodStart;
     }
 
-    public function setPeriod(string $period): self
+    public function setPeriodStart(\DateTimeInterface $periodStart): self
     {
-        $this->period = $period;
+        $this->periodStart = $periodStart;
 
         return $this;
     }
+
+    public function getPeriodEnd(): ?\DateTimeInterface
+    {
+        return $this->periodEnd;
+    }
+
+    public function setPeriodEnd(\DateTimeInterface $periodEnd): self
+    {
+        $this->periodEnd = $periodEnd;
+
+        return $this;
+    }
+
+
 
     public function getUrl(): ?string
     {
@@ -154,6 +187,30 @@ class Experience
     public function setImageFilename(?string $imageFilename): self
     {
         $this->imageFilename = $imageFilename;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getOngoing(): ?bool
+    {
+        return $this->ongoing;
+    }
+
+    public function setOngoing(?bool $ongoing): self
+    {
+        $this->ongoing = $ongoing;
 
         return $this;
     }

@@ -246,7 +246,6 @@ header {
     width: 100%;
     position: relative;
     margin-bottom: 180px;
-
 }
 
 #profil-image {
@@ -256,7 +255,6 @@ header {
     transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
     z-index: 10;
 }
-
 
 #profil-image img {
     width: 250px;
@@ -290,7 +288,67 @@ header {
 
 
 /*****************************************************/
-/***        Style de la page des publications      ***/
+/**      Style de l'accueil du tableau de bord      **/
+/*****************************************************/
+
+#dashboard-main-banner {
+    width: 100%;
+    position: relative;
+    margin-bottom: 85px;
+}
+
+#dashboard-banner-image img {
+    height: 300px;
+    width: 100%;
+}
+
+#dashboard-banner-title {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+#dashboard-banner-title h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 50px;
+    z-index: 20;
+}
+
+#dashboard-banner-title h1 span {
+    color: #e0ad2c;  
+}
+
+#dashboard-menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+#dashboard-menu a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.dashboard_button {
+    display: block;
+    width: 190px;
+    height: 50px;
+    background-color: #0e8ca3;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+.dashboard_button a {
+
+}
+
+
+/*****************************************************/
+/**  Style du tableau de bord : articles et projets **/
 /*****************************************************/
 
 /* Marge sous la barre de navigation */
@@ -348,9 +406,23 @@ header {
 }
 
 
+/*****************************************************/
+/* Style du tableau de bord : experience - éducation */
+/*****************************************************/
+
+#image-experience {
+    margin: auto;
+}
+
+#image-experience img {
+    width: 120px;
+    margin-left: 15px;
+} 
+
+
 
 /*****************************************************/
-/***          Style de la page des projets         ***/
+/***      Style de la page 'home' des projets      ***/
 /*****************************************************/
 
 .project_wrap {

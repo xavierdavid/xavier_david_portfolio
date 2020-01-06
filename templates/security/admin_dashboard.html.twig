@@ -1,0 +1,39 @@
+{# templates/security/admin_dashboard.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+
+{# Contenu spécifique - page 'login' #}
+{% block body %}
+
+{# Bannière image #}
+<div id="dashboard-main-banner">
+    <div id="dashboard-banner-image">
+        <figure>
+            <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+        </figure>  
+    </div>
+    <div id="dashboard-banner-title">
+        <h1>Mon<span> tableau de bord</span></h1>
+    </div>
+</div>
+
+<section id="dashboard-menu">
+    <div class="dashboard_button project-access">
+        <a href="{{ path('project')}}">Mes projets</a>
+    </div>
+    <div class="dashboard_button article-access">
+        <a href="{{ path('article')}}">Mes publications</a>
+    </div>
+    <div class="dashboard_button experience-access">
+        <a href="{{ path('experience')}}">Mes expériences</a>
+    </div>
+    <div class="dashboard_button education-access">
+        <a href="#">Mes formations</a>
+    </div>
+
+
+</section>
+
+{% endblock %}

@@ -36,7 +36,7 @@ class ProjectController extends AbstractController
             throw $this->createNotFoundException('Page "'.$page.'" inexistante.');
         }
 
-        // On fixe arbitrairement le nombre de projets par page $nbPerPage, à 3
+        // On fixe arbitrairement le nombre de projets par page $nbPerPage, à 2
         $nbPerPage = 2;
 
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Project'
@@ -84,7 +84,7 @@ class ProjectController extends AbstractController
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
             // On le récupère avec la méthode getData()
-            $imageFile = $form['image']->getData();
+            $imageFile = $form['imageFilename']->getData();
 
             // Si un fichier image est présent (Rappel : le champ est facultatif)... 
             if($imageFile) {
@@ -106,7 +106,7 @@ class ProjectController extends AbstractController
                 $project->setImageFilename($newFilename);
             }
     
-            // On demande au manager de persister l'entité 'article' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'project' : on l'enregistre pour qu'elle soit gérée par Doctrine 
             $manager->persist($project);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -157,7 +157,7 @@ class ProjectController extends AbstractController
         // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
-            // On rajoute la date de création du projet ...  
+            // On rajoute la date de mise à jour du projet ...  
             $project->setUpdatedAt(new \DateTime());
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
@@ -182,7 +182,7 @@ class ProjectController extends AbstractController
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', "Le projet a bien été modifié");
             
-            // Après avoir effectué la requête, on redirige vers la route 'project_view' avec en paramètre l'identifiant de l'article qui vient d'être créé
+            // Après avoir effectué la requête, on redirige vers la route 'project_view' avec en paramètre l'identifiant du projet qui vient d'être modifié
             return $this->redirectToRoute('project_view', [
                 'id' => $project->getId()
             ]);

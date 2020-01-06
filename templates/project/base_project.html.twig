@@ -1,4 +1,4 @@
-{# templates/project/project_view.html.twig #}
+{# templates/project/base_project.html.twig #}
 
 {% extends 'base.html.twig' %}
 
@@ -21,16 +21,16 @@
                 <a href="{{ path('project_create') }}" class="list-group-item list-group-item-action">Ajouter un projet</a> 
             </div> 
             </br>
-            <a href="#" class="btn btn-info">Accueil tableau de bord</a>
             <hr>
             <h4>Projets à la une</h4> 
 
-            {# Inclusion d'un template d'index d'article avec les 3 derniers articles#}
-            {# Insertion de la méthode lastProjects du contrôleur ProjectController pour inclure le template index_project.html.twig avec les 3 derniers projets publiés #}
+            {# Inclusion d'un template d'index de projets avec les 3 derniers projets #}
+            {# Insertion de la méthode lastProjects du contrôleur ProjectController pour inclure le template index_projects.html.twig avec les 3 derniers projets publiés #}
             {# Inclusion du contrôleur, des données et de la vue '#}
             {{render(controller('App\\Controller\\ProjectController::lastProjects', {'limit': 3}))}}
             <br>
             <hr>
+            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a>
         </div>
         
         <div id="content" class="col-md-9">

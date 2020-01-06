@@ -1,0 +1,41 @@
+{# templates/experience/base_experience.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes expériences{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Mes expériences</h1>
+    </div>
+    
+    <div class="row">
+        <div id="admin_menu" class="col-md-3">
+            
+            <h3>Expériences</h3>
+            <div class="list-group">
+                <a href="{{ path('experience') }}" class="list-group-item list-group-item-action">Toutes mes expériences</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
+                <a href="{{ path('experience_create') }}" class="list-group-item list-group-item-action">Ajouter une expérience</a> 
+            </div> 
+            </br>
+            <hr>
+            <h4>Expériences à la une</h4> 
+
+            {# Inclusion d'un template d'index d'expérience avec les 3 dernières expériences #}
+            {# Insertion de la méthode lastExperiences du contrôleur ExperienceController pour inclure le template index_experiences.html.twig avec les 3 dernières expériences publiées #}
+            {# Inclusion du contrôleur, des données et de la vue '#}
+            {{render(controller('App\\Controller\\ExperienceController::lastExperiences', {'limit': 3}))}}
+            <br>
+            <hr>
+            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a>         </div>
+        
+        <div id="content" class="col-md-9">
+            {% block experience_body %}{% endblock %} 
+        </div>
+
+    </div>
+</div>
+{% endblock %}   

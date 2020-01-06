@@ -39,7 +39,7 @@ class ArticleType extends AbstractType
                 'required' => false
             ]) // Utilisation de l'éditeur TinyMCE sur le champ 'textarea'
              
-            ->add('image', FileType::class,[
+            ->add('imageFilename', FileType::class,[
                 'label' => 'Image',
                 'mapped' => false, // Ce champs n'est pas associé à une propriété d'entité
                 'required' => false, // Le fait de rendre ce champ facultatif permet d'éviter de re-télécharger l'image en cas d'édition

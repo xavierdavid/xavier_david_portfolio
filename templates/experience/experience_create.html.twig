@@ -1,0 +1,40 @@
+{# templates/experience/experience_create.html.twig #}
+
+
+{# Le template hérite du second template 'père' base_project.html.twig  #}
+{% extends 'experience/base_experience.html.twig' %}
+
+{# Application d'un thème bootstrap (défini dans twig.yaml) au formulaire formProject #}
+{% form_theme formExperience 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block experience_body %}
+
+    <h3>Ajouter une expérience</h3>
+
+    {# Affichage du formulaire #}
+    
+    {# Balise ouvrante du formulaire #}
+    {{ form_start(formExperience) }}
+
+    {# Balises de champ de formulaire #}
+    {{ form_row(formExperience.mission, {'attr' : {'placeholder': "Intitulé du poste"}}) }}
+    {{ form_row(formExperience.company, {'attr' : {'placeholder': "Nom de l'entreprise"}}) }}
+    {{ form_row(formExperience.content, {'attr' : {'placeholder': "Principales missions"}}) }}
+    {{ form_row(formExperience.periodStart, {'attr' : {'placeholder': "Date de début"}}) }}
+    {{ form_row(formExperience.periodEnd, {'attr' : {'placeholder': "Date de fin"}}) }}
+    {{ form_row(formExperience.url, {'attr' : {'placeholder': "Url de l'entreprise"}}) }}
+    {{ form_row(formExperience.imageFilename, {'attr' : {'placeholder': "Fichier image"}}) }}
+    {{ form_row(formExperience.ongoing) }}
+    {{ form_row(formExperience.published) }}
+
+    <button type="submit" class="btn btn-primary">Ajouter l'expérience</button>
+
+    {# Balise fermante du formulaire #}
+    {{ form_end(formExperience) }}
+
+{% endblock %}

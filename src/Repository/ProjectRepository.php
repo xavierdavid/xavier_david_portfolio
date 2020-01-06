@@ -22,7 +22,7 @@ class ProjectRepository extends ServiceEntityRepository
 
     public function getProjects($page, $nbPerPage) {
         // Méthode qui récupère tous les projets avec une pagination (utilisation de la classe Paginator)
-        // La méthode prend deux arguments : la page actuelle $page et le nombre d'annonce par page $nbPerPage
+        // La méthode prend deux arguments : la page actuelle $page et le nombre de projets par page $nbPerPage
         
         // Construction d'une requête personnalisée à l'aide du QueryBuilder
         // On utilise la méthode createQueryBuilder de l'EntityManager avec l'alias 'p' (pour project)

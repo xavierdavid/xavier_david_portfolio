@@ -16,7 +16,6 @@ class FileUploader
     }
 
     
-    
     public function upload(UploadedFile $file){
     // Méthode permettant de télécharger le fichier
        

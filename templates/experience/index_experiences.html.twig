@@ -1,0 +1,11 @@
+{# templates/experience/index_experiences.html.twig #}
+
+
+{# Affichage des dernières expériences publiées #}
+<ul class="nav nav-pills nav stacked">
+  {% for experience in lastExperiences %}
+    <li>
+      <a href="{{path('experience_view', {'id' : experience.id})}}">{{experience.mission}}</a>
+    </li>
+  {% endfor %}
+</ul>

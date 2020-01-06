@@ -20,8 +20,7 @@
                 <a href="{{ path('article') }}" class="list-group-item list-group-item-action">Tous mes articles</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #} 
                 <a href="{{ path('article_create') }}" class="list-group-item list-group-item-action">Ajouter un article</a> 
             </div> 
-            </br>
-            <a href="#" class="btn btn-info">Accueil tableau de bord</a>
+            <br>
             <hr>
             <h4>Articles à la une</h4> 
 
@@ -36,8 +35,11 @@
             <div class="list-group">
                 <a href="{{ path('category') }}" class="list-group-item list-group-item-action">Gérer catégories</a>
             </div> 
-            </br>  
+            </br> 
+            <hr>
+            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a> 
         </div>
+        
         
         <div id="content" class="col-md-9">
             {% block article_body %}{% endblock %} 

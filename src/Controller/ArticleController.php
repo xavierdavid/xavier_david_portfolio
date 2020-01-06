@@ -83,7 +83,7 @@ class ArticleController extends AbstractController
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
             // On le récupère avec la méthode getData()
-            $imageFile = $form['image']->getData();
+            $imageFile = $form['imageFilename']->getData();
 
             // Si un fichier image est présent (Rappel : le champ est facultatif)... 
             if($imageFile) {
@@ -157,7 +157,7 @@ class ArticleController extends AbstractController
         // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
-            // On rajoute la date de création de l'article ...  
+            // On rajoute la date de mise à jour de l'article ...  
             $article->setUpdatedAt(new \DateTime());
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
@@ -182,7 +182,7 @@ class ArticleController extends AbstractController
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', "L'article a bien été modifié");
             
-            // Après avoir effectué la requête, on redirige vers la route 'article_view' avec en paramètre l'identifiant de l'article qui vient d'être créé
+            // Après avoir effectué la requête, on redirige vers la route 'article_view' avec en paramètre l'identifiant de l'article qui vient d'être modifié
             return $this->redirectToRoute('article_view', [
                 'id' => $article->getId()
             ]);
