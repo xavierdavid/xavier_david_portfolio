@@ -1,0 +1,11 @@
+{# templates/education/index_educations.html.twig #}
+
+
+{# Affichage des dernières formations publiées #}
+<ul class="nav nav-pills nav stacked">
+  {% for education in lastEducations %}
+    <li>
+      <a href="{{path('education_view', {'id' : education.id})}}">{{education.certification}}</a>
+    </li>
+  {% endfor %}
+</ul>

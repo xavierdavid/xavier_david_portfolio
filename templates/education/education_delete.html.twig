@@ -1,0 +1,31 @@
+{# templates/education/education_delete.html.twig #}
+
+{% extends 'education/base_education.html.twig' %}
+
+{% block title %}
+  Supprimer une formation - {{ parent() }}
+{% endblock %}
+
+{% block education_body %}
+
+  
+  <h2>Supprimer une formation</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer la formation "{{ education.certification }}" ?
+  </p>
+
+  {# On met l'id de la formation dans la route de l'action du formulaire #}
+  <form action="{{ path('education_delete', {'id': education.id}) }}" method="post">
+    <a href="{{ path('education_view', {'id': education.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la formation
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

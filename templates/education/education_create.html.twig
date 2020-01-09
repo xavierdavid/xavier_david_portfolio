@@ -1,0 +1,40 @@
+{# templates/education/education_create.html.twig #}
+
+
+{# Le template hérite du second template 'père' base_education.html.twig  #}
+{% extends 'education/base_education.html.twig' %}
+
+{# Application d'un thème bootstrap (défini dans twig.yaml) au formulaire formProject #}
+{% form_theme formEducation 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block education_body %}
+
+    <h3>Ajouter une formation</h3>
+
+    {# Affichage du formulaire #}
+    
+    {# Balise ouvrante du formulaire #}
+    {{ form_start(formEducation) }}
+
+    {# Balises de champ de formulaire #}
+    {{ form_row(formEducation.certification, {'attr' : {'placeholder': "Diplôme ou certification"}}) }}
+    {{ form_row(formEducation.school, {'attr' : {'placeholder': "Nom de l'établissement"}}) }}
+    {{ form_row(formEducation.content, {'attr' : {'placeholder': "Principaux enseignements"}}) }}
+    {{ form_row(formEducation.periodStart, {'attr' : {'placeholder': "Date de début"}}) }}
+    {{ form_row(formEducation.periodEnd, {'attr' : {'placeholder': "Date de fin"}}) }}
+    {{ form_row(formEducation.url, {'attr' : {'placeholder': "Url de l'établissement"}}) }}
+    {{ form_row(formEducation.imageFilename, {'attr' : {'placeholder': "Fichier image"}}) }}
+    {{ form_row(formEducation.ongoing) }}
+    {{ form_row(formEducation.published) }}
+
+    <button type="submit" class="btn btn-primary">Ajouter la formation</button>
+
+    {# Balise fermante du formulaire #}
+    {{ form_end(formEducation) }}
+
+{% endblock %}

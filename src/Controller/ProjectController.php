@@ -162,7 +162,7 @@ class ProjectController extends AbstractController
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
             // On le récupère avec la méthode getData()
-            $imageFile = $form['image']->getData();
+            $imageFile = $form['imageFilename']->getData();
 
             // Si un fichier image est présent (Rappel : le champ est facultatif)... 
             if($imageFile) {

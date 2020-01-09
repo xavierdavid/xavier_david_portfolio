@@ -1,4 +1,4 @@
-{# templates/project/project_delete.html.twig #}
+{# templates/experience/experience_delete.html.twig #}
 
 {% extends 'experience/base_experience.html.twig' %}
 
@@ -15,7 +15,7 @@
     Etes-vous certain de vouloir supprimer l'expérience "{{ experience.mission }}" ?
   </p>
 
-  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  {# On met l'id de l'expérience dans la route de l'action du formulaire #}
   <form action="{{ path('experience_delete', {'id': experience.id}) }}" method="post">
     <a href="{{ path('experience_view', {'id': experience.id}) }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>

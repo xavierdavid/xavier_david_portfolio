@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Project;
+use App\Entity\Education;
 use App\Form\CommentType;
+use App\Entity\Experience;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,11 +20,30 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function homeIndex()
+        // Méthode qui récupère et affiche les dernières expériences et formations professionnelles
     {
+        // Sélection des données de l'entité 'Experience'
+        $repositoryExperiences = $this->getDoctrine()->getRepository(Experience::class);
+
+        // Sélection des données de l'entité 'Education'
+        $repositoryEducation = $this->getDoctrine()->getRepository(Education::class);
+
+        // On fixe à 4 le nombre limite de formations à afficher sur la page d'accueil 
+        $limit = 4;
+        
+        // Récupération des 'expériences' 
+        $experiences = $repositoryExperiences->findAll();
+
+        // Récupération des 'formation' 
+        $educations = $repositoryEducation->getFrontEducations($limit);
+
+        // Envoi de la réponse au template et affichage des données
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
             'page_title' => "Accueil",
+            'experiences' => $experiences,
+            'educations' => $educations
         ]);
     }
 
@@ -30,7 +51,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/home_article", name="home_article")
      */
-    public function homeArticles(Request $request, ObjectManager $objectManager){
+    public function homeArticles(){
         // Méthode qui récupère et affiche les derniers articles publiés dans la section frontend
 
         // On fixe le nombre d'articles à afficher dans la section frontend 

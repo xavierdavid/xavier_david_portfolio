@@ -24,33 +24,85 @@
     <div id="banner-title">
         <h1>Bienvenue sur mon<span> portfolio</span></h1>
     </div>
-    
-
 </div>
 
 <div class="container">      
-    <section id="home_activités">
-        <h2>Mes activités de développeur web</h2>
-        <hr>
-    </section>
-
     <section id="home_profil">
-        <h2>Qui suis-je ?</h2>
-        <hr>
-    </section>
-
-    <section id="home_parcours">
-        <h2>Mon parcours</h2>
-
-        <article id="home_experiences">
-            <h3>Expériences professionnelles</h3>
-        </article>
-         <article id="home_formations">
-            <h3>Mes qualifications</h3>
-        </article>
+        <h2>Xavier DAVID - <em>Développeur Web</em></h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         <hr>
     </section>
 </div>
+
+    {# Affichage des formations #}
+    <section id="home_education">
+        <h2>Formation</h2>
+    <div class="education_wrap">
+        {% for education in educations %}
+            
+                <div class="education_card">
+                    <figure class="education_image">
+                        <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="">
+                    </figure>
+                    <div class="education_description">
+                        <div class="education_certification">
+                            <p><strong>{{education.certification | raw}}</strong></p>                           </p>
+                        </div>
+                        <div class="education_period">
+                            <p>{{education.periodStart | date('d/m/Y')}} 
+                                {% if education.ongoing == 1 %}
+                                    à aujourd'hui
+                                {% else %}
+                                    au {{education.periodEnd | date('d/m/Y')}}</span></p>
+                                {% endif %}
+                        </div>
+                        <div class="education_link">
+                            <a href="{education.url | raw}}">{{education.url}}</a>   
+                        </div>
+                    </div>
+                </div>   
+            
+           
+        {% endfor %}
+     </div>
+    </section>
+    
+    {# Affichage des expériences professionnelles #}
+    <section id="home_experiences">
+        <h2>Experiences</h2>
+
+        {% for experience in experiences %}
+            <div class="experience_wrap">
+                <div class="experience_period">
+                    <p>{{experience.periodStart | date('d/m/Y')}} 
+                {% if experience.ongoing == 1 %}
+                    à aujourd'hui
+                {% else %}
+                    au {{experience.periodEnd | date('d/m/Y')}}</span></p>
+                {% endif %}
+                </div>
+                <div class="experience_content">
+                    <figure class="experience_image">
+                        <img src="{{ asset('uploads/images/' ~ experience.imageFilename) }}" alt="">
+                    </figure>
+                    <div class="experience_description">
+                        <p>{{experience.company | raw}}</p>
+                        <p>{{experience.mission | raw}}</p>
+                    </div>
+                </div>
+                <div class="experience_detail">
+                    {{experience.content | raw}}
+                </div>
+                <div class="experience_link">
+                    <a href="{{experience.url}}">{{experience.url}}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+        
+
+
+
 
 {% endblock body %}
   

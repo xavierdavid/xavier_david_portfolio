@@ -10,7 +10,8 @@ class FileUploader
     private $targetDirectory;
 
     public function __construct($targetDirectory) {
-    // Méthode permettant de définir le répertoire cible du téléchargement des fichiers 
+    // Méthode avec constructeur permettant de définir le répertoire cible du téléchargement des fichiers
+    // On définit à cet effet dans le constructeur, la propriété targetDirectory (répertoire cible)
     
         $this->targetDirectory = $targetDirectory;
     }

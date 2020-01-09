@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ExperienceController extends AbstractController
 {
@@ -76,15 +77,12 @@ class ExperienceController extends AbstractController
                 // On utilise le service FileUploader pour télécharger le fichier
                 $newFilename = $fileUploader->upload($imageFile);              
                 
-                // On met à jour la propriété imageFilename de l'entite Project pour stocker le nom du fichier dans la base de données
-                $experience->setImageFilename($newFilename);
-                
                 // On met à jour la propriété imageFilename de l'entite 'Experience' pour stocker le nom du fichier dans la base de données
                 // On utilse la méthode 'setImageFilename' de l'entité 'Experience'
                 $experience->setImageFilename($newFilename);
             }
     
-            // On demande au manager de persister l'entité 'project' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine 
             $manager->persist($experience);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -94,7 +92,7 @@ class ExperienceController extends AbstractController
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'Expérience bien enregistrée');
             
-            // Après avoir effectué la requête, on redirige vers la route 'experience_view' avec en paramètre l'identifiant de l'expérience qui vient d'être créé
+            // Après avoir effectué la requête, on redirige vers la route 'experience_view' avec en paramètre l'identifiant de l'expérience qui vient d'être créée
             return $this->redirectToRoute('experience_view', [
                 'id' => $experience->getId()
             ]);
@@ -112,7 +110,7 @@ class ExperienceController extends AbstractController
      */
     public function editExperience($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie une expérience
-        // On sélectionne les données à l'aide du repository qui gère l'entité 'Project'
+        // On sélectionne les données à l'aide du repository qui gère l'entité 'Experience'
         // Injection du service FileUploader
         $repository = $this->getDoctrine()->getRepository(Experience::class);
 
@@ -150,7 +148,7 @@ class ExperienceController extends AbstractController
                 $experience->setImageFilename($newFilename);
             }
 
-            // On demande au manager de persister l'entité 'project' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine 
             $manager->persist($experience);
             // On demande au manager d'exécuter la requête ('INSERT INTO')
             $manager->flush();
@@ -184,7 +182,7 @@ class ExperienceController extends AbstractController
 
         // Si l'entité 'Experience' est nulle (l'id $id de l'expérience n'existe pas) ...
         if (null === $experience) {
-            // Alors on lance une exception indiquant que le projet n'existe pas
+            // Alors on lance une exception indiquant que l'expérience n'existe pas
             throw new NotFoundHttpException("L'expérience d'id ".$id." n'existe pas.");
         }
         
@@ -224,7 +222,7 @@ class ExperienceController extends AbstractController
             return $this->redirectToRoute('experience');
         }
 
-        // On appelle le template de suppression de projet
+        // On appelle le template de suppression d'expérience
         return $this->render('experience/experience_delete.html.twig', array(
             'experience' => $experience,
             'form' => $form->createView(),

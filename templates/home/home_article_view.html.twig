@@ -63,19 +63,25 @@
     <h4>Ajouter un commentaire</h4>
     
     <br>
-    
-    {# Balise ouvrante du formulaire #}
-    {{ form_start(formComment) }}
+    {# Si l'utilisateur est pas connecté, on affiche le formulaire des commentaires #}
+    {% if app.user %}
+      {# Balise ouvrante du formulaire #}
+      {{ form_start(formComment) }}
 
-    {# Balises de champ de formulaire #}
-    {{ form_row(formComment.author, {'attr': {'placeholder': "Votre nom"}}) }}
-    {{ form_row(formComment.content, {'attr': {'placeholder': "Votre commentaire"}}) }}
-    
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+      {# Balises de champ de formulaire #}
+      {{ form_row(formComment.author, {'attr': {'placeholder': "Votre nom"}}) }}
+      {{ form_row(formComment.content, {'attr': {'placeholder': "Votre commentaire"}}) }}
+      
+      <button type="submit" class="btn btn-primary">Envoyer</button>
 
-    {# Balise fermante du formulaire #}
-    {{ form_end(formComment) }}
-
+      {# Balise fermante du formulaire #}
+      {{ form_end(formComment) }}
+    {% else %}
+      <div class="commentform_user">
+        <p>Vous ne pouvez pas laisser de commentaires si vous n'êtes pas connectés !</p>
+        <a href="{{ path('security_login') }}" class="btn btn-secondary">Se connecter</a>
+      </div>
+    {% endif %}
 </div>
 
 

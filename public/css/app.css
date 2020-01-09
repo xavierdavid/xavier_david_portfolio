@@ -288,6 +288,116 @@ header {
 
 
 /*****************************************************/
+/***       Style de la page d'accueil 'Home'       ***/
+/*****************************************************/
+
+#home_profil h2, p {
+    text-align: center;
+}
+
+#home_education {
+    margin-top: 40px;
+    padding: 25px 20px 30px 20px;
+    background-color: #0e8ca3;
+}
+
+#home_education h2 {
+    color: #ffffff;
+    text-align: center;
+}
+
+.education_wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0px 0px 30px 0px;
+}
+
+.education_card {
+    width: 24%;
+    background-color: #ffffff;
+    border-radius: 8%;
+    padding: 15px;
+}
+
+.education_image {
+    display: block;
+    width: 200px;
+    height: 110px;
+}
+
+.education_image img {
+    width: 100%;   
+}
+
+.education_image {
+    margin-left: 35px;
+    padding-top: 10px;
+}
+
+.education_certification p {
+    color: #000000;
+}
+
+.education_link {
+    text-align: center;
+    text-decoration: none;
+}
+
+.education_link a {
+    text-decoration: none;
+    color: #0e8ca3
+}
+
+.experiences_title p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+#home_experiences {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+#home_experiences h2 {
+    color: #0e8ca3;
+    font-weight: bold;
+    text-align: center;  
+}
+
+.experience_wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.experience_image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.experience_content {
+    display: flex;
+    width: 25%;
+}
+
+.experience_description {
+    margin-left: 20px;
+    width: 25%;
+}
+
+.experience_detail, .experience_link, .experience_period {
+    width: 25%;
+    margin-left: 5px;
+}
+
+
+
+
+/*****************************************************/
 /**      Style de l'accueil du tableau de bord      **/
 /*****************************************************/
 
@@ -342,9 +452,7 @@ header {
     padding-top: 10px;
 }
 
-.dashboard_button a {
 
-}
 
 
 /*****************************************************/
@@ -410,6 +518,7 @@ header {
 /* Style du tableau de bord : experience - éducation */
 /*****************************************************/
 
+
 #image-experience {
     margin: auto;
 }
@@ -418,6 +527,9 @@ header {
     width: 120px;
     margin-left: 15px;
 } 
+
+
+
 
 
 
@@ -566,6 +678,17 @@ header {
 #play {
     display: none; 
 }
+
+
+/*****************************************************/
+/***   Style de la page 'Home' des publications    ***/
+/*****************************************************/
+
+.commentform_user {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 /*****************************************************/

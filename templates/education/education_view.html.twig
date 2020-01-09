@@ -1,0 +1,43 @@
+{# templates/education/education_view.html.twig #}
+
+{# Le template hérite du second template 'père' base_education.html.twig  #}
+{% extends 'education/base_education.html.twig' %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block education_body %}
+
+    {# On affiche tous les messages flash dont le nom est « notice » #}
+    {% for message in app.session.flashbag.get('notice') %}
+      <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+    {# Affichage d'une formation #}
+    <section class="card mb-3">
+      <div class="row no-gutters">
+        <div id="image-education" class="col-md-3">
+          <img src="{{ asset('uploads/images/' ~ education.imageFilename) }}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <p><span class="badge badge-pill badge-light">Période du {{education.periodStart | date('d/m/Y')}} 
+              {% if education.ongoing == 1 %}
+                à aujourd'hui
+              {% else %}
+                 au {{education.periodEnd | date('d/m/Y')}}</span></p>
+              {% endif %}
+            <h5 class="card-title">Certification : {{education.certification | raw}}</p></h5>
+            <p class="card-text">Etablissement : {{education.school | raw}}</p>
+            <p class="card-text">Principaux enseignements : {{education.content | raw}}</p>
+            <p class="card-text"><small class="text-muted">Formation publiée le {{education.createdAt | date('d/m/Y')}} à {{education.createdAt | date('H:i')}}</small></p>
+            <hr>
+            <a href="{{education.url}}" class="card-link" target="_blank">Lien vers l'établissement</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{ path('education_edit', {'id' : education.id}) }}" class="btn btn-info">Modifier la formation</a></em>
+        <em><a href="{{ path('education_delete', {'id' : education.id}) }}" class="btn btn-danger">Supprimer la formation</a></em> 
+      </div>
+    </section>
+
+{% endblock %}

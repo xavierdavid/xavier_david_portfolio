@@ -1,6 +1,6 @@
 {# templates/experience/experience_view.html.twig #}
 
-{# Le template hérite du second template 'père' base_project.html.twig  #}
+{# Le template hérite du second template 'père' base_experience.html.twig  #}
 {% extends 'experience/base_experience.html.twig' %}
 
 {# Bloc de contenu body spécifique à la vue #}
@@ -19,7 +19,12 @@
         </div>
         <div class="col-md-9">
           <div class="card-body">
-            <p><span class="badge badge-pill badge-light">Période du {{experience.periodStart | date('d/m/Y')}} au {{experience.periodEnd | date('d/m/Y')}}</span></p>
+            <p><span class="badge badge-pill badge-light">Période du {{experience.periodStart | date('d/m/Y')}} 
+              {% if experience.ongoing == 1 %}
+                à aujourd'hui
+              {% else %}
+                 au {{experience.periodEnd | date('d/m/Y')}}</span></p>
+              {% endif %}
             <h5 class="card-title">Entreprise : {{experience.company | raw}}</p></h5>
             <p class="card-text">Poste occupé : {{experience.mission | raw}}</p>
             <p class="card-text">Missions principales : {{experience.content | raw}}</p>
