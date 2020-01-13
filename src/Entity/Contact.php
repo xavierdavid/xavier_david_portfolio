@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; // Permet d'utiliser le Validator pour soumettre des données à des contraintes pour valider les champs de formulaire (@Assert)
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -23,6 +25,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $mail;
 

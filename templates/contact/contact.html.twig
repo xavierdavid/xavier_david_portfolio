@@ -1,0 +1,70 @@
+{# templates/contact/contact.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Me contacter{% endblock %}
+
+{% block body %}
+<section class="contact_wrap">
+    <div class="contact_header">
+        <div id="contact_image2">
+            <figure>
+                <img src="{{ asset('img/crayons.jpg') }}" alt="">
+            </figure>  
+        </div>
+    </div>
+
+    {# Titre de la section 'Publications' #}
+    <div class="contact_title">
+        <p>Besoin d'infos ?</p>
+    </div>
+
+    <h1>Me contacter</h1>
+    
+    <div class="container">
+        {# On affiche tous les messages flash dont le nom est « notice » #}
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-info" id="contact-alert">{{ message }}</div>
+        {% endfor %}
+
+        <div class="contact_form_wrap">
+            {# Affichage du formulaire #}
+            <div class="form_contact">
+
+                {# Balise ouvrante du formulaire #}
+                {{ form_start(formContact) }}
+
+                {# Balises de champ de formulaire #}
+                {{ form_row(formContact.name, {'attr' : {'placeholder': "Votre nom"}}) }}
+                {{ form_row(formContact.mail, {'attr' : {'placeholder': "Votre email"}}) }}
+                {{ form_row(formContact.phone, {'attr' : {'placeholder': "Votre téléphone"}}) }}
+                {{ form_row(formContact.message, {'attr' : {'placeholder': "Votre message"}}) }}
+
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+
+                {# Balise fermante du formulaire #}
+                {{ form_end(formContact) }}
+            </div>
+        </div>
+    </div> 
+    
+    <div class="contact_footer">
+        <div class="contact_adresse">
+            <div id="contact_image1">
+                <figure>
+                    <img src="{{ asset('img/profil-image.jpg') }}" alt="">
+                </figure> 
+            </div>
+            <div id="contact_infos">
+                <p><strong>Xavier DAVID</strong></p>
+                <p>xav.david28@gmail.com</p>
+                <p>Tél : 06.73.98.56.65</p>
+            </div>
+        </div>
+        <div id="contact_map">
+            <p>Google Map</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

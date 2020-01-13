@@ -6,65 +6,66 @@
 {# Contenu spécifique - page 'home' #}
 {% block body %}
 
-    
-{# Bannière image #}
-<div id="main-banner">
-    <div id="banner-image">
-        <figure>
-            <img src="{{ asset('img/background-technology.jpg') }}" alt="">
-        </figure>  
+    {# Bannière image #}
+    <div id="main-banner">
+        <div id="banner-image">
+            <figure>
+                <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+            </figure>  
+        </div>
+
+        <div id="profil-image">
+            <figure>
+                <img src="{{ asset('img/profil-image.jpg') }}" alt="">
+            </figure>  
+        </div>
+
+        <div id="banner-title">
+            <h1>Bienvenue sur mon<span> portfolio</span></h1>
+        </div>
     </div>
 
-    <div id="profil-image">
-        <figure>
-            <img src="{{ asset('img/profil-image.jpg') }}" alt="">
-        </figure>  
-    </div>
-
-    <div id="banner-title">
-        <h1>Bienvenue sur mon<span> portfolio</span></h1>
-    </div>
-</div>
-
-<div class="container">      
     <section id="home_profil">
-        <h2>Xavier DAVID - <em>Développeur Web</em></h2>
+        <h2>Xavier DAVID</h2>
+        <div class="profil_title">
+            <p>Développeur Web</p>
+        </div>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         <hr>
     </section>
-</div>
+
 
     {# Affichage des formations #}
     <section id="home_education">
         <h2>Formation</h2>
-    <div class="education_wrap">
-        {% for education in educations %}
-            
+        <div class="education_wrap">
+            {% for education in educations %}
+                
                 <div class="education_card">
-                    <figure class="education_image">
+                    {#<figure class="education_image">#}
                         <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="">
-                    </figure>
+                    {#</figure>#}
+               
                     <div class="education_description">
                         <div class="education_certification">
                             <p><strong>{{education.certification | raw}}</strong></p>                           </p>
                         </div>
+                    
                         <div class="education_period">
-                            <p>{{education.periodStart | date('d/m/Y')}} 
+                            <p>{{education.periodStart | date('m/Y')}} 
                                 {% if education.ongoing == 1 %}
                                     à aujourd'hui
                                 {% else %}
-                                    au {{education.periodEnd | date('d/m/Y')}}</span></p>
+                                    au {{education.periodEnd | date('m/Y')}}</p>
                                 {% endif %}
                         </div>
-                        <div class="education_link">
-                            <a href="{education.url | raw}}">{{education.url}}</a>   
-                        </div>
                     </div>
-                </div>   
-            
-           
-        {% endfor %}
-     </div>
+                    <div class="education_link">
+                        <span><a href="{{education.url | raw}}" target="_blank">{{education.url}}</a></span> 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
     
     {# Affichage des expériences professionnelles #}

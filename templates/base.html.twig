@@ -37,7 +37,7 @@
                             <li><a href="{{ path('home') }}">Accueil</a></li>
                             <li><a href="{{ path('home_project') }}">Portfolio</a></li>
                             <li><a href="{{ path('home_article') }}">Publications</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ path('contact' )}}">Contact</a></li>
                         </ul>
                     </nav>
                     
@@ -65,8 +65,9 @@
             <div id="hamburger-overlay"></div> {# Masque de menu en fond #}
 
             {# Accueil utilisateur - Accès au tableau de bord 'admin' #}
-            <div id="user-status">
+            
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div id="user-status">
                     <div id="user-message">
                         <p>Bonjour {{app.user.username}} !</p>
                     </div>
@@ -75,8 +76,9 @@
                             <p><a href="{{ path('admin_dashboard')}}">Tableau de bord</a></p>
                         </div>
                     {% endif %}
+                </div>   
                 {% endif %}
-            </div>    
+                
         </header>
 
           
