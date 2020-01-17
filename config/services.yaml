@@ -27,9 +27,14 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-
-     
+    # Service de téléchargement de fichier
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%image_directory%'
-            
+    
+
+    # Service d'envoi de notification par mail       
+    send_mailer:
+        class: App\Service\SendEmail
+        arguments:
+            - '@mailer'

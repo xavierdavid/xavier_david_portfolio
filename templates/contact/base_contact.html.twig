@@ -1,0 +1,40 @@
+{# templates/contact/base_contact.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes messages{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Mes messages</h1>
+    </div>
+    
+    <div class="row">
+        <div id="admin_menu" class="col-md-3">
+            
+            <h3>Messages</h3>
+            <div class="list-group">
+                <a href="{{ path('all_contacts') }}" class="list-group-item list-group-item-action">Tous mes messages</a> {# la fonction path() permet de retrouver l'url en fonction du nom d'une route #}  
+            </div> 
+            </br>
+            <hr>
+            <h4>Derniers messages</h4> 
+
+            {# Inclusion d'un template d'index d'expérience avec les 3 dernières expériences #}
+            {# Insertion de la méthode lastExperiences du contrôleur ExperienceController pour inclure le template index_experiences.html.twig avec les 3 dernières expériences publiées #}
+            {# Inclusion du contrôleur, des données et de la vue '#}
+            {{render(controller('App\\Controller\\ContactController::lastContacts', {'limit': 3}))}}
+            <br>
+            <hr>
+            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a>         </div>
+        
+        <div id="content" class="col-md-9">
+            {% block contact_body %}{% endblock %} 
+        </div>
+
+    </div>
+</div>
+{% endblock %}   

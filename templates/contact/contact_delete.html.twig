@@ -1,0 +1,31 @@
+{# templates/contact/contact_delete.html.twig #}
+
+{% extends 'contact/base_contact.html.twig' %}
+
+{% block title %}
+  Supprimer un contact - {{ parent() }}
+{% endblock %}
+
+{% block contact_body %}
+
+  
+  <h2>Supprimer un contact</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le message posté par "{{ contact.name }}" le {{contact.createdAt | date('d/m/Y')}} ?
+  </p>
+
+  {# On met l'id du contact dans la route de l'action du formulaire #}
+  <form action="{{ path('contact_delete', {'id': contact.id}) }}" method="post">
+    <a href="{{ path('all_contacts') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour aux messages
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

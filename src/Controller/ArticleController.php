@@ -34,7 +34,7 @@ class ArticleController extends AbstractController
             throw $this->createNotFoundException('Page "'.$page.'" inexistante.');
         }
 
-        // On fixe arbitrairement le nombre d'annonces par page $nbPerPage, à 3
+        // On fixe arbitrairement le nombre d'articles par page $nbPerPage, à 2
         // Mais bien sûr, il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
         $nbPerPage = 2;
 
@@ -44,7 +44,7 @@ class ArticleController extends AbstractController
         // On récupère tous les articles (méthode getArticles de ArticleRepository)
         $articles = $repository->getArticles($page, $nbPerPage);
 
-        // On calcule le nombre total de pages à afficher ...
+        // On calcule le nombre total de pages à afficher dans la vue ...
         // ... qui retourne le nombre total d'articles count($articles)
         // ... et détermine le nombre total de pages à afficher
         $nbPages = ceil(count($articles) / $nbPerPage);
@@ -308,7 +308,7 @@ class ArticleController extends AbstractController
         // On récupère le service EntityManager de l'ORM Doctrine
         $entityManager = $this->getDoctrine()->getManager();
 
-        // On récupère la liste des dernières annonces publiées ($limit)
+        // On récupère la liste des dernièrs articles publiés ($limit)
         $lastArticles = $entityManager->getRepository(Article::class)->findBy(
             //array(), // Pas de critère
             array('published' => '1'), // Articles publiés uniquement

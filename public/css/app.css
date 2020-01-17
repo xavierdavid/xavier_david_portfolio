@@ -83,7 +83,6 @@ header {
 .button-sign-in:hover {
     text-decoration: none;
     color: #ffffff;
-   /* transform: scale(1.5) !important;*/
 }
 
 /* Style de l'icône hamburger */
@@ -509,8 +508,18 @@ header {
     height: 380px;
     padding: 65px 0px 60px 0px;
     margin: 30px auto ;
-    background-color: #202020;
     border-radius: 8px;
+    box-shadow: 9px 9px 9px #7a7b7f;
+    background-color: #202020;
+    background-image: linear-gradient(to bottom,rgb(245, 245, 245,0),#242425 ) !important;
+    transition-property: background-color;
+    transition-duration: 1s !important;
+    transition-delay: 0.1s !important;
+    transition-timing-function: ease;
+}
+
+.contact_form_wrap:hover {
+    background-color:#4f5054 !important;
 }
 
 .form_contact {
@@ -606,12 +615,28 @@ header {
 
 
 /*****************************************************/
+/**         Tableau de bord : index contenus        **/
+/*****************************************************/
+
+.nav-pills {
+    display: block;
+}
+
+
+/*****************************************************/
 /**      Tableau de bord : articles et projets      **/
 /*****************************************************/
 
 /* Marge sous la barre de navigation */
 .jumbotron{
-    margin-top:60px;
+    margin-top:130px;
+    background-color:#202020;
+}
+
+.jumbotron h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .publication_container .card {

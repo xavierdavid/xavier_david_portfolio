@@ -1,0 +1,12 @@
+{# templates/contact/index_contacts.html.twig #}
+
+
+{# Affichage des derniers contacts publiés #}
+<ul class="nav nav-pills nav stacked">
+  {% for contact in lastContacts %}
+    <li>
+      {#<a href="{{path('contact_view', {'id' : contact.id})}}">{{contact.name}}</a>#}
+      <a href="#">{{contact.name}}</a>
+    </li>
+  {% endfor %}
+</ul>
