@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\SendEmail;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -18,7 +19,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="security_registration")
      */
-    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder) {
+    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder, SendEmail $notification) {
         // Injection de dépendances : on a besoin de la requête HTTP pour analyser les informations saisies dans le formulaire ... 
         // ... de l'objectManager de Doctrine pour enregistrer l'utilisateur en base de données ... 
         // ... Ainsi que de UserPasswordEncoderInterface pour encoder le mot de passe de l'utilisateur
@@ -36,11 +37,15 @@ class SecurityController extends AbstractController
         // On vérifie également qu'il est valide à l'aide de la méthode isValid
         if($form->isSubmitted() && $form->isValid()){
 
-            // On procède au hachage du mot de passe de l'utilisateur avec l'algorithm 'bcrypt'
-            // En apssant en paramètre $user, instance de notre classe Entité 'User' pour laquelle 'bcrypt' est paramétrée dans security.yaml
+            // On procède au hachage du mot de passe de l'utilisateur avec l'algorithm d'encodage défini dans security.yaml ('bcrypt' ou 'auto')
+            // On passe en paramètre '$user', instance de notre classe Entité 'User' pour laquelle l'algorithme est paramétré dans security.yaml
             // On récupère le mot de passe de l'utilisateur avec la méthode getPassword() de l'entité User
             $hash = $encoder->encodePassword($user, $user->getPassword());
 
+            // On envoi une notification par mail à l'utilisateur pour lui confirmer l'inscription et lui rappeler son identifiant et son mot de passe
+            // On utilise pour cela le service SendEmail pour envoyer un email de notification à l'utilisateur
+            $notification->emailUserNotification($user);
+            
             // On modifie le mot passe en le remplaçant par le mot de passe crypté 
             $user->setPassword($hash);
 

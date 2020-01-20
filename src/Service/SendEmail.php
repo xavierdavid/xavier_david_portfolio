@@ -2,8 +2,9 @@
 
 namespace App\Service;
 
-use App\Entity\Contact;
+use App\Entity\User;
 use Twig\Environment;
+use App\Entity\Contact;
 
 
 class SendEmail {
@@ -33,24 +34,49 @@ class SendEmail {
 
 
     /**
-     * Méthode qui envoie une notification par email à l'administrateur
+     * Méthode qui envoie une notification par email à l'administrateur à l'aide du service 'mailer', objet de gestion d'envoi de mail (composant Swiftmailer)
+     * Le serveur d'envoi (SMTP) est paramétré dans le fichier '.env' (l'option qui annule l'envoi à partir du localhost est activée)
      */
-    public function emailNotification(Contact $contact)
+    public function emailAdminNotification(Contact $contact)
     {
+        /* Paramétrage du message */
         $message = (new \Swift_Message('Vous avez un nouveau message sur votre portfolio'))
-            ->setFrom('xav.david@gmail.com')
+            ->setFrom('noreply@xavier.com')
             ->setTo('xav.david28@gmail.com')
             ->setReplyTo($contact->getMail())
             ->setBody(
                 $this->renderer->render(
-                    // templates/emails/email_notification.html.twig
-                    'emails/email_notification.html.twig', [
+                    // templates/emails/email_admin_notification.html.twig
+                    'emails/email_admin_notification.html.twig', [
                         'contact' => $contact
                     ]),
                 'text/html'
             )
         ;
+        /* Envoi du message */
+        $this->mailer->send($message);
+    }
 
+
+    /**
+     * Méthode qui envoie une notification par email à un nouvel utilisateur après inscription 
+     */
+   public function emailUserNotification(User $user)
+    {
+        /* Paramétrage du message */
+        $message = (new \Swift_Message('Confirmation de votre inscription sur le portfolio de Xavier DAVID'))
+            ->setFrom('noreply@xavier-david.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderer->render(
+                    // templates/email/emails/email_user_notification.html.twig 
+                    'emails/email_user_notification.html.twig', [
+                        'user'=> $user
+                    ]),
+                'text/html'
+            )
+        ;
+        /* Envoi du message */
         $this->mailer->send($message);
     }
 

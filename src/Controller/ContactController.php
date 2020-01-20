@@ -43,7 +43,7 @@ class ContactController extends AbstractController
             $manager->flush();
 
             // On utilise le service SendEmail pour envoyer un email de notification à l'administrateur
-            $notification->emailNotification($contact);
+            $notification->emailAdminNotification($contact);
 
             // Définition d'un message flash pour la confirmation de l'envoi des informations 
             $request->getSession()->getFlashBag()->add('notice', 'Votre message a bien été envoyé');
