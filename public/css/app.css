@@ -467,6 +467,52 @@ header {
 
 
 /*****************************************************/
+/**  Home - carte des expériences professionnelles  **/
+/*****************************************************/
+
+#home_map {
+    width: 100%;
+    justify-content: center;
+    background-color: #dbdce2;
+    padding: 50px 0px;
+    margin-top: 30px;
+}
+
+#map_description {
+    width: 70%;
+    margin: auto;  
+}
+    
+#map_description h2, #map_description p {
+    text-align: center;
+}
+
+.map_title p {
+    text-align: center;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.map_title {
+    margin-bottom: 25px;
+}
+
+
+
+
+#mapid {
+    width: 65%;
+    height: 70vh;
+    margin: auto;
+    border-radius: 3%;
+    z-index : 0;
+}
+
+
+
+
+/*****************************************************/
 /**           Home : formulaire de contact          **/
 /*****************************************************/
 

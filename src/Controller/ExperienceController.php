@@ -244,6 +244,25 @@ class ExperienceController extends AbstractController
             // Intérêt : le contrôleur passe ici les variables nécessaires au template 'index_experiences.html.twig'
     }
 
+    /**
+     * Méthode qui permet de récupérer les données des expériences professionnelles au format JSON
+     * @Route("/get/experiences", name="get_experiences")
+     */
+    public function getExperiences()
+    {
+        //On sélectionne les données avec le repository qui gère l'entité 'Experience'
+        $repository = $this->getDoctrine()->getRepository(Experience::class);
+        // On récupère les données des expériences professionnelles au format JSON... 
+        // ... pour les exploiter en Javascript avec Ajax 
+        $experiences = $repository->findAll();
+
+        return $this->Json([
+            'code'=> 200, 
+            'message'=>'Tout fonctionne',
+            'experiences' => $experiences
+        ], 200);
+    }
+
     
     
     

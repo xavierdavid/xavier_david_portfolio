@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {# Bootstrap link #}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {# Leaflet link #}
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
         {# Font Awesome link #}
         <script src="https://kit.fontawesome.com/44950cf195.js" crossorigin="anonymous"></script>
         
@@ -81,14 +83,13 @@
                 
         </header>
 
-          
         {# Conteneur du bloc 'body' #}
-        {% block body %}{% endblock %}
-        
-        
-        {# Javascript #}
-        {% block javascript %}
-            <!-- Tiny MCE API CDN link -->
+        {% block body %}{% endblock %} 
+
+        {# Menu JS #}
+        <script src="{{ asset('js/menu.js') }}"></script>
+
+        {# Tiny MCE API CDN link #}
             <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
             <script>tinymce.init({
                 selector: '.tinymce',
@@ -96,11 +97,10 @@
                 elements:"contenu",
                 entity_encoding : "raw",
                 encoding: "UTF-8",
-            })</script>
+            })</script> 
 
-            <!-- Menu JS -->
-            <script src="{{ asset('js/menu.js') }}"></script>   
-        {% endblock %}
+        {# Javascript #}
+        {% block javascript %}{% endblock %}   
     
     </body>
 </html>

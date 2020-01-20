@@ -100,10 +100,38 @@
             </div>
         {% endfor %}
     </section>
-        
 
+    
+    {# Affichage de la carte du parcours professionnel #}
+    <section id="home_map">
+        {# Accueil de la carte #}
+        <div id="map_description">
+            <h2>Mon parcours</h2>
+            <div class="map_title">
+                <p>On the Map !</p>
+            </div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            <hr>
+        </div>
+        {# Carte #}
+        <div id="mapid"></div>
+    </section >
 
+    
+    {# Menu JS #}
+    <script src="{{ asset('js/menu.js') }}"></script>
 
+    {# Leaflet JavaScript link #}
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+     {# Ajax JS #}
+    <script src="{{ asset('js/ajax.js') }}"></script>
+    
+    {# Map JS #}
+    <script src="{{ asset('js/map.js') }}"</script>
+
+    {# Nominatim JS #}
+  
 
 {% endblock body %}
   
