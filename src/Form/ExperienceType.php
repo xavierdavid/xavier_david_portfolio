@@ -25,6 +25,9 @@ class ExperienceType extends AbstractType
             ->add('company', TextType::class,[
                 'label' => 'Entreprise',
             ])
+            ->add('address', TextType::class,[
+                'label' => 'Adresse',
+            ])
             ->add('periodStart', DateType::class,[
                 'label' => 'Début',
                 'widget' => 'single_text',

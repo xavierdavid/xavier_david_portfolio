@@ -26,6 +26,7 @@
                  au {{experience.periodEnd | date('d/m/Y')}}</span></p>
               {% endif %}
             <h5 class="card-title">Entreprise : {{experience.company | raw}}</p></h5>
+            <p class="card-text">Adresse de l'entreprise : {{experience.address | raw}}</p>
             <p class="card-text">Poste occupé : {{experience.mission | raw}}</p>
             <p class="card-text">Missions principales : {{experience.content | raw}}</p>
             <p class="card-text"><small class="text-muted">Expérience publiée le {{experience.createdAt | date('d/m/Y')}} à {{experience.createdAt | date('H:i')}}</small></p>
