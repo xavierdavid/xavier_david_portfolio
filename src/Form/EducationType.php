@@ -24,6 +24,9 @@ class EducationType extends AbstractType
             ->add('school', TextType::class,[
                 'label' => 'Etablissement',
             ])
+            ->add('address', TextType::class,[
+                'label' => 'Adresse',
+            ])
             ->add('periodStart', DateType::class,[
                 'label' => 'Début',
                 'widget' => 'single_text',

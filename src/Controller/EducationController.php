@@ -242,7 +242,24 @@ class EducationController extends AbstractController
     }
 
     
-    
+    /**
+     * Méthode qui permet de récupérer les données des formations professionnelles au format JSON
+     * @Route("/get/educations", name="get_educations")
+     */
+    public function getEducations()
+    {
+        //On sélectionne les données avec le repository qui gère l'entité 'Experience'
+        $repository = $this->getDoctrine()->getRepository(Education::class);
+        // On récupère les données des expériences professionnelles au format JSON... 
+        // ... pour les exploiter en Javascript avec Ajax 
+        $educations = $repository->findAll();
+
+        return $this->Json([
+            'code'=> 200, 
+            'message'=>'Tout fonctionne',
+            'educations' => $educations
+        ], 200);
+    }
     
     
     

@@ -10,13 +10,13 @@
     <div id="main-banner">
         <div id="banner-image">
             <figure>
-                <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+                <img src="{{ asset('img/background-technology.jpg') }}" alt="banner-technology-image">
             </figure>  
         </div>
 
         <div id="profil-image">
             <figure>
-                <img src="{{ asset('img/profil-image.jpg') }}" alt="">
+                <img src="{{ asset('img/profil-image.jpg') }}" alt="profil-image">
             </figure>  
         </div>
 
@@ -43,7 +43,7 @@
                 
                 <div class="education_card">
                     {#<figure class="education_image">#}
-                        <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="">
+                        <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="education_image">
                     {#</figure>#}
                
                     <div class="education_description">
@@ -84,18 +84,16 @@
                 </div>
                 <div class="experience_content">
                     <figure class="experience_image">
-                        <img src="{{ asset('uploads/images/' ~ experience.imageFilename) }}" alt="">
+                        <img src="{{ asset('uploads/images/' ~ experience.imageFilename) }}" alt="experience_image">
                     </figure>
                     <div class="experience_description">
                         <p>{{experience.company | raw}}</p>
                         <p>{{experience.mission | raw}}</p>
+                        <p>{{experience.content | raw}}</p>
                     </div>
                 </div>
-                <div class="experience_detail">
-                    {{experience.content | raw}}
-                </div>
                 <div class="experience_link">
-                    <a href="{{experience.url}}">{{experience.url}}</a>
+                    <a href="{{experience.url}}" target="_blank">{{experience.url | raw}}</a>
                 </div>
             </div>
         {% endfor %}
@@ -124,15 +122,13 @@
     {# Leaflet JavaScript link #}
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
-     {# Ajax JS #}
+    {# Ajax JS #}
     <script src="{{ asset('js/ajax.js') }}"></script>
     
     {# Map JS #}
-    <script src="{{ asset('js/map.js') }}"</script>
-
-    {# Nominatim JS #}
+    <script src="{{ asset('js/map.js') }}"></script>
   
-
+    
 {% endblock body %}
   
 

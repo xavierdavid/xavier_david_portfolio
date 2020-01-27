@@ -74,6 +74,11 @@ class Education
      */
     private $ongoing;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
 
     public function getId(): ?int
     {
@@ -208,6 +213,18 @@ class Education
     public function setOngoing(?bool $ongoing): self
     {
         $this->ongoing = $ongoing;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }
