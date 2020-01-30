@@ -1,4 +1,3 @@
-// Transfert du contenu du menu 'hamburger-content' dans la sidebar 'hamburger-sidebar-body' // 
 
 // Identification des éléments du DOM 
 

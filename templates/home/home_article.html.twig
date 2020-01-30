@@ -9,11 +9,11 @@
 {# Bannière image #}
 <div id="banner-image">
     <figure>
-        <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+        <img src="{{ asset('img/background-technology.jpg') }}" alt="banner-image-technology">
     </figure> 
-    <div id="banner-title">
+    <div id="banner-title-animate">
         <h1>Mon super titre</h1>
-    </div>  
+    </div>
 </div>
 
 <div class="container"> 
@@ -24,6 +24,8 @@
         </div>
 
         <h1>Derniers articles</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <hr>
         
         {# Affichage des dernières publications #}
         <article class="publication_container">
@@ -33,12 +35,15 @@
                         <div class="image_block">
                             <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{article.title | raw}}</h5>
-                            <span class="badge badge-pill badge-light">{{article.category.title}}</span>
+                        <div class="card-body publication_card">
+                            <h5 class="card-title publication_title">{{article.title | raw}}</h5>
+                            <span class="badge badge-pill badge-light publication_badge">{{article.category.title}}</span>
                             <p class="card-text">{{article.introduction | raw}}</p>
                             <p class="card-text"><small class="text-muted">Article publié le {{article.createdAt | date('d/m/Y')}}</small></p>
-                            <a href="{{ path('home_article_view', {'id' : article.id}) }}" class="btn btn-secondary">Lire la suite</a>
+                            <div id="publication_link">
+                                <a href="{{ path('home_article_view', {'id' : article.id}) }}">Lire la suite</a>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

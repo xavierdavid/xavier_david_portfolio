@@ -99,8 +99,39 @@
                 encoding: "UTF-8",
             })</script> 
 
+        
+        
+        
         {# Javascript #}
-        {% block javascript %}{% endblock %}   
+        {% block javascript %}{% endblock %} 
+       
     
+        <footer>
+            <div id="footer_filter"></div>
+            <figure>
+                <img src="{{ asset('img/desktop-footer.jpg') }}" alt="footer-image-desktop">
+            </figure> 
+
+            <div id="footer_item1">
+                <h4>Xavier DAVID</h4>
+                <hr>
+                <ul>
+                    <li>2 impasse des renardières - 28190 Fontaine-la-Guyon</li>
+                    <li>06.73.98.56.65</li>
+                    <li>xav.david28@gmail.com</li>
+                </ul>
+                
+                <div id="footer_link">
+                    <a href="{{ path('contact' )}}">Me contacter</a>
+                </div>
+            </div>
+           <div id="portfolio_copyright">
+                <p>©Xavier DAVID - 2019</p>
+                <p>
+                    <a href="#">Mentions légales - Protection des données </a>
+                </p>
+            </div> 
+        </footer> 
+
     </body>
 </html>

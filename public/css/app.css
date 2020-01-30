@@ -533,8 +533,9 @@ header {
     width: 100%;
     justify-content: center;
     background-color: #dbdce2;
-    padding: 50px 0px;
+    padding: 70px 0px;
     margin-top: 30px;
+    box-shadow: 3px 3px 31px 4px rgba(0,0,0,0.75);
 }
 
 #map_description {
@@ -563,6 +564,138 @@ header {
     margin: auto;
     border-radius: 3%;
     z-index : 0;
+}
+
+
+/*****************************************************/
+/**                    Home - Footer                **/
+/*****************************************************/
+
+footer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 420px;
+    background-color:rgb(252, 250, 250,0.8);
+    overflow: hidden;
+    margin-top: 35px;
+}
+
+footer img {
+    position : absolute;
+    width: 100%;
+    left: 0%;
+    top: -30%;
+}
+
+#footer_filter {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 600px;
+  }
+
+#footer_item1 {
+    position: absolute;
+    left: 48%;
+    top: 25%;
+}
+
+#footer_item1 li {
+    margin-top: -5px;
+    font-size: 16px;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+/* Insertion d'un pseudo_élément avant chaque item du footer */
+#footer_item1 li:before {
+    content: ' '; /* Contenu ajouté */
+    width: 24px;
+    height: 24px; 
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 16px;
+    margin-bottom: 4px; 
+}
+
+#footer_item1 ul {
+    padding-left: 0px;
+}
+
+/* Insertion d'images dans le contenu des pseudo-éléments des paragraphes du footer */
+#footer_item1 li:first-child:before {
+    background-image: url('../img/adress.png');   
+}
+
+#footer_item1 li:nth-child(2):before {
+    background-image: url('../img/phone.png'); 
+}
+
+#footer_item1 li:last-child:before {
+    background-image: url('../img/mail.png'); 
+}
+
+#footer_item1 h4 {
+    margin-bottom: 25px;
+}
+
+#footer_link {
+    display: block;
+    position: absolute;
+    left: 0%;
+    top: 100%;
+    width: 150px;
+    height: 26px;
+    background-color: #0e8ca3;
+    border-radius: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer_link a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+#footer_link:hover {
+    color: hsl(228, 3%, 32%);
+    background-color: #e0ad2c;
+    font-weight: bold;
+}
+
+#portfolio_copyright {
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    background-color:#242425; 
+    padding: 10px; 
+}
+
+#portfolio_copyright p {
+    color:#9e9fa3;
+    margin: 0px 10px;
+    padding-top: 10px;
+}
+
+#portfolio_copyright a {
+    color:#9e9fa3;
+    margin: 0px 10px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+#portfolio_copyright a:hover {
+    color: #e0ad2c;
+    font-weight: bold;
 }
 
 
@@ -642,6 +775,8 @@ header {
     display: flex;
     justify-content: space-around;
     margin-top: 60px;
+    background-color: #dbdce2;
+    padding: 30px;
 }
 
 .contact_adresse {
@@ -656,6 +791,19 @@ header {
     margin-left: 20px;
     color: #4f5054;
     margin-bottom: 3px;
+}
+
+.form_contact input:focus {
+    border: 4px solid #e0ad2c;
+}
+
+.form_contact textarea:focus{
+    border: 4px solid #e0ad2c;
+}
+
+#contact_map iframe {
+    width: 100%;
+    border-radius: 6px;
 }
 
 
@@ -795,7 +943,6 @@ header {
 /*     Tableau de bord : expérience - formation      */
 /*****************************************************/
 
-
 #image-experience {
     margin: auto;
 }
@@ -807,40 +954,59 @@ header {
 
 
 /*****************************************************/
-/***            Home - Page des projets            ***/
+/* Home - Titres animés projets/publications/contact */
 /*****************************************************/
 
-#banner-title {
-    position: absolute;
-    width: 40%;
-    top: 38%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*transform: translate(90%, 0%);
-    /*transition: transform .4s ease-out;*/
-    /*animation: title_animation, 2s ease-out;*/
-}
 
 @keyframes title_animation {
     0% {
-        transform: translate(110%, 0%);
+        transform: translateX(10px);
     }
 
     50% {
-        transform: translate(50%, 0%);
+        transform: translateX(20px);
     }
 
     100% {
-        transform: translate(0%, 0%) 
+        transform: translateX(30px) rotate(30deg);
     }
 }
 
-#banner-title:hover {
-    animation: title_animation, 2s ease-out;  
+#banner-title-animate {
+    position: absolute;
+    width: 100%;
+    top: 35%;
+    left: 0%;
+    transform: translate(-50%, -35%); /* décalage de 50% de sa propre taille */
+    /*animation: title_animation, 3s ease-out;
+    animation-delay: 2s;*/
+    transform: scale(1);
+    transition: transform 400ms;
+    z-index: 30;
+
 }
 
+#banner-title-animate h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 50px;
+    z-index: 20;
+}
+
+#banner-title-animate:hover {
+    transform: scale(1.15);
+    animation: title_animation, 3s ease-out;
+}
+
+
+
+/*****************************************************/
+/***            Home - Page des projets            ***/
+/*****************************************************/
+
 .project_wrap {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .project_title p {
@@ -873,6 +1039,10 @@ header {
     display: flex;
     width: 720px;
     height: 600px;
+}
+
+.slider_wrapper {
+    margin-top: 30px;
 }
 
 /* Déplacement du slider commandée par Javascript pour ajouter la classe 'shifting' et définir la valeur de la propriété 'left' */
@@ -989,6 +1159,63 @@ header {
 .commentform_user {
     display: flex;
     justify-content: space-between;
+}
+
+.publication_wrap {
+    margin-top: 30px;
+}
+
+.publication_container {
+    margin-bottom: 100px;
+    margin-top: 40px;
+}
+
+.publication_container .card {
+    border: 3px solid #0e8ca3;
+    border-radius: 16px;
+    box-shadow: 10px 5px 5px #dbdce2;
+}
+
+.publication_title {
+    text-align: center;
+    color: #e0ad2c !important;
+    font-weight: bold;
+}
+
+.publication_badge {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.card-body .publication_card {
+    position: relative;
+}
+
+#publication_link {
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 26px;
+    background-color: #0e8ca3;
+    border-radius: 30px;
+    text-align: center;
+    margin-bottom: 15px; 
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+#publication_link a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+#publication_link:hover {
+    color: #4f5054;
+    background-color: #e0ad2c;
+    font-weight: bold;
 }
 
 
