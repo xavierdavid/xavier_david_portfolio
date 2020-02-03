@@ -7,6 +7,10 @@ let next = document.getElementById("arrow_right");
 let prev = document.getElementById("arrow_left");
 let pause = document.getElementById("pause");
 let play = document.getElementById("play");
+let moreLink = document.getElementsByClassName("more_link");
+let lessLink = document.getElementsByClassName("less_link");
+let projectView = document.getElementsByClassName("project_view");
+
 
 
 // Création d'une classe 'Slider'
@@ -130,14 +134,18 @@ class Slider {
         // On affiche le bouton 'pause' 
         pause.style.display = "block";
     }
+
 }
+
+
 
 
 // Création d'un nouvel objet 'slider' par instanciation 
 let projectSlider = new Slider();
 
-// Appel de la fonction d'initialisation
+// Appel de la fonction d'initialisation du slider
 projectSlider.sliderInit();
+
 
 // Gestion du slider avec les flèches du clavier 
 document.addEventListener("keydown", function(evt){
@@ -148,3 +156,51 @@ document.addEventListener("keydown", function(evt){
         projectSlider.shiftSlide(-1);
     }
 });
+
+
+// Affichage de la <div> de contenu des projets 
+// La méthode 'getElementsByClassName'retourne un type HTMLCollection
+// On parcours tous les éléments (d'indice i) de cette collection pour récupérer chaque élément moreLink et ProjectView
+for(let i=0; i <moreLink.length; i++) {
+    moreLink[i].addEventListener("click", function(evt) {
+        // On annule le comportement par défaut du lien 
+        evt.preventDefault();
+
+        // On stoppe le défilement du slider 
+        projectSlider.pauseSlider();
+
+        // On masque l'élément 'moreLink' 
+        moreLink[i].style.display = "none";
+        // On affiche l'élément 'lessLink'
+        lessLink[i].style.display = "block";
+
+        // Affichage de la <div> (ayant l'indice i) de contenu des projets du slider
+        // Modification du style d'affichage avec la propriété 'display: block;'
+        projectView[i].style.display = "block";
+    })
+}
+
+// Fermeture de la <div> de contenu des projets 
+for(let i=0; i <lessLink.length; i++) {
+    lessLink[i].addEventListener("click", function(evt) {
+        // On annule le comportement par défaut du lien 
+        evt.preventDefault();
+
+        // On lance le défilement du slider 
+        projectSlider.playSlider();
+
+        // On masque l'élément 'lessLink' 
+        lessLink[i].style.display = "none";
+        // On affiche l'élément 'moreLink'
+        moreLink[i].style.display = "block";
+
+        // On masque la <div> (ayant l'indice i) de contenu des projets du slider
+        // Modification du style d'affichage avec la propriété 'display: block;'
+        projectView[i].style.display = "none";
+    })
+}
+
+
+
+
+

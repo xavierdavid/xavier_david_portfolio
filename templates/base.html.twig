@@ -26,6 +26,12 @@
     </head>
     
     <body>
+
+        {# Bouton de retour vers le haut #} 
+        <div class="scrollButton_up">
+            <i class="fas fa-chevron-circle-up fa-2x"></i>
+        </div>
+
         
         {# Header du site #}   
         <header>                 
@@ -45,13 +51,13 @@
                     
                     {# Si l'utilisateur n'est pas connecté, on affiche le bouton 'Connexion' #}
                     {% if not app.user %}
-                        <div id="login">
-                            <a href="{{ path('security_login') }}" class="button button-sign-in">Connexion</a>
+                        <div id="login">                            
+                            <a href="{{ path('security_login') }}" class="button button-sign-in"><span><i class="fas fa-sign-in-alt"></i></span>Connexion</a>
                         </div>
                         {# Sinon, si l'utilisateur est connecté, on affiche le bouton 'Déconnexion' #}
                     {% else %}
-                        <div id="logout">
-                            <a href="{{ path('security_logout') }}" class="button button-sign-in">Déconnexion</a>
+                        <div id="logout">                        
+                            <a href="{{ path('security_logout') }}" class="button button-sign-in"><span><i class="fas fa-sign-out-alt"></i></span>Déconnexion</a>
                         </div>
                     {% endif %}
                 </div>
@@ -82,7 +88,8 @@
                 {% endif %}
                 
         </header>
-
+        
+        
         {# Conteneur du bloc 'body' #}
         {% block body %}{% endblock %} 
 
@@ -99,9 +106,6 @@
                 encoding: "UTF-8",
             })</script> 
 
-        
-        
-        
         {# Javascript #}
         {% block javascript %}{% endblock %} 
        

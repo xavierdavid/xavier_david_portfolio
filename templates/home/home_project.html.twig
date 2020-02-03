@@ -37,15 +37,23 @@
                     
                     {# Eléments projets du slider #}
                     <div class="slider_element">
-                        <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" alt="">
+                        <img src="{{ asset('uploads/images/' ~ project.imageFilename) }}" alt="project-image">
                         <h2>{{project.title}}</h2>
                         <div class="project_period">
                             <p>{{project.period}}</p>
-                        </div>   
-                        <p>{{project.introduction}}</p>
+                        </div> 
+                        <div class="project_introduction">
+                            <p>{{project.introduction}}</p>
+                        </div>  
                         <hr>
                         <div class="project_link">
-                            <a href="{{project.url}}" target="_blank">Plus d'infos ...</a>
+                            {#<p class="more_link">Plus d'infos ... </p>#}
+                            <a href="#" class="more_link" target="_blank">Plus d'infos ...</a>
+                            <a href="#" class="less_link" target="_blank">Fermer</a>
+                        </div> 
+                        <div class="project_view">
+                            {{project.content | raw}} 
+                            <p><a href="{{project.url}}" target="_blank"><span><i class="far fa-hand-point-right"></i></span>Voir le projet</a></p>
                         </div>
                     </div>
 

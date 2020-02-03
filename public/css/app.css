@@ -76,14 +76,39 @@ header {
     display: flex;
 }
 
+#hamburger-content #login a:hover, #hamburger-content #logout a:hover{
+    color: #e0ad2c;
+    font-weight: bold;
+}
+
+#hamburger-content #login span, #hamburger-content #logout span{
+    margin-right: 5px;
+}
+
+#hamburger-content #login span i, #hamburger-content #logout span i {
+    color: #e0ad2c; 
+}
+
 .button-sign-in {
     color: #ffffff;
     margin: auto 10px;
 }
 
+#hamburger-sidebar-body #logout a:hover {
+    color: #e0ad2c; 
+}
+
 .button-sign-in:hover {
     text-decoration: none;
     color: #ffffff;
+}
+
+.button-sign-in span {
+    margin-right: 5px;
+}
+
+.button-sign-in span i {
+    color: #e0ad2c; 
 }
 
 /* Style de l'icône hamburger */
@@ -258,6 +283,7 @@ header {
 }
 
 
+
 /*****************************************************/
 /***           Home - Image du profil          ***/
 /*****************************************************/
@@ -270,7 +296,7 @@ header {
 
 #profil-image {
     position: absolute;
-    top: 95%; /* à 100%/50% du parent référent */
+    top: 90%; /* à 100%/50% du parent référent */
     left: 50%;    
     transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
     z-index: 10;
@@ -285,6 +311,18 @@ header {
 
 #profil-image img:hover {
     transform: rotate(30deg);
+}
+
+.scrollButton_down_education {
+    z-index: 20;
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.scrollButton_down_education .fas {
+    color: #0e8ca3;
 }
 
 #banner-title {
@@ -305,6 +343,22 @@ header {
 #banner-title h1 span {
     color: #e0ad2c;  
 }
+
+
+/*****************************************************/
+/**  Home - Bouton de scroll - Retour vers le haut  **/
+/*****************************************************/
+
+.scrollButton_up {
+    z-index: 3;
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 60px; 
+    display: none;
+    cursor: pointer;
+}
+
 
 
 /*****************************************************/
@@ -338,8 +392,9 @@ header {
 /*****************************************************/
 
 #home_education {
-    margin-top: 40px;
-    padding: 25px 20px 30px 20px;
+    position: relative;
+    margin-top: 60px;
+    padding: 150px 20px 90px 20px;
     background-color: #0e8ca3;
     box-shadow: 0px -2px 20px 0px #7a7979;
     filter:progid:DXImageTransform.Microsoft.Shadow(color=#7a7979, Direction=90, Strength=20);
@@ -350,10 +405,22 @@ header {
     text-align: center;
 }
 
+.scrollButton_down_experiences {
+    z-index: 20;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.scrollButton_down_experiences .fas {
+    color: #e0ad2c;
+}
+
 .education_wrap {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 70px;
     padding: 0px 0px 30px 0px;
 }
 
@@ -434,8 +501,21 @@ header {
 }
 
 #home_experiences {
+    position: relative;
     margin-top: 30px;
-    padding: 20px 45px;
+    padding: 150px 20px 90px 20px;
+}
+
+#experiences_header {
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    transform: translate(-50%, -50%);
+}
+
+#experiences_header p {
+    font-size: 16px;
+    color: #4f5054;
 }
 
 #home_experiences h2 {
@@ -444,10 +524,22 @@ header {
     text-align: center;  
 }
 
+.scrollButton_down_map {
+    z-index: 20;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.scrollButton_down_map .fas {
+    color: #e0ad2c;
+}
+
 .experience_wrap {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 90px;
 }
 
 .experience_image img {
@@ -533,7 +625,7 @@ header {
     width: 100%;
     justify-content: center;
     background-color: #dbdce2;
-    padding: 70px 0px;
+    padding: 155px 0px;
     margin-top: 30px;
     box-shadow: 3px 3px 31px 4px rgba(0,0,0,0.75);
 }
@@ -1028,7 +1120,7 @@ footer img {
     margin-right: auto;
     margin-top: 15px;
     width: 720px;
-    height: 600px;
+    /*height: 600px;*/
     overflow: hidden;  
 }
 
@@ -1038,7 +1130,7 @@ footer img {
     left: -720px;
     display: flex;
     width: 720px;
-    height: 600px;
+    /*height: 600px;*/
 }
 
 .slider_wrapper {
@@ -1053,7 +1145,7 @@ footer img {
 .slider_element {
     display: block;
     width: 720px;
-    height: 600px;
+    /*height: 600px;*/
     justify-content: center;
 }
 
@@ -1087,6 +1179,36 @@ footer img {
     color: #e0ad2c;
 }
 
+.project_introduction p {
+    text-align: center;
+    background-color: #edeaea;
+    border-radius: 8px;
+}
+
+.project_view {
+    display: none;
+}
+
+.project_view p:first-child {
+    text-align: justify;
+}
+
+.project_view p:nth-child(2) {
+    text-align: center;
+}
+
+.project_view a {
+    text-decoration: none;
+    color: #e0ad2c;
+    font-weight: bold;
+    margin: auto;
+}
+
+.project_view a span {
+    color: #0e8ca3;
+    margin-right: 5px;
+}
+
 .project_link {
     display: block;
     width: 150px;
@@ -1109,6 +1231,10 @@ footer img {
     color: #4f5054;
     background-color: #e0ad2c;
     font-weight: bold;
+}
+
+.less_link {
+    display: none;
 }
 
 .slider_controll {
