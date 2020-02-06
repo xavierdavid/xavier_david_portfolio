@@ -9,7 +9,7 @@
 <div class="container"> 
    
     {# Affichage de l'article #}
-    <div class="card">
+    <div class="card" id="card_publication_view">
       <div class="card-header">
       <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
       </div>
@@ -17,8 +17,8 @@
         <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
       </div>
       <div class="card-body">
-        <h5 class="card-title"> {{article.title}}</h5>
-        <span class="badge badge-pill badge-light">{{article.category.title}}</span>
+        <h5 class="card-title" id="publication_view_title"> {{article.title}}</h5>
+        <span class="badge badge-pill badge-light" id="publication_view_badge">{{article.category.title}}</span>
         <br>
         <p><em>{{article.introduction | raw}}</em></p>
         <p class="card-text">{{article.content | raw}}</p>
@@ -35,11 +35,14 @@
     {% endfor %}
 
     {# Affichage des commentaires associés à l'article #}
-    <h4>{{ article.comments | length }} commentaire(s)</h4>
+    <div class="comment_header">
+      <h4><i class="fas fa-comment"></i>{{ article.comments | length }} commentaire(s)</h4>
+    </div>
+    
     
     <br>
     
-    <section id="commentaire">
+    <section id="comment_section">
       {% for comment in article.comments %}
         <div class="comment">
           <div class="row">
@@ -60,7 +63,9 @@
     <br>
     
     {# Affichage du formulaire de commentaires #}
-    <h4>Ajouter un commentaire</h4>
+    <div class="add_comment_title">
+      <h4><i class="far fa-comment-dots"></i>Ajouter un commentaire</h4>
+    </div>
     
     <br>
     {# Si l'utilisateur est pas connecté, on affiche le formulaire des commentaires #}

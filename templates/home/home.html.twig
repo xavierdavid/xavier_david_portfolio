@@ -43,7 +43,9 @@
 
     {# Affichage des formations #}
     <section id="home_education">
-              
+        <div id="education_header">
+            <p><a href="{{ path('home_article') }}">Mes derniers articles</a></p>
+        </div>     
         <h2>Formation</h2>
         
         <div class="scrollButton_down_experiences">
@@ -85,7 +87,7 @@
     {# Affichage des expériences professionnelles #}
     <section id="home_experiences">
         <div id="experiences_header">
-            <p>En savoir plus sur mes réalisations ?</p>
+            <p><a href="{{ path('home_project') }}">En savoir plus sur mes réalisations</a></p>
         </div>
         <h2>Experiences</h2>
 
@@ -126,6 +128,9 @@
     
     {# Affichage de la carte du parcours professionnel #}
     <section id="home_map">
+        <div id="map_header">
+            <p><a href="{{ path('contact') }}">Besoin d'infos ?</a></p>
+        </div>
         {# Accueil de la carte #}
         <div id="map_description">
             <h2>Mon parcours</h2>
@@ -152,8 +157,8 @@
     {# Jquery JS #}
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-    {# Anchor Scroll JS #}
-    <script src="{{ asset('js/anchor_scroll.js') }}"></script>
+    {# Scroll JS #}
+    <script src="{{ asset('js/scroll.js') }}"></script>
   
     
 {% endblock body %}

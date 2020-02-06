@@ -10,6 +10,7 @@ let play = document.getElementById("play");
 let moreLink = document.getElementsByClassName("more_link");
 let lessLink = document.getElementsByClassName("less_link");
 let projectView = document.getElementsByClassName("project_view");
+let sliderControll = document.querySelector("div.slider_controll");
 
 
 
@@ -158,7 +159,8 @@ document.addEventListener("keydown", function(evt){
 });
 
 
-// Affichage de la <div> de contenu des projets 
+
+// Affichage dynamique de la <div> de contenu des projets 
 // La méthode 'getElementsByClassName'retourne un type HTMLCollection
 // On parcours tous les éléments (d'indice i) de cette collection pour récupérer chaque élément moreLink et ProjectView
 for(let i=0; i <moreLink.length; i++) {
@@ -168,6 +170,9 @@ for(let i=0; i <moreLink.length; i++) {
 
         // On stoppe le défilement du slider 
         projectSlider.pauseSlider();
+
+        // On masque la barre de contrôle du slider
+        sliderControll.style.display = "none";
 
         // On masque l'élément 'moreLink' 
         moreLink[i].style.display = "none";
@@ -180,11 +185,14 @@ for(let i=0; i <moreLink.length; i++) {
     })
 }
 
-// Fermeture de la <div> de contenu des projets 
+// Fermeture dynamique de la <div> de contenu des projets 
 for(let i=0; i <lessLink.length; i++) {
     lessLink[i].addEventListener("click", function(evt) {
         // On annule le comportement par défaut du lien 
         evt.preventDefault();
+
+        // On affiche la barre de contrôle du slider
+        sliderControll.style.display = "flex";
 
         // On lance le défilement du slider 
         projectSlider.playSlider();
@@ -195,7 +203,7 @@ for(let i=0; i <lessLink.length; i++) {
         moreLink[i].style.display = "block";
 
         // On masque la <div> (ayant l'indice i) de contenu des projets du slider
-        // Modification du style d'affichage avec la propriété 'display: block;'
+        // Modification du style d'affichage avec la propriété 'display: none;'
         projectView[i].style.display = "none";
     })
 }
