@@ -4,19 +4,18 @@
 
 // Scroll vers les ancres de la page à partir des liens avec Jquery
     $(document).ready(function(){
-        // On déclenche l'execution d'une fonction lors du clic sur les ancres de type <a href="#"></a>
+        // On déclenche l'execution d'une fonction lors du clic sur un lien vers les ancres de type <a href="#home_experiences"></a>
         $('a[href^="#"]').on('click',function (e) {
             // On annule le comportement par défaut
             e.preventDefault();
-            // On identifie l'ancre ciblée
-            var target = this.hash,
-            $target = $(target);
-            // On applique l'animation de scroll
-            $('html, body').animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
+            // On récupère la partie '#' de l'url de l'ancre actuellement ciblée (retourne par exemple '#home_experiences')
+            let anchorHash = this.hash;
+            // On identifie l'élément ciblé du DOM vers lequel s'appliquera l'animation du scroll
+            $target = $(anchorHash); // (Ex: $(#home_experiences))
+            // On récupère la position de l'ancre actuellement ciblée
+            let anchorY = $target.offset().top;
+            // On applique l'animation de scroll pour déclencher le défilement jusqu'à l'ancre
+            $('html,body').animate({ scrollTop: anchorY - 90 }, 1000); // On décale de 90 pixels l'affichage pour ne pas coller le bord haut de l'affichage du navigateur et on défile en 1 seconde jusqu'à l'ancre.
         });
     });
 
@@ -109,6 +108,44 @@
         }
 
     });
+
+
+
+    /*$("a[href^='#']").click(function (e) {
+        let 
+        yPos,
+        yInitPos,
+        target = ($($(this).attr("href") + ":first"));
+        
+        // On annule le comportement initial au cas ou la base soit différente de la page courante.
+        e.preventDefault();
+        
+        // On récupère la position du scroll en cours sur la page
+        yInitPos = $(window).scrollTop();
+        
+        // On ajoute le hash dans l'url.
+        window.location.hash = $(this).attr("href");
+        
+        // Comme il est possible que l'ajout du hash perturbe le défilement, on va forcer le scrollTop à son endroit inital.
+        $(window).scrollTop(yInitPos);
+        
+        // On cible manuellement l'ancre pour en extraire sa position.
+        // Si c'est un ID on l'obtient.
+        target = ($($(this).attr("href") + ":first"));
+         
+        // Sinon on cherche l'ancre dans le name d'un a.
+        if (target.length == 0) {
+        target = ($("a[name=" + $(this).attr("href").replace(/#/gi,"") + "]:first"))
+        }
+        
+        // Si on a trouvé un name ou un id, on défile.
+        if (target.length == 1) {
+        yPos = target.offset().top; // Position de l'ancre.
+        
+        // On anime le défilement jusqu'à l'ancre.
+        $('html,body').animate({ scrollTop: yPos - 90 }, 1000); // On décale de 90 pixels l'affichage pour ne pas coller le bord haut de l'affichage du navigateur et on défile en 1 seconde jusqu'à l'ancre.
+        }
+        });*/
     
     
 

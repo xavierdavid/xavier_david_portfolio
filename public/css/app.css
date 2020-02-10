@@ -227,7 +227,6 @@ header {
 #user-status {
     display: flex;
     justify-content: center;
-    /*margin: 20px 0px;*/
     padding-top: 15px;
     height: 60px;
     background: #ffffff;    
@@ -303,7 +302,8 @@ header {
 #main-banner {
     width: 100%;
     position: relative;
-    margin: 130px 0px 155px 0px;
+    /*margin: 130px 0px 155px 0px;*/
+    margin: 70px 0px 155px 0px;
 }
 
 #profil-image {
@@ -339,7 +339,7 @@ header {
 
 #banner-title {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
 }
@@ -365,10 +365,14 @@ header {
     z-index: 3;
     display: block;
     position: fixed;
-    right: 20px;
-    bottom: 60px; 
+    right: 30px;
+    bottom: 90px; 
     display: none;
-    cursor: pointer;
+    cursor: pointer;  
+}
+
+.scrollButton_up i {
+    color: #e0ad2c;
 }
 
 
@@ -460,6 +464,7 @@ header {
 
 .education_wrap {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 70px;
     padding: 0px 0px 30px 0px;
@@ -467,7 +472,7 @@ header {
 
 .education_card {
     position: relative;
-    width: 23%;
+    width: 20%;
     overflow: hidden;
     background-color: #ffffff;
     border-radius: 8%;
@@ -518,6 +523,7 @@ header {
 .education_link a {
     text-decoration: none;
     color: #e0ad2c;
+    font-size: 13px;
 }
 
 .education_link a:hover {
@@ -543,8 +549,9 @@ header {
 
 #home_experiences {
     position: relative;
-    margin-top: 30px;
     padding: 150px 20px 90px 20px;
+    background: rgb(252,252,252);
+    background: linear-gradient(0deg, rgba(252,252,252,1) 60%, rgba(194,195,199,1) 100%);
 }
 
 #experiences_header {
@@ -596,6 +603,7 @@ header {
 
 .experience_wrap {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 90px;
 }
@@ -608,7 +616,7 @@ header {
 
 .experience_content {
     display: flex;
-    width: 45%;
+    width: 40%;
 }
 
 .experience_description {
@@ -644,7 +652,7 @@ header {
     content: " ";
     display: inline-block;
     vertical-align: middle;
-    width : 75px;
+    width : 60px;
     height : 0px;
     border-bottom: 2px #edeaea solid;
     margin-left: 20px;
@@ -654,24 +662,30 @@ header {
 .experience_period p {
     color: #9e9fa3;
     margin-top: 30px;
+    font-size: 14px;
 }
 
 .experience_link {
     width: 30%;
     padding: 30px 5px;
-    text-align: end;
+    text-align: end; 
 }
 
 .experience_link a {
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
-    color: #4f5054;
+    color:#0e8ca3;
     font-weight: bold;
+    border: 2px solid #e0ad2c;
+    border-radius: 20px;
+    padding:10px;
+    
 }
 
 .experience_link a:hover {
-    color: #0e8ca3;
+    color: #ffffff;
     font-weight: bold;
+    background-color: #0e8ca3;
 }
 
 
@@ -712,8 +726,16 @@ header {
     margin: auto;  
 }
     
-#map_description h2, #map_description p {
+#map_description h2 {
     text-align: center;
+}
+
+#map_description p:first-child {
+    text-align: center;
+}
+
+#map_description p {
+    text-align: justify;
 }
 
 .map_title p {
@@ -849,7 +871,7 @@ footer img {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 70px;
+    height: 60px;
     background-color:#242425; 
     padding: 10px; 
 }
@@ -880,15 +902,33 @@ footer img {
 /*****************************************************/
 
 .contact_wrap {
-    margin-top: 0px;
+    margin-top: 60px;
 }
 
 .contact_header {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
-#contact_image1 img, #contact_image2 img {
+.contact_header img {
+    width: 120px;
+    height: 130px; 
+    margin-right: 25px;
+}
+
+.contact_header p {
+    width: 40%;
+    margin-top: 40px;
+    text-align: justify;
+}
+
+#contact_image1 {
+    text-align: center;
+}
+
+#contact_image1 img {
     width: 120px;
     height: 130px;
     border-radius: 50%;
@@ -953,32 +993,30 @@ footer img {
     padding: 30px;
 }
 
-.contact_adresse {
-    display: flex;
-}
-
 #contact_infos {
-    padding: 25px;
+    padding: 15px;
+    width: 100%;
 }
 
-.social_link {
+#social_link {
     display: flex;
     justify-content: start;
-    margin-top: 45px;
+    margin-top: 30px;
 }
 
-.social_link a {
+#social_link a {
     margin: 0px 10px;
 }
 
-.social_link p {
+#social_link p {
     font-weight: bold;
+    color: #202020;
 }
 
 .contact_adresse p {
-    margin-left: 20px;
+    margin-left: 0px;
     color: #4f5054;
-    margin-bottom: 3px;
+    margin-bottom: 0px;
 }
 
 .form_contact input:focus {
@@ -1033,6 +1071,7 @@ footer img {
 #dashboard-menu {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 80px;
 }
 
 #dashboard-menu a {
@@ -1161,7 +1200,7 @@ footer img {
 
 #banner-title-animate {
     position: absolute;
-    top: 62%;
+    top: 57%;
     left: 50%;
     transform: translate(-50%, -35%); /* décalage de 50% de sa propre taille */
     animation: title_animation 1s ease-out;
@@ -1177,8 +1216,15 @@ footer img {
     z-index: 20;
 }
 
+#banner-title-animate p i {
+    margin-right: 10px;
+    color: #e0ad2c;
+}
 
-
+#banner-title-animate p {
+    font-size: 16px;
+    color:#9e9fa3;
+}
 
 
 /*****************************************************/
@@ -1407,6 +1453,10 @@ footer img {
     position: relative;
 }
 
+#publication_deck {
+    width: 30em;
+}
+
 #publication_link {
     display: block;
     margin: auto;
@@ -1544,11 +1594,11 @@ footer img {
 /***                  Média Queries                ***/
 /*****************************************************/
 
-/* Affichage tablette */
+/* Affichage tablette (1024 x 768) */
 @media all and (max-width: 1024px) {
 
     
-    /* Affichage du menu */
+    /*************** Affichage du menu ***************/
     
     #hamburger-content {
         display: none; /* On masque le menu 'ordinateur' */
@@ -1594,7 +1644,6 @@ footer img {
     .button-sign-in:hover {
         text-decoration: none;
         color: #ffffff;
-       /* transform: scale(1.5) !important;*/
     }
 
     .button-sign-in:active {
@@ -1603,10 +1652,153 @@ footer img {
        transform: scale(.98);
     }
 
+    /****** Affichage des formations - page Home *****/
+
+    #education_header {
+        top: 12%;
+    }
+
+    .scrollButton_down_experiences {
+        top: 28%;
+    }
+
+    .education_card {
+        width: 38%;
+        height: 220px;
+        box-shadow: 10px 10px #e0ad2c;
+        justify-content: space-between;
+        margin: 15px;
+    }
+
+    /****** Affichage des experiences - page Home *****/
+    
+    .scrollButton_down_map {
+        top: 26%;
+    }
+
+    .experience_period {
+        width: 100%;
+    }
+
+    .experience_period p {
+        text-align: center;
+    }
+
+    .experience_period p:after {
+        content: none;
+    }
+
+    .experience_content {
+        width: 50%;
+    }
+
+    .experience_link {
+        width: 50%;
+    }
+
+    /*********** Affichage de la carte **********/
+
+    #mapid {
+        width: 70%;
+        height: 60vh;
+    }
+
+
+    /************ Affichage du footer ***********/
+
+    #footer_item1 {
+        left: 32%;
+    }
+
 }
 
 
 
+/* Affichage mobile grand / tablette moyenne (moins de 768px) */
+@media all and (max-width: 768px) {
+
+    /****** Affichage de la bannière - page Home *****/
+
+    #banner-title {
+        top: 36%; 
+    }
+
+    #banner-title h1 {
+        font-size: 36px;
+    }
+
+    /***** Bouton scroll vers le haut - page Home ****/
+
+    .scrollButton_up {
+        right: 8px;
+        bottom: 49px;
+    }
+    
+    /****** Affichage des formations - page Home *****/
+
+    #education_header {
+        top: 12%;
+    }
+
+    .scrollButton_down_experiences {
+        top: 25%;
+    }
+
+    .education_card {
+        width: 42%;
+    }
+
+    /****** Affichage des experiences - page Home *****/
+
+    .experience_wrap {
+        margin-top: 50px;
+    }
+
+    #experiences_header {
+        top: 10%;
+    }
+
+    .scrollButton_down_map {
+        top: 24%;
+    }
+    
+    .experience_content {
+        width: 100%;
+        padding-left: 5%;
+    }
+
+    .experience_link {
+        width: 100%;
+        text-align: center;
+    }
+
+    /*********** Affichage de la carte **********/
+
+    #mapid {
+        width: 70%;
+        height: 60vh;
+    }
+
+
+    /************ Affichage du footer ***********/
+
+    #footer_item1 {
+        left: 27%;
+        top: 32%;
+    }
+    
+    #footer_item1 h4 {
+        font-size: 20px;
+    }
+
+    #footer_item1 li {
+        font-size: 14px;
+    }
+
+    footer img {
+        left: 0%;
+        top: 2%;
+    }
 
 
 
@@ -1620,4 +1812,20 @@ footer img {
 
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/
+
+
+
+
+}
+
+/* Affichage mobile moyen (moins de 576px) */
+@media all and (max-device-width: 576px) {
+
+
+}
+
+/* Affichage mobile petit (moins de 375px) */
+@media all and (max-device-width: 375px) {
+
+
+}

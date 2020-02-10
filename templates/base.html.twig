@@ -74,7 +74,7 @@
 
             {# Accueil utilisateur - Accès au tableau de bord 'admin' #}
             
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div id="user-status">
                     <div id="user-message">
                         <p>Bonjour {{app.user.username}} !</p>
@@ -85,7 +85,7 @@
                         </div>
                     {% endif %}
                 </div>   
-                {% endif %}
+            {% endif %}
                 
         </header>
         

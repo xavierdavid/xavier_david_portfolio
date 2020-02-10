@@ -56,11 +56,9 @@
         
         <div class="education_wrap">
             {% for education in educations %}
-                
+             
                 <div class="education_card">
-                    {#<figure class="education_image">#}
-                        <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="education_image">
-                    {#</figure>#}
+                    <img src="{{ asset('uploads/images/'~ education.imageFilename) }}" alt="education_image">
                
                     <div class="education_description">
                         <div class="education_certification">
@@ -80,6 +78,7 @@
                         <span><a href="{{education.url | raw}}" target="_blank">{{education.url}}</a></span> 
                     </div>
                 </div>
+     
             {% endfor %}
         </div>
     </section>

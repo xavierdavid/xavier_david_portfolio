@@ -13,6 +13,7 @@
     </figure> 
     <div id="banner-title-animate">
         <h1>Publications</h1>
+        <p><span><i class="fas fa-rss fa-2x"></i></span>Dernières news et infos ...</p>
     </div>
 </div>
 
@@ -30,7 +31,7 @@
         {# Affichage des dernières publications #}
         <article class="publication_container">
             {% for article in articles %}
-                <div class="card-deck">
+                <div class="card-deck" id="publication_deck">
                     <div class="card">
                         <div class="image_block">
                             <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
