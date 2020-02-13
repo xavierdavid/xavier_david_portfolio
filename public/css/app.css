@@ -372,7 +372,7 @@ header {
 }
 
 .scrollButton_up i {
-    color: #e0ad2c;
+    color: #9e9fa3;
 }
 
 
@@ -976,6 +976,11 @@ footer img {
     margin:auto; 
 }
 
+.form_contact button {
+    margin-top: 12px;
+
+}
+
 .form_contact .col-form-label {
     color: #ffffff;
 }
@@ -1011,6 +1016,10 @@ footer img {
 #social_link p {
     font-weight: bold;
     color: #202020;
+}
+
+.contact_adresse {
+    margin-right: 10px;
 }
 
 .contact_adresse p {
@@ -1248,6 +1257,10 @@ footer img {
     font-weight: bold;
 }
 
+.project_wrap p {
+    padding: 10px 10px;
+}
+
 #slider_container {
     position: relative;
     margin-left: auto;
@@ -1425,6 +1438,10 @@ footer img {
     margin-top: 30px;
 }
 
+.publication_wrap p {
+    padding: 10px 10px;
+}
+
 .publication_container {
     margin-bottom: 100px;
     margin-top: 40px;
@@ -1455,6 +1472,11 @@ footer img {
 
 #publication_deck {
     width: 30em;
+}
+
+#publication_deck .card {
+    margin-right: 20px;
+    margin-left: 0px;
 }
 
 #publication_link {
@@ -1594,10 +1616,9 @@ footer img {
 /***                  Média Queries                ***/
 /*****************************************************/
 
-/* Affichage tablette (1024 x 768) */
+/* Affichage tablette grand format jusqu'à 1024px (991px à 1024px : Ipad Pro) */
 @media all and (max-width: 1024px) {
 
-    
     /*************** Affichage du menu ***************/
     
     #hamburger-content {
@@ -1713,9 +1734,85 @@ footer img {
 }
 
 
+/* Affichage tablette moyen format jusqu'à 991px (768px à 991px : Ipad) */
+@media all and (max-width: 991px) {
 
-/* Affichage mobile grand / tablette moyenne (moins de 768px) */
-@media all and (max-width: 768px) {
+    #profil-image img {
+        width: 200px;
+        height: 225px;
+    }
+    
+    /**** Affichage des formation - Page d'accueil ****/
+    .education_link a {
+        font-size: 12px;
+    }
+
+    /************ Affichage du slider des projets ***********/
+    
+    #slider_container {
+        width: 690px;
+    }
+
+    #slider {
+        width: 690px;
+        left: -690px;
+    }
+
+    .slider_element {
+        width: 690px;
+    }
+
+    .project_introduction p {
+        font-size: 13px;
+    }
+
+    /***** Affichage du formulaire de contact ***/
+
+    .contact_form_wrap {
+        width: 100%;
+    }
+
+    .form_contact {
+        width: 90%;
+    }
+
+    .form_contact label, .form_contact button {
+        font-size: 14px;
+    }
+
+    .form_contact button {
+        margin-top: 25px;
+    }
+
+    .form_contact input, .form_contact textarea {
+        font-size: 14px;
+    }
+
+    /**** Affichage du bloc infos de la page de contact ****/
+
+    .contact_footer {
+        flex-wrap: wrap;
+    }
+
+    #contact_infos {
+        width: 70%;
+        margin: auto;
+    }
+
+    #social_link {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* Affichage tablette petit format jusqu'à 767px (576px à 767px : Samsung Galaxy Tab) */
+@media all and (max-width: 767px) {
+
+    /****** Affichage du menu toogle *****/
+    .button-sign-in {
+        font-size: 16px;
+    }
 
     /****** Affichage de la bannière - page Home *****/
 
@@ -1784,11 +1881,12 @@ footer img {
 
     #footer_item1 {
         left: 27%;
-        top: 32%;
+        top: 39%;
     }
     
     #footer_item1 h4 {
         font-size: 20px;
+        margin-bottom: 16px;
     }
 
     #footer_item1 li {
@@ -1800,32 +1898,808 @@ footer img {
         top: 2%;
     }
 
+    #portfolio_copyright p {
+        font-size: 14px;
+    }
 
+    /************ Affichage du slider des projets ***********/
+    #slider_container {
+        width: 510px;
+    }
 
+    #slider {
+        width: 510px;
+        left: -510px;
+    }
 
+    .slider_element {
+        width: 510px;
+    }
 
+    .slider_element img {
+        width: 495px;
+        height: 330px;
+        margin-left: 7px;
+    }
 
+    .project_view p {
+        font-size: 14px;
+    }
 
+    /************** Affichage des publications *************/
+    
+    .publication_container {
+        flex-wrap: wrap;
+    }
+    
+    #publication_deck {
+        width: 33em;
+        margin-bottom: 60px;
+    }
 
+    /**** Affichage du bloc infos de la page de contact ****/
 
+    .contact_footer {
+        flex-wrap: wrap;
+    }
 
+    #contact_infos {
+        width: 70%;
+        margin: auto;
+    }
 
+    #social_link {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
 
-
-
-
-
-
+    /*** Affichage de ma map de la page de contact ***/
+    #contact_map {
+        width: 500px;
+     }
+     
+     #contact_map iframe {
+        width: 500px;
+     }
 }
 
-/* Affichage mobile moyen (moins de 576px) */
-@media all and (max-device-width: 576px) {
 
+/* Affichage mobile grand format jusqu'à 575px (470px à 575px)*/
+@media all and (max-width: 575px) {
 
+    .scrollButton_up {
+        right: 20px;
+        bottom: 60px;
+    }
+
+    #banner-title-animate {
+        width: 100%;
+    }
+
+    #banner-title-animate h1 {
+        font-size: 45px;
+    }
+
+    #banner-title-animate p {
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    /****** Affichage de la bannière - page Home *****/
+   
+    #main-banner {
+        margin: 70px 0px 115px 0px;
+    }
+    
+    #banner-title {
+        top: 36%;
+    }
+
+    #banner-title h1 {
+        font-size: 36px;
+    }
+
+    .scrollButton_down_education {
+        top: 120%;
+    }
+
+    #banner-title-animate p {
+        font-size: 14px;
+    }
+
+    #profil-image img {
+        width: 170px;
+        height: 185px;
+    }
+
+    /***** Bouton scroll vers le haut - page Home ****/
+
+    .scrollButton_up {
+        right: 8px;
+        bottom: 49px;
+    }
+    
+    /****** Affichage des formations - page Home *****/
+
+    #education_header {
+        top: 6%;
+    }
+
+    .education_card {
+        width: 75%;
+        height: 250px;
+    }
+
+    .scrollButton_down_experiences {
+        top: 15%;
+    }
+
+    .education_card img {
+        width: 60%;
+        height: 45%;
+    }
+
+    .education_description {
+        margin-top: 12px;
+    }
+
+    .education_certification p {
+
+        font-size: 18px;
+    }
+
+    .education_link {
+        height: 15%;
+    }
+
+    /****** Affichage des experiences - page Home *****/
+
+    .experience_wrap {
+        margin-top: 50px;
+    }
+
+    #experiences_header {
+        top: 10%;
+    }
+
+    .scrollButton_down_map {
+        top: 24%;
+    }
+    
+    .experience_content {
+        width: 100%;
+        padding-left: 5%;
+    }
+
+    .experience_link {
+        width: 100%;
+        text-align: center;
+    }
+
+    /*********** Affichage de la carte **********/
+
+    #mapid {
+        width: 85%;
+        height: 50vh;
+    }
+
+    /************ Affichage du footer ***********/
+    
+    #footer_item1 h4 {
+        font-size: 20px;
+    }
+
+    #footer_item1 li {
+        font-size: 14px;
+    }
+
+    #footer_item1 li:before {
+        margin-right: 6px;
+    }
+
+    footer img {
+        width: 130%;
+        height: 105%;
+        left: -25%;
+        top: -4%;
+    }
+
+    #footer_item1 {
+        left: 13%;
+        top: 36%;
+    }
+
+    #portfolio_copyright p {
+        font-size: 12px;
+    }
+
+    /************ Affichage du slider des projets ***********/
+    
+    .project_wrap h1 {
+        font-size: 35px;
+    }
+   
+    #slider_container {
+        width: 418px;
+    }
+
+    #slider {
+        width: 418px;
+        left: -418px;
+    }
+
+    .slider_element {
+        width: 418px;
+    }
+
+    .slider_element img {
+        width: 410px;
+        height: 275px;
+        margin-left: 4px;
+    }
+
+    .project_view p {
+        font-size: 14px;
+    }
+
+    /************ Affichage des publications ***********/
+
+    .publication_wrap h1 {
+        font-size: 35px;
+    }
+
+    /********** Affichage du formulaire de contact **********/
+    
+    .contact_wrap h1 {
+        font-size: 35px;
+    }
+
+    .contact_form_wrap {
+        width: 95%;
+        height: 515px;
+        padding: 30px 0px 60px 0px;
+    }
+
+    .form_contact button {
+        margin-top: 40px;
+    }
+
+    /*** Affichage de ma map de la page de contact ***/
+    #contact_map {
+        width: 400px;
+     }
+     
+     #contact_map iframe {
+        width: 400px;
+     }
+      
 }
 
-/* Affichage mobile petit (moins de 375px) */
-@media all and (max-device-width: 375px) {
 
+/* Affichage mobile grand format jusqu'à 470px (421px à 470px : Pixel2) */
+@media all and (max-width: 470px) {
+
+    /*************** Menu Toogle **************/
+
+    #hamburger-sidebar-body ul {
+        padding-left: 8px;
+    }
+
+    #hamburger-sidebar-body ul a {
+        font-size: 14px;
+    }
+
+    .button-sign-in {
+        font-size: 14px;
+    }
+
+    /****** Bannière image - Page d'accueil *****/
+
+    #main-banner {
+        margin: 70px 0px 115px 0px;
+    }
+
+    #banner-title h1 {
+        font-size: 35px;
+    }
+
+    #banner-title {
+        top: 36%;
+    }
+
+    #education_header a {
+        font-size: 18px;
+    }
+
+    #profil-image img {
+        width: 170px;
+        height: 185px;
+    }
+
+    .scrollButton_down_education {
+        top: 120%;
+    }
+
+    #home_profil h2{
+        font-size: 1.5em;
+    }
+
+    #home_profil {
+        width: 85%;
+    }
+
+    /****** Formations - Page d'accueil *****/
+
+    #home_education {
+        padding: 128px 20px 28px 20px;
+    }
+
+    .education_wrap {
+        margin-top: 50px;
+    }
+
+    .education_card {
+        width: 90%;
+        height: 195px;
+    }
+
+    #home_education h2 {
+        font-size: 1.9em;
+    }
+
+    #education_header {
+        top: 7%;
+    }
+
+    #education_header a {
+        font-size: 16px;
+    }
+
+    .education_card {
+        width: 90%;
+        height: 215px;
+    }
+
+    .education_card img {
+        width: 60%;
+        height: 38%;
+    }
+
+    .education_certification p {
+        font-size: 17px;
+    }
+
+    .education_period p {
+        font-size: 14px;
+    }
+
+    .education_link {
+        height: 18%;
+    }
+
+    /****** Expériences - Page d'accueil *****/
+
+    #home_experiences {
+        padding: 150px 20px 40px 20px;
+    }
+
+    #experiences_header {
+        width: 275px;
+    }
+
+    #experiences_header a {
+        font-size: 16px;
+    }
+
+    #home_experiences h2 {
+        font-size: 1.9em;
+    }
+
+    .experience_description p:first-child {
+        font-size: 16px;
+    }
+
+    .experience_description p {
+        font-size: 14px;
+    }
+
+    .experience_content {
+        padding-left: 0%;
+    }
+
+    /****** Map - Page d'accueil *****/
+    
+    #map_header a {
+        font-size: 16px;
+    }
+
+    #home_map {
+        padding: 130px 0px;
+    }
+
+    #map_description {
+        width: 85%;
+    }
+
+    #mapid {
+        width: 85%;
+        height: 50vh;
+    }
+
+    /****** Affichage du footer *****/
+
+    footer img {
+        width: 136%;
+        height: 82%;
+        left: -25%;
+        top: 4%;
+    }
+
+    #footer_item1 {
+        left: 13%;
+        top: 36%;
+    }
+
+    #portfolio_copyright p {
+        font-size: 12px;
+    }
+
+    /************ Affichage du slider des projets ***********/
+    #slider_container {
+        width: 388px;
+    }
+
+    #slider {
+        width: 388px;
+        left: -388px;
+    }
+
+    .slider_element {
+        width: 388px;
+    }
+
+    .slider_element img {
+        width: 380px;
+        height: 255px;
+        margin-left: 4px;
+    }
+
+    .project_introduction {
+        width: 90%;
+        margin: auto;
+    }
+
+    .project_view p {
+        font-size: 14px;
+    }
+
+    /*** Affichage de la map de la page de contact ***/
+    #contact_map {
+        width: 370px;
+     }
+     
+     #contact_map iframe {
+        width: 370px;
+     }
+}
+
+/* Affichage mobile moyen format jusqu'à 420px (380px à 420px : Pixel2) */
+@media all and (max-width: 420px) {
+
+    /*************** Menu Toogle **************/
+
+    #hamburger-sidebar {
+        width: 50%;
+    }
+
+    /****** Map - Page d'accueil *****/
+    
+    #map_header a {
+        font-size: 16px;
+    }
+
+    #home_map {
+        padding: 130px 0px;
+    }
+
+    #map_description {
+        width: 85%;
+    }
+
+    #mapid {
+        width: 85%;
+        height: 50vh;
+    }
+
+    /****** Affichage du footer *****/
+    
+    #footer_link a {
+        font-size: 13px;
+    }
+
+    #footer_item1 li {
+        font-size: 13px;
+    }
+
+    #portfolio_copyright p {
+        font-size: 11px;
+    }
+
+    /************ Affichage du slider des projets ***********/
+   
+    #slider_container {
+        width: 351px;
+    }
+
+    #slider {
+        width: 351px;
+        left: -351px;
+    }
+
+    .slider_element {
+        width: 351px;
+    }
+
+    .slider_element img {
+        width: 335px;
+        height: 225px;
+        margin-left: 10px;
+    }
+
+    .project_view p {
+        font-size: 14px;
+    }
+
+    /************ Affichage des publications ***********/
+
+    .publication_wrap p {
+        padding: 10px 10px;
+        font-size: 16px;
+    }
+
+    .publication_card {
+        width: 100%;
+        margin: auto;
+    }
+
+    .image_block {
+        margin-top: 5px;
+    }
+
+    #publication_deck {
+        width: 33em;
+        margin-bottom: 20px;
+    }
+
+    .publication_container {
+        margin-bottom: 30px;
+        margin-top: 40px;
+    }
+
+    /************ Affichage de la page de contact ***********/
+
+    .contact_wrap h1 {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    .contact_wrap p {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+
+    .contact_header {
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .contact_header p {
+        width: 90%;
+        margin-top: 0px;
+    }
+
+    .contact_header img {
+        margin-right: 0px;
+    }
+
+    .contact_wrap {
+        margin-top: 20px;
+    }
+
+    #contact_infos {
+        width: 100%;
+        margin: auto;
+        padding: 0px;
+    }
+
+    #social_link {
+        margin-top: 0px;
+    }
+}
+
+
+/* Affichage mobile grand format jusqu'à 379px (Iphone 5) */
+@media all and (max-width: 379px) {
+
+    #user-message p {
+        font-size: 13px;
+    }
+
+    #admin-access {
+        margin-left: 10px;
+    }
+
+    #admin-access p {
+        font-size: 13px;
+    }
+
+    #banner-title {
+        top: 36%;
+    }
+
+    #home_profil p {
+        font-size: 14px;
+    }
+
+    #education_header {
+        top: 7%;
+        width: 180px;
+    }
+
+    #home_education h2 {
+        font-size: 1.7em;
+    }
+
+    .education_card img {
+        width: 60%;
+        height: 34%;
+    }
+
+    .education_card {
+        width: 95%;
+        height: 195px;
+    }
+
+    .education_certification p {
+        font-size: 15px;
+    }
+
+    .education_period p {
+        font-size: 13px;
+    }
+
+    #home_experiences h2 {
+        font-size: 1.7em;
+    }
+
+    #home_education {
+        padding: 112px 20px 28px 20px;
+    }
+
+    .scrollButton_down_experiences {
+        top: 15%;
+    }
+
+    .experience_link a {
+        font-size: 13px;
+    }
+
+    .experience_description p:first-child {
+        font-size: 14px;
+    }
+
+    .experience_description {
+        padding-left: 10px;
+        width: 100%;
+    }
+
+    .experience_image img {
+        width: 60px;
+        height: 60px;
+    }
+
+    #mapid {
+        width: 90%;
+        height: 45vh;
+    }
+
+    #footer_item1 {
+        left: 20%;
+        top: 33%;
+    }
+
+    #portfolio_copyright a {
+        margin: 0px 0px;
+    }
+
+    #portfolio_copyright p {
+        font-size: 10px;
+        margin: 0px;
+    }
+
+    #banner-title-animate h1 {
+        font-size: 40px;
+    }
+
+    /************ Affichage du slider des projets ***********/
+   
+    .project_wrap h1 {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    #slider_container {
+        width: 290px;
+    }
+
+    #slider {
+        width: 290px;
+        left: -290px;
+    }
+
+    .slider_element {
+        width: 290px;
+    }
+
+    .slider_element img {
+        width: 280px;
+        height: 225px;
+        margin-left: 5px;
+    }
+
+    .project_view p {
+        font-size: 14px;
+    }
+
+    /************ Affichage des publications ***********/
+
+    .publication_wrap p {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+
+    .publication_card {
+        width: 100%;
+        margin: auto;
+    }
+
+    .publication_card p {
+        font-size: 14px;
+    }
+
+    .publication_wrap h1 {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    /*** Affichage de la map de la page de contact ***/
+
+    #contact_map {
+        width: 300px;
+     }
+     
+     #contact_map iframe {
+        width: 300px;
+     }
+
+     #map_description p {
+        font-size: 14px;
+    }
+
+    /*** Affichage du footer ***/
+    
+    #footer_item1 {
+        left: 12%;
+        top: 33%;
+        width: 75%;
+    }
+
+    footer img {
+        width: 179%;
+        height: 82%;
+        left: -63%;
+        top: 4%;
+    }
 
 }
