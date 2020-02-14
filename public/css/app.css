@@ -552,6 +552,7 @@ header {
     padding: 150px 20px 90px 20px;
     background: rgb(252,252,252);
     background: linear-gradient(0deg, rgba(252,252,252,1) 60%, rgba(194,195,199,1) 100%);
+    overflow: hidden;
 }
 
 #experiences_header {
@@ -902,7 +903,7 @@ footer img {
 /*****************************************************/
 
 .contact_wrap {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .contact_header {
@@ -1060,7 +1061,7 @@ footer img {
 
 #dashboard-banner-title {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
 }
@@ -1080,6 +1081,7 @@ footer img {
 #dashboard-menu {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     margin-bottom: 80px;
 }
 
@@ -1090,13 +1092,18 @@ footer img {
 
 .dashboard_button {
     display: block;
-    width: 190px;
-    height: 50px;
+    width: 170px;
+    height: 48px;
     background-color: #0e8ca3;
-    border-radius: 15px;
+    border-radius: 20px;
     text-align: center;
-    font-size: 18px;
+    font-size: 17px;
     padding-top: 10px;
+    margin: 10px 10px;
+}
+
+.dashboard_button:hover {
+    background-color: #e0ad2c;
 }
 
 
@@ -1108,9 +1115,19 @@ footer img {
     display: block;
 }
 
+#admin_menu {
+    margin-bottom: 35px;
+}
+
+.card-footer .btn {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+
 
 /*****************************************************/
-/**      Tableau de bord : articles et projets      **/
+/**        Back Office : articles et projets        **/
 /*****************************************************/
 
 /* Marge sous la barre de navigation */
@@ -1524,7 +1541,7 @@ footer img {
 }
 
 .image_block {
-    margin-top: 65px;
+    margin-top: 35px;
 }
 
 .image_block img {
@@ -1616,7 +1633,8 @@ footer img {
 /***                  Média Queries                ***/
 /*****************************************************/
 
-/* Affichage tablette grand format jusqu'à 1024px (991px à 1024px : Ipad Pro) */
+
+/* Affichage tablette grand format jusqu'à 1024px (992px à 1024px : Ipad Pro) */
 @media all and (max-width: 1024px) {
 
     /*************** Affichage du menu ***************/
@@ -1724,13 +1742,29 @@ footer img {
         height: 60vh;
     }
 
-
     /************ Affichage du footer ***********/
 
     #footer_item1 {
         left: 32%;
     }
 
+    /*** Affichage du menu du Back - Office ******/
+
+    #dashboard-banner-title {
+        top: 50%;
+    }
+
+    .dashboard_button {
+        width: 260px;
+    }
+
+    #dashboard-banner-title h1 {
+        font-size: 45px;
+    }
+
+    .card-footer .btn {
+        width: 30%;
+    }
 }
 
 
@@ -1743,6 +1777,7 @@ footer img {
     }
     
     /**** Affichage des formation - Page d'accueil ****/
+
     .education_link a {
         font-size: 12px;
     }
@@ -1764,6 +1799,12 @@ footer img {
 
     .project_introduction p {
         font-size: 13px;
+    }
+
+    /************ Affichage des publications ***********/
+
+    .image_block {
+        margin-top: 10px;
     }
 
     /***** Affichage du formulaire de contact ***/
@@ -1803,6 +1844,27 @@ footer img {
         justify-content: center;
         margin-bottom: 30px;
     }
+
+    /*** Affichage du menu du Back - Office ******/
+
+    #dashboard-banner-title {
+        top: 51%;
+        left: 50%;
+        width: 50%;
+    }
+
+    #dashboard-main-banner {
+        margin: 130px 0px 50px 0px;
+    }
+
+    #dashboard-menu {
+        margin-bottom: 50px;
+    }
+
+    .card-footer .btn {
+        width: 49%;
+    }
+
 }
 
 
@@ -1953,18 +2015,34 @@ footer img {
         margin-bottom: 30px;
     }
 
-    /*** Affichage de ma map de la page de contact ***/
+    /*** Affichage de la map de la page de contact ***/
+    
     #contact_map {
         width: 500px;
      }
      
-     #contact_map iframe {
+    #contact_map iframe {
         width: 500px;
-     }
+    }
+
+    /******* Affichage du menu du Back - Office *******/
+
+    .dashboard_button {
+        width: 210px;
+    }
+
+    .jumbotron h1 {
+        font-size: 35px;
+    } 
+
+    #admin_menu h3, #admin_menu h4, #content h3 {
+        font-size: 25px;
+    }
+
 }
 
 
-/* Affichage mobile grand format jusqu'à 575px (470px à 575px)*/
+/* Affichage mobile grand format jusqu'à 575px (471px à 575px)*/
 @media all and (max-width: 575px) {
 
     .scrollButton_up {
@@ -2169,10 +2247,26 @@ footer img {
         width: 400px;
      }
      
-     #contact_map iframe {
+    #contact_map iframe {
         width: 400px;
-     }
-      
+    }
+
+    /*** Affichage du menu du back- Office ******/
+
+    #dashboard-banner-title {
+        width: 60%;
+    }
+
+    #dashboard-banner-title h1 {
+        font-size: 40px;
+    }
+    
+    .dashboard_button {
+        width: 170px;
+        height: 46px;
+        font-size: 16px;
+    }
+  
 }
 
 
@@ -2374,6 +2468,7 @@ footer img {
     }
 
     /*** Affichage de la map de la page de contact ***/
+    
     #contact_map {
         width: 370px;
      }
@@ -2381,7 +2476,24 @@ footer img {
      #contact_map iframe {
         width: 370px;
      }
+
+    /*** Affichage du menu du back- Office ******/
+
+    #dashboard-banner-title {
+        width: 60%;
+    }
+
+    #dashboard-banner-title h1 {
+        font-size: 35px;
+    }
+    
+    .dashboard_button {
+        width: 160px;
+        height: 44px;
+        font-size: 15px;
+    }
 }
+
 
 /* Affichage mobile moyen format jusqu'à 420px (380px à 420px : Pixel2) */
 @media all and (max-width: 420px) {
@@ -2423,6 +2535,28 @@ footer img {
 
     #portfolio_copyright p {
         font-size: 11px;
+    }
+    
+    #footer_item1 {
+        left: 12%;
+        top: 33%;
+        width: 75%;
+    }
+
+    footer img {
+        width: 179%;
+        height: 82%;
+        left: -63%;
+        top: 4%;
+    }
+
+    #portfolio_copyright a {
+        margin: 0px 0px;
+    }
+
+    #portfolio_copyright p {
+        font-size: 10px;
+        margin: 0px;
     }
 
     /************ Affichage du slider des projets ***********/
@@ -2516,6 +2650,24 @@ footer img {
     #social_link {
         margin-top: 0px;
     }
+
+    /*** Affichage du menu du back- Office ******/
+    
+    .dashboard_button {
+        width: 150px;
+    }
+
+    .card-footer a {
+        font-size: 14px;
+    }
+
+    .jumbotron h1 {
+        font-size: 30px;
+    } 
+
+    #admin_menu h3, #admin_menu h4, #content h3 {
+        font-size: 22px;
+    }
 }
 
 
@@ -2604,20 +2756,6 @@ footer img {
         height: 45vh;
     }
 
-    #footer_item1 {
-        left: 20%;
-        top: 33%;
-    }
-
-    #portfolio_copyright a {
-        margin: 0px 0px;
-    }
-
-    #portfolio_copyright p {
-        font-size: 10px;
-        margin: 0px;
-    }
-
     #banner-title-animate h1 {
         font-size: 40px;
     }
@@ -2687,19 +2825,24 @@ footer img {
         font-size: 14px;
     }
 
-    /*** Affichage du footer ***/
+    /*** Affichage du menu du back- Office ******/
+
+    #dashboard-banner-title h1 {
+        font-size: 30px;
+    }
     
-    #footer_item1 {
-        left: 12%;
-        top: 33%;
-        width: 75%;
+    .dashboard_button {
+        width: 150px;
+        height: 44px;
+        font-size: 15px;
     }
 
-    footer img {
-        width: 179%;
-        height: 82%;
-        left: -63%;
-        top: 4%;
+    #dashboard-menu {
+        margin-bottom: 25px;
+    }
+
+    .card-footer a {
+        font-size: 11px;
     }
 
 }

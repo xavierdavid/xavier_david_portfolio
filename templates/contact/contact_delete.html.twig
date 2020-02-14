@@ -3,13 +3,13 @@
 {% extends 'contact/base_contact.html.twig' %}
 
 {% block title %}
-  Supprimer un contact - {{ parent() }}
+  Supprimer un message - {{ parent() }}
 {% endblock %}
 
 {% block contact_body %}
 
   
-  <h2>Supprimer un contact</h2>
+  <h2>Supprimer un message</h2>
 
   <p>
     Etes-vous certain de vouloir supprimer le message posté par "{{ contact.name }}" le {{contact.createdAt | date('d/m/Y')}} ?

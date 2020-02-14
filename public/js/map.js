@@ -7,14 +7,14 @@ class Map {
         // Propriété qui stocke les marqueurs utilisés pour les expériences professionnalles
         this.myExperienceIcon = L.icon({ 
             iconUrl: '../img/experience-icon.png',
-            iconSize:     [35, 35], // Taille de l'icone
+            iconSize:     [40, 40], // Taille de l'icone
             iconAnchor:   [15, 35], // Point de rattachement de l'icone au marqueur de localisation
             popupAnchor:  [3, -35] // Positionnement de la fenêtre popup par rapport au point de rattachement de l'icone
         });
         // Propriété qui stocke les marqueurs utilisés pour les formations professionnelles
         this.myEducationIcon = L.icon({ 
             iconUrl: '../img/education-icon.png',
-            iconSize:     [35, 35],
+            iconSize:     [40, 40],
             iconAnchor:   [15, 35],
             popupAnchor:  [3, -35]
         });        

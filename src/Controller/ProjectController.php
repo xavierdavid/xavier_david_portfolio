@@ -189,7 +189,8 @@ class ProjectController extends AbstractController
         }
 
         return $this->render('project/project_edit.html.twig', [
-            'formProject' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
+            'formProject' => $form->createView(),
+            'project' => $project // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
             ]);
     }
 

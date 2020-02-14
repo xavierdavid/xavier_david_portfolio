@@ -161,7 +161,8 @@ class EducationController extends AbstractController
         }
 
         return $this->render('education/education_edit.html.twig', [
-            'formEducation' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
+            'formEducation' => $form->createView(),
+            'education' => $education // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
             ]);
     }
 

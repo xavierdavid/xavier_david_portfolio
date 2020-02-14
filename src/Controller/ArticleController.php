@@ -139,7 +139,7 @@ class ArticleController extends AbstractController
         // Injection du service FileUploader
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
-        // On récupère tous les articles
+        // On récupère l'article à modifier
         $article = $repository->find($id);
 
         // Si l'entité 'Article' est nulle (l'id $id de l'article n'existe pas) ...
@@ -189,7 +189,9 @@ class ArticleController extends AbstractController
         }
 
         return $this->render('article/article_edit.html.twig', [
-            'formArticle' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
+            'formArticle' => $form->createView(),
+            'article' => $article
+            // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
             //'editMode' => true // On transmet la variable editMode à 'true' à la vue pour changer le texte du bouton submit du formulaire
             ]);
     }

@@ -164,7 +164,8 @@ class ExperienceController extends AbstractController
         }
 
         return $this->render('experience/experience_edit.html.twig', [
-            'formExperience' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
+            'formExperience' => $form->createView(),
+            'experience' => $experience // On transmet le résultat de la méthode créateView() de l'objet $form à la vue article_edit.html.twig
             ]);
     }
 

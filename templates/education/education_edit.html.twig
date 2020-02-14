@@ -34,6 +34,7 @@
     {{ form_row(formEducation.published) }}
 
     <button type="submit" class="btn btn-primary">Modifier la formation</button>
+    <a href="{{ path('education_view', {'id' : education.id}) }}" class="btn btn-link">Retour à la formation</a>
 
     {# Balise fermante du formulaire #}
     {{ form_end(formEducation) }}

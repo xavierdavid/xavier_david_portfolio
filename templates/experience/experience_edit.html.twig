@@ -34,6 +34,7 @@
     {{ form_row(formExperience.published) }}
 
     <button type="submit" class="btn btn-primary">Modifier l'expérience</button>
+    <a href="{{ path('experience_view', {'id' : experience.id}) }}" class="btn btn-link">Retour à l'expérience</a>
 
     {# Balise fermante du formulaire #}
     {{ form_end(formExperience) }}

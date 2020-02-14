@@ -30,7 +30,9 @@
     {{ form_row(formArticle.published) }}
   
     <button type="submit" class="btn btn-primary"> Modifier l'article </button>
-  
+    <a href="{{ path('article_view', {'id' : article.id}) }}" class="btn btn-link">Retour à l'article</a>
+    
+    
   
 
     {# Balise fermante du formulaire #}
