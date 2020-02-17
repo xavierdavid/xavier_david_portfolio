@@ -1,0 +1,31 @@
+{# templates/skill/skill_delete.html.twig #}
+
+{% extends 'skill/base_skill.html.twig' %}
+
+{% block title %}
+  Supprimer une compétence - {{ parent() }}
+{% endblock %}
+
+{% block skill_body %}
+
+  
+  <h2>Supprimer une compétence</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer la compétence "{{ skill.name }}" ?
+  </p>
+
+  {# On met l'id de la compétence dans la route de l'action du formulaire #}
+  <form action="{{ path('skill_delete', {'id': skill.id}) }}" method="post">
+    <a href="{{ path('skill_view', {'id': skill.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la compétence
+    </a>
+    {# Bouton de soumission #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+  
+    {# On génère le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

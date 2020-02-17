@@ -1,0 +1,11 @@
+{# templates/skill/index_skills.html.twig #}
+
+
+{# Affichage des dernieres compétences publiées #}
+<ul class="nav nav-pills nav stacked">
+  {% for skill in lastSkills %}
+    <li>
+      <a href="{{path('skill_view', {'id' : skill.id})}}">{{skill.name}}</a>
+    </li>
+  {% endfor %}
+</ul>

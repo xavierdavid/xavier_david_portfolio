@@ -450,7 +450,7 @@ header {
     }
 }
 
-.scrollButton_down_experiences {
+.scrollButton_down_skills {
     z-index: 20;
     position: absolute;
     top: 38%;
@@ -458,7 +458,7 @@ header {
     transform: translate(-50%, -50%); 
 }
 
-.scrollButton_down_experiences .fas {
+.scrollButton_down_skills .fas {
     color: #e0ad2c;
 }
 
@@ -535,6 +535,73 @@ header {
     transform: translateY(0);
 }
 
+/*****************************************************/
+/***                Home - Compétences             ***/
+/*****************************************************/
+
+#home_skills {
+    position: relative;
+    margin: 60px 0px;
+    padding: 50px 20px 0px 20px;
+}
+
+#home_skills h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0e8ca3;
+}
+
+.scrollButton_down_experiences {
+    z-index: 20;
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.scrollButton_down_experiences .fas {
+    color: #9e9fa3;
+}
+
+.skill_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.skill_content {
+    display: flex;
+    width: 30%;
+    margin: 10px 10px;
+}
+
+.skill_image {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.skill_wrap img {
+    width: 70%;
+}
+
+.skill_description {
+    display: flex;
+    align-items: center;
+}
+
+.skill_description p {
+    color: #242425;
+}
+
+.skill_level {
+    margin-left: 15px;
+}
+
+.skill_level .fas {
+    color: #e0ad2c;
+}
 
 /*****************************************************/
 /***                Home - Expériences             ***/
@@ -895,6 +962,33 @@ footer img {
     font-weight: bold;
 }
 
+
+/*****************************************************/
+/**             Home - Mentions légales             **/
+/*****************************************************/
+
+.data_protection_wrap {
+    margin-top: 60px;
+}
+
+.data_protection_title h2 {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+.data_protection_content {
+    margin-top: 60px;
+}
+
+.data_protection_content h3 {
+    color: #0e8ca3;
+}
+
+.data_protection_content h3 i {
+    color: #e0ad2c;
+    margin-right: 10px;
+}
 
 
 
@@ -1523,6 +1617,7 @@ footer img {
 
 #card_publication_view {
     border: none;
+    margin-top: 60px;
 }
 
 #publication_view_title {
@@ -1697,8 +1792,8 @@ footer img {
         top: 12%;
     }
 
-    .scrollButton_down_experiences {
-        top: 28%;
+    .scrollButton_down_skills {
+        top: 24%;
     }
 
     .education_card {
@@ -1707,6 +1802,20 @@ footer img {
         box-shadow: 10px 10px #e0ad2c;
         justify-content: space-between;
         margin: 15px;
+    }
+
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 25%;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
     }
 
     /****** Affichage des experiences - page Home *****/
@@ -1780,6 +1889,35 @@ footer img {
 
     .education_link a {
         font-size: 12px;
+    }
+
+    .scrollButton_down_skills {
+        top: 25%;
+    }
+
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 20%;
+    }
+
+    .skill_content {
+        width: 45%;
+        margin: 15px 15px;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
+    }
+
+    /****** Affichage des experiences - page Home *****/
+    
+    .scrollButton_down_map {
+        top: 26%;
     }
 
     /************ Affichage du slider des projets ***********/
@@ -1899,12 +2037,35 @@ footer img {
         top: 12%;
     }
 
-    .scrollButton_down_experiences {
+    .education_card {
+        width: 42%;
+    }
+
+    .scrollButton_down_skills {
         top: 25%;
     }
 
-    .education_card {
-        width: 42%;
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 12%;
+    }
+
+    .skill_content {
+        width: 70%;
+        margin: 15px 15px 8px 40px;
+    }
+
+    .skill_description {
+        margin-left: 35px;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
     }
 
     /****** Affichage des experiences - page Home *****/
@@ -1965,6 +2126,7 @@ footer img {
     }
 
     /************ Affichage du slider des projets ***********/
+    
     #slider_container {
         width: 510px;
     }
@@ -2108,7 +2270,7 @@ footer img {
         height: 250px;
     }
 
-    .scrollButton_down_experiences {
+    .scrollButton_down_skills {
         top: 15%;
     }
 
@@ -2128,6 +2290,30 @@ footer img {
 
     .education_link {
         height: 15%;
+    }
+
+    
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 14%;
+    }
+
+    .skill_content {
+        width: 80%;
+        margin: 15px 15px 8px 60px;
+    }
+
+    .skill_description {
+        margin-left: 15px;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
     }
 
     /****** Affichage des experiences - page Home *****/
@@ -2371,6 +2557,29 @@ footer img {
         height: 18%;
     }
 
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 14%;
+    }
+
+    .skill_content {
+        width: 80%;
+        margin: 15px 15px 8px 60px;
+    }
+
+    .skill_description {
+        margin-left: 15px;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
+    }
+
     /****** Expériences - Page d'accueil *****/
 
     #home_experiences {
@@ -2521,6 +2730,29 @@ footer img {
     #mapid {
         width: 85%;
         height: 50vh;
+    }
+
+    /****** Affichage des compétences - page Home *****/
+
+    .scrollButton_down_experiences {
+        top: 14%;
+    }
+
+    .skill_content {
+        width: 90%;
+        margin: 15px 15px 4px 25px;
+    }
+
+    .skill_description {
+        margin-left: 15px;
+    }
+
+    .skill_description p {
+        font-size: 15px;
+    }
+
+    .skill_level {
+        font-size: 12px;
     }
 
     /****** Affichage du footer *****/
@@ -2758,6 +2990,37 @@ footer img {
 
     #banner-title-animate h1 {
         font-size: 40px;
+    }
+
+    /****** Affichage des compétences - page Home *****/
+
+    #home_skills h2 {
+        font-size: 1.7em;
+    }
+
+    .scrollButton_down_experiences {
+        top: 18%;
+    }
+
+    .skill_wrap {
+        margin-top: 65px;
+    }
+
+    .skill_content {
+        width: 100%;
+        margin: 10px 15px 0px 15px;
+    }
+
+    .skill_description {
+        margin-left: 12px;
+    }
+
+    .skill_description p {
+        font-size: 14px;
+    }
+
+    .skill_level {
+        font-size: 11px;
     }
 
     /************ Affichage du slider des projets ***********/

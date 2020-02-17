@@ -1,0 +1,115 @@
+{# templates/home/home_data_protection.html.twig #}
+
+{# Héritage du template de base #}
+{% extends 'base.html.twig' %}
+
+{# Contenu spécifique - page 'home' #}
+{% block body %}
+
+{# Bannière image #}
+<div id="banner-image">
+    <figure>
+        <img src="{{ asset('img/background-technology.jpg') }}" alt="">
+    </figure>
+    <div id="banner-title-animate">
+        <h1>Mentions légales</h1>
+        <p><span><i class="fas fa-database fa-2x"></i></i></span>Confidentialité et protection des données ...</p>
+    </div>  
+</div>
+
+<div class="container"> 
+    <section class="data_protection_wrap">
+        {# Titre de la section 'Protection des données' #}
+        <div class="data_protection_title">
+            <h2>Politique de protection des données</p>
+        </div>
+
+        <div class="data_protection_content">
+            <h3><i class="fas fa-caret-right"></i> Edition et publication</h3>
+            <p>En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique, il est précisé aux utilisateurs du site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a>, l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
+            <ul>
+                <li>Nom de domaine du site : <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a></li>
+                <li>Propriétaire du site : Xavier DAVID</li>
+                <li>Statut du propriétaire du site : particulier</li>
+                <li>Adresse postale du propriétaire : 2 impasse des renardières - 28190 Fontaine-la-Guyon</li>
+                <li>Nom du créateur du site : Xavier DAVID – 2 impasse des renardières - 28190 Fontaine-la-Guyon - Tél : 06.73.98.56.65</li>
+                <li>Responsable de la publication/Webmaster – Délégué à la protection des données : Xavier DAVID – Email : <a href="mailto: contact@xavier-david.com">contact@xavier-david.com</a></li>
+            </ul>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Hébergement du site</h3>
+            <ul>
+                <li>Nom de l’hébergeur du site : <a href="http://www.o2switch.fr" target="_blank">http://www.o2switch.fr</a></li>
+                <li>Adresse postale de l’hébergeur : 222-224 Boulevard Gustave Flaubert 63000 Clermont-Ferrand</li>
+            </ul>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Propriété intellectuelle</h3>
+            <p>Le propiétaire du site dispose des droits de propriété intellectuelle et/ou détient les droits d’usage sur tous les éléments de contenu du site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a>, notamment en ce qui concerne les textes, les images, et les logos. L’utilisation des médias et visuels illustrant les pages du site est subordonnée à l’autorisation préalable de leurs auteurs et propriétaires, hormis ceux disposant d'une libre exploitation. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable du propriétaire du site. Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient sera considérée comme constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de Propriété Intellectuelle.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Mise en conformité avec le Règlement Général sur la Protection des Données (RGPD)</h3>
+            <p>Le propiétaire du site s’engage dans une démarche continue de conformité avec le Règlement Général sur la Protection des Données (RGPD), applicable à compter du 25 mai 2018. Au regard de cette nouvelle règlementation européenne, le propiétaire du site renforce sa politique de protection des données personnelles afin que les données de ses utilisateurs soient collectées et utilisées de manière transparente, confidentielle et sécurisée.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Politique de protection des données personnelles</h3>
+            <p>La politique de protection des données personnelles décrit la manière dont le propiétaire du site traite les données à caractère personnel des ses utilisateurs. Sur ce point, afin de garantir de façon permanente la sécurité des données de ses utilisateurs, le propiétaire du site peut être amené à modifier, compléter ou mettre à jour sa politique de protection des données personnelles. Nous vous invitons ainsi à consulter régulièrement la dernière version en vigueur, accessible ici. Si des modifications majeures sont apportées, en informera les utilisateurs par email afin de leur permettre d’en prendre connaissance avant qu'elles ne prennent effet. Si les utilisateurs continuent à utiliser les fonctionalités du site après la publication ou l'envoi d'un avis concernant les modifications apportées à la politique de protection des données personnelles, cela signifie qu'ils en acceptent les mises à jour.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Utilisation des données personnelles collectées</h3>
+            <p>Lorsque vous communiquez des informations sur le site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a>, notamment lors de votre inscription, ou lorsque vous utiliser le formulaire de contact, le propriétaire du site collecte et traite des données à caractère personnel vous concernant, notamment : votre nom et prénom, votre adresse, votre téléphone et email. Ces données sont collectées :
+            <ul>
+                <li>Afin de vous permettre de vous identifier pour connecter à votre compte utilisateur</li>
+                <li>Afin de permettre au propiétaire du site de pouvoir prendre contact avec vous, suite à une demande de votre part</li>
+            </ul>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Utilisation des cookies</h3>
+            <p>Un « cookie » est un petit fichier texte déposé sur votre ordinateur lors de la visite de notre portail. Ce fichier regroupe des données telles que l’heure de visite, le nombre de visites, la source d’arrivée, et plus globalement vos préférences et habitudes de navigation. Dans votre ordinateur, les cookies sont gérés par votre navigateur internet. Le propriétaire du site utilise des cookies sur son site afin d’optimiser votre navigation et vous permettre notamment d'en utiliser les principales fonctionnalités (par exemple l'accès à votre compte). Par ailleurs, afin d'améliorer ses services, le propriétaire utilise des cookies « analytiques » de mesures d'audience telles que le nombre de pages vues, le nombre de visites, l'activité des utilisateurs et leur fréquence de retour, notamment grâce aux services de « Google Analytics ». Ces cookies permettent seulement l'établissement d'études statistiques sur le trafic des utilisateurs sur le site. Les résultats sont totalement anonymes et permettent au propriétaire de connaître l'utilisation et les performances du site et d'en améliorer le fonctionnement. Vous pouvez à tout moment désactiver les cookies en suivant les instructions appropriées ci-dessous en fonction de votre navigateur :</p>
+            <ul>
+                <li>Si vous utilisez le navigateur Internet Explorer : <a href="https://support.microsoft.com/en-us/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank">Internet Explorer</a></li>
+                <li>Si vous utilisez le navigateur Firefox : <a href="https://support.mozilla.org/fr/kb/protection-renforcee-contre-pistage-firefox-ordinateur?redirectlocale=fr&redirectslug=activer-desactiver-cookies-preferences" target="_blank">Firefox</a></li>
+                <li>Si vous utilisez le navigateur Safari : <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+                <li>Si vous utilisez le navigateur Safari : <a href="https://support.google.com/chrome/answer/95647?hl=fr" target="_blank">Google Chrome</a></li>
+            </ul>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Lien vers des sites web et applications tierces</h3>
+            <p>Pour permettre aux utilisateurs d’interagir avec d’autres sites Web sur lesquels ils possèdent des comptes (tels que Facebook et autres médias sociaux), ou de se joindre à des communautés sur ces sites, le présent site peut fournir des liens ou intégrer des applications tierces permettant de se connecter ou de publier du contenu. L’utilisation de ces liens et applications est soumise aux politiques de confidentialité des sites tiers concernés. Le propiétaire du site ne saurait être tenu responsable de leurs pratiques en matière de confidentialité ou de leur contenu.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Partage des données</h3>
+            <p>Les données personnelles collectées à partir du site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a> sont utilisées exclusivement par le propiétaire du site. En aucun cas enfin et ce, quel que soit le type de donnée collectée, le propiétaire du site ne vend ni ne loue les données personnelles de ses utilisateurs à des tiers à des fins commerciales.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Protection des données personnelles</h3>
+            <p>Le propiétaire du site applique les mesures de sécurité technologiques et organisationnelles généralement reconnues afin que les données à caractère personnel recueillies ne soient, ni perdues, ni détournées, ni consultées, ni modifiées ni divulguées par des tiers non autorisés sauf si la communication de ces données est imposée par la réglementation en vigueur, notamment à la requête d'une autorité judiciaire, de police, de gendarmerie ou de toute autre autorité habilitée par la loi. Il est à noter que la sécurité des données personnelles dépend également des utilisateurs. Ces derniers s'engageant à conserver la confidentialité de leur identifiant et de leur mot de passe.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Durée de conservation des données personnelles</h3>
+            <p>La base active des données stockées sur le site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a> est conservée le temps nécessaire pour les finalités poursuivies, conformément aux prescriptions légales ou aux recommandations de la CNIL.</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Droit des utilisateurs</h3>
+            <p>Conformément à la réglementation en vigueur, les utilisateurs du site <a href="http://portfolio.xavier-david.com" target="_blank">http://portfolio.xavier-david.com</a> disposent des droits suivants : </p>
+            <ul>
+                <li>Droit d'accès et de rectification ;</li>
+                <li>De mise à jour, de complétude des données ;</li>
+                <li>Droit de verrouillage ou de suppression des données à caractère personnel, lorsqu'elles sont inexactes, incomplètes, équivoques, périmées, ou dont la collecte, l'utilisation, la communication ou la conservation est interdite ;</li>
+                <li>Droit de retirer à tout moment un consentement ;</li>
+                <li>Droit à la limitation du traitement des données ;</li>
+                <li>Droit d'opposition aux traitement des données personnelles ;</li>
+                <li>Droit à la portabilité des données, lorsque ces données font l'objet de traitements automatisés fondés sur leur consentement ou un contrat.</li>
+            </ul>
+            <br>
+            <p>Si vous souhaitez savoir comment le propiétaire utilise ces données personnelles, demander à les rectifier, s'opposer à un traitement et/ou demander l’effacement des données, vous pouvez envoyer un email à l'adresse suivante : <a href="mailto: contact@xavier-david.com">contact@xavier-david.com</a> ou adresser un courrier à : Xavier DAVID – 2 impasse des renardières – 28190 Fontaine-la-Guyon. Pour information, nous vous rappelons qu'en votre qualité d'utilisateur, vous avez la possibilité, le cas échéant, de déposer une réclamation auprès des autorités de contrôle, et notamment de la CNIL (https://www.cnil.fr/fr/plaintes).</p>
+            <hr>
+            <br>
+            <h3><i class="fas fa-caret-right"></i> Délégué à la protection des données</h3>
+            <p>Si vous avez des questions ou des réclamations ou si vous souhaitez faire part au propriétaire du site de recommandations ou de commentaires visant à améliorer sa politique de protection des données personnelles, vous pouvez contacter : Xavier DAVID – Développeur Web – Délégué à la protection des données : Courriel : <a href="mailto: contact@xavier-david.com">contact@xavier-david.com</a> - 2 impasse des renardières - 28190 Fontaine-la-Guyon – Tél : 06.73.98.56.65</p>
+            <br>
+        </div>
+    </section>
+</div>
+
+{% endblock body %}

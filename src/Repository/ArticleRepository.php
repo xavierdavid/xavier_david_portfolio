@@ -24,7 +24,7 @@ class ArticleRepository extends ServiceEntityRepository
 
     public function getArticles($page, $nbPerPage) {
         // Méthode qui récupère tous les articles avec une pagination (utilisation de la classe Paginator)
-        // La méthode prend deux arguments : la page actuelle $page et le nombre d'annonce par page $nbPerPage
+        // La méthode prend deux arguments : la page actuelle $page et le nombre d'article par page $nbPerPage
         
         // Construction d'une requête personnalisée à l'aide du QueryBuilder
         // On utilise la méthode createQueryBuilder de l'EntityManager avec l'alias 'a' (pour article)
@@ -43,13 +43,14 @@ class ArticleRepository extends ServiceEntityRepository
         // Ici $nbPerPage est définit arbitrairement à 2 dans le contrôleur ArticleController ...
         // ... Ex: $page = 1, 1er résultat = 0 - $page = 3, 1er résultat = 6
         ->setFirstResult(($page-1) * $nbPerPage)
-        // Ainsi que le nombre d'annonce à afficher sur une page
+        // Ainsi que le nombre d'articles maximum à afficher sur une page
         ->setMaxResults($nbPerPage);
 
       // On retourne l'objet Paginator correspondant à la requête construite
       // On n'oublie pas le use correspondant en début de fichier
       return new Paginator($qb, true);
     }
+
 
     public function getArticleWithComment(){
         // Méthode qui récupère l'article associé à un commentaire 
@@ -62,7 +63,6 @@ class ArticleRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
         }
-
 
 
     public function getLastArticles($limit) {
@@ -78,36 +78,4 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
-
-
-
-    // /**
-    //  * @return Article[] Returns an array of Article objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Article
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -1,0 +1,35 @@
+{# templates/skill/skill_view.html.twig #}
+
+{# Le template hérite du second template 'père' base_skill.html.twig  #}
+{% extends 'skill/base_skill.html.twig' %}
+
+{# Bloc de contenu body spécifique à la vue #}
+{% block skill_body %}
+
+    {# On affiche tous les messages flash dont le nom est « notice » #}
+    {% for message in app.session.flashbag.get('notice') %}
+      <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+    {# Affichage d'une compétence #}
+    <section class="card mb-3">
+      <div class="row no-gutters">
+        <div id="image-skill" class="col-md-3">
+          <img src="{{ asset('uploads/images/' ~ skill.imageFilename) }}" class="card-img" alt="image-compétence">
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title">Compétence : {{skill.name | raw}}</p></h5>
+            <p class="card-text">Catégorie : {{skill.category.title | raw}}</p>
+            <p class="card-text">Niveau : {{skill.level | raw}}</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <em><a href="{{ path('skill_edit', {'id' : skill.id}) }}" class="btn btn-info">Modifier la compétence</a></em>
+        <em><a href="{{ path('skill_delete', {'id' : skill.id}) }}" class="btn btn-danger">Supprimer la compétence</a></em>  
+      </div>
+    </section>
+
+{% endblock %}

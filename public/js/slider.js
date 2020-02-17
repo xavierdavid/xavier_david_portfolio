@@ -149,15 +149,14 @@ projectSlider.sliderInit();
 
 
 // Gestion du slider avec les flèches du clavier 
-document.addEventListener("keydown", function(evt){
+/*document.addEventListener("keydown", function(evt){
     if(evt.which === 39){ // Flèche droite du clavier
         projectSlider.shiftSlide(1);
     }
     if(evt.which === 37){ // Flèche gauche du clavier
         projectSlider.shiftSlide(-1);
     }
-});
-
+});*/
 
 
 // Affichage dynamique de la <div> de contenu des projets 

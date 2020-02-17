@@ -48,8 +48,8 @@
         </div>     
         <h2>Formation</h2>
         
-        <div class="scrollButton_down_experiences">
-            <a href="#home_experiences">
+        <div class="scrollButton_down_skills">
+            <a href="#home_skills">
                 <i class="fas fa-angle-double-down fa-2x"></i>
             </a>  
         </div>
@@ -81,6 +81,40 @@
      
             {% endfor %}
         </div>
+    </section>
+
+    {# Affichage des compétences #}
+    <section id="home_skills">
+        <h2>Compétences</h2>
+
+        <div class="scrollButton_down_experiences">
+            <a href="#home_experiences">
+                <i class="fas fa-angle-double-down fa-2x"></i>
+            </a>  
+        </div>
+
+        <div class="skill_wrap">
+            {% for skill in skills %}
+                <div class="skill_content">
+                    <figure class="skill_image">
+                        <img src="{{ asset('uploads/images/' ~ skill.imageFilename) }}" alt="skill_image">
+                    </figure>
+                    <div class="skill_description">
+                        <p>{{skill.name | raw}} 
+                            <span class="skill_level">
+                                {% for i in 1..5 %}
+                                    {% if i <= skill.level %} 
+                                        <i class="fas fa-star"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+         </div>    
     </section>
     
     {# Affichage des expériences professionnelles #}

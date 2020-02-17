@@ -1,0 +1,36 @@
+{# templates/skill/skill_edit.html.twig #}
+
+
+{# Le template hérite du second template 'père' base_skill.html.twig  #}
+{% extends 'skill/base_skill.html.twig' %}
+
+{# Application d'un thème bootstrap (défini dans twig.yaml) au formulaire formSkill #}
+{% form_theme formSkill 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{# Bloc de contenu title spécifique à la vue - Affiche le titre par défaut du template 'père' #}
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block skill_body %}
+
+    <h3>Modifier une compétence</h3>
+
+    {# Affichage du formulaire #}
+    
+    {# Balise ouvrante du formulaire #}
+    {{ form_start(formSkill) }}
+
+    {# Balises de champ de formulaire #}
+    {{ form_row(formSkill.name, {'attr' : {'placeholder': "Nom de la compétence"}}) }}
+    {{ form_row(formSkill.category, {'attr' : {'placeholder': "Catégorie de la compétence"}}) }}
+    {{ form_row(formSkill.level, {'attr' : {'placeholder': "Niveau de la compétence"}}) }}
+    {{ form_row(formSkill.imageFilename, {'attr' : {'placeholder': "Fichier image"}}) }}
+
+    <button type="submit" class="btn btn-primary">Modifier la compétence</button>
+    <a href="{{ path('skill_view', {'id' : skill.id}) }}" class="btn btn-link">Retour à la compétence</a>
+
+    {# Balise fermante du formulaire #}
+    {{ form_end(formSkill) }}
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Skill;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Project;
@@ -29,6 +30,9 @@ class HomeController extends AbstractController
         // Sélection des données de l'entité 'Education'
         $repositoryEducation = $this->getDoctrine()->getRepository(Education::class);
 
+        // Sélection des données de l'entité 'Skill'
+        $repositorySkills = $this->getDoctrine()->getRepository(Skill::class);
+
         // On fixe à 4 le nombre limite de formations à afficher sur la page d'accueil 
         $limit = 4;
         
@@ -38,12 +42,16 @@ class HomeController extends AbstractController
         // Récupération des 'formation' 
         $educations = $repositoryEducation->getFrontEducations($limit);
 
+        // Récupération des 'compétences'
+        $skills = $repositorySkills->findAll();
+
         // Envoi de la réponse au template et affichage des données
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
             'page_title' => "Accueil",
             'experiences' => $experiences,
-            'educations' => $educations
+            'educations' => $educations,
+            'skills' => $skills
         ]);
     }
 
@@ -140,6 +148,16 @@ class HomeController extends AbstractController
         return $this->render('home/home_project.html.twig', [
             'projects' => $projects
         ]);
+    }
+
+    /**
+     * @Route("/home_data_protection", name="home_data_protection")
+     */
+    public function dataProtection() {
+        // Méthode qui affiche la politique de confidentialité et de protection des données
+
+        // Réponse et affichage de la vue 
+        return $this->render('home/home_data_protection.html.twig');
     }
 
 }

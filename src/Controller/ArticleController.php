@@ -144,7 +144,7 @@ class ArticleController extends AbstractController
 
         // Si l'entité 'Article' est nulle (l'id $id de l'article n'existe pas) ...
         if (null === $article) {
-            // Alors on lance une exception indiquant que l'annonce n'existe pas
+            // Alors on lance une exception indiquant que l'article n'existe pas
             throw new NotFoundHttpException("L'article d'id ".$id." n'existe pas.");
         }
 
@@ -226,7 +226,7 @@ class ArticleController extends AbstractController
      * @Route("/admin/article/delete/{id}", name="article_delete", requirements={"id"="\d+"})
      */
     public function articleDelete($id, Request $request, ObjectManager $manager){
-        // Méthode qui récupère et supprime une article
+        // Méthode qui récupère et supprime un article
         
         // On sélectionne les données
         $repository = $this->getDoctrine()->getRepository(Article::class);
@@ -252,7 +252,7 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('article');
         }
 
-        // On appelle le template de suppression d'annonce
+        // On appelle le template de suppression d'article
         return $this->render('article/article_delete.html.twig', array(
             'article' => $article,
             'form' => $form->createView(),
@@ -315,8 +315,8 @@ class ArticleController extends AbstractController
             //array(), // Pas de critère
             array('published' => '1'), // Articles publiés uniquement
             array('createdAt' => 'desc'), // On trie par date décroissante
-            $limit, // On sélectionne $limit annonces
-            0 // A partir de la première annonce
+            $limit, // On sélectionne $limit articles
+            0 // A partir du premier article
         );
 
         return $this->render('article/index_articles.html.twig', array(
