@@ -85,22 +85,31 @@
 
     
 
-// Déclenchement de l'animation de l'élément experiences_header de la page d'accueil lors du scroll 
+// Déclenchement de l'animation des éléments skills_header et experiences_header de la page d'accueil lors du scroll 
     $(window).on('scroll', function() {
  
         // On récupère la position du scroll en cours sur la page
         let scrollY = $(window).scrollTop();
 
-        // On récupère l'élément devant être animé 
+        // On récupère les éléments devant être animés 
         let experiencesHeader = $('#experiences_header');
+        let skillsHeader = $('#skills_header');
       
-        // Récupération de la position de l'élément à animer sur la page courante 
+        // Récupération de la position des éléments à animer sur la page courante 
         let experiencesHeaderPosY = experiencesHeader.offset().top;
+        let skillsHeaderPosY = skillsHeader.offset().top;
         
         // Ajustement de la position du scroll en ajoutant la hauteur de la barre de navigation qui masque l'affichage
         let ajustScrollY = scrollY + 500;
 
-        // si l'élément educationHeaderPosY est visible dans la page
+        // si l'élément skillsHeaderPosY est visible dans la page
+        if(ajustScrollY > skillsHeaderPosY) {
+            // On modifie le style css de l'élément pour déclencher l'animation @keyframes définie en css
+            skillsHeader.css('animation','goToLeft 1s');
+            skillsHeader.css('animation-fill-mode', 'forwards'); // l'animation conserve son état final
+        }
+
+        // si l'élément experienceHeaderPosY est visible dans la page
         if(ajustScrollY > experiencesHeaderPosY) {
             // On modifie le style css de l'élément pour déclencher l'animation @keyframes définie en css
             experiencesHeader.css('animation','goToLeft 1s');

@@ -35,10 +35,16 @@
         
         {# Header du site #}   
         <header>                 
-            {# Logo #}
-            <a href="#" id="logo"></a>
+            
             {# Menu #}
             <div id="hamburger">
+                {# Logo #}
+                <div id="logo">
+                    <a href="{{ path('home') }}">
+                        <img src="{{ asset('img/logo_xd_prod.png')}}" alt="Logo Xavier DAVID">
+                    </a>
+                </div>
+    
                 <div id="hamburger-content">
                     <nav>
                         <ul>

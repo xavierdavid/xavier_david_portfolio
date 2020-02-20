@@ -11,7 +11,7 @@
     {# Affichage de l'article #}
     <div class="card" id="card_publication_view">
       <div class="card-header">
-      <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
+      <em>Article publié le {{article.createdAt | date('d/m/Y')}} à {{article.createdAt | date('H:i')}}</em>
       </div>
       <div class="image_block">
         <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
@@ -44,9 +44,9 @@
     
     <section id="comment_section">
       {% for comment in article.comments %}
-        <div class="comment">
+        <div class="comment" id="comment_row">
           <div class="row">
-            <div class="col-3">
+            <div class="col-3" id="comment_data">
               {{comment.author}} (<small>{{comment.createdAt | date('d/m/Y à H:i')}}</small>)
             </div>
             <div class="col-9">
@@ -63,30 +63,33 @@
     <br>
     
     {# Affichage du formulaire de commentaires #}
-    <div class="add_comment_title">
-      <h4><i class="far fa-comment-dots"></i>Ajouter un commentaire</h4>
-    </div>
-    
-    <br>
-    {# Si l'utilisateur est pas connecté, on affiche le formulaire des commentaires #}
-    {% if app.user %}
-      {# Balise ouvrante du formulaire #}
-      {{ form_start(formComment) }}
 
-      {# Balises de champ de formulaire #}
-      {{ form_row(formComment.author, {'attr': {'placeholder': "Votre nom"}}) }}
-      {{ form_row(formComment.content, {'attr': {'placeholder': "Votre commentaire"}}) }}
-      
-      <button type="submit" class="btn btn-primary">Envoyer</button>
-
-      {# Balise fermante du formulaire #}
-      {{ form_end(formComment) }}
-    {% else %}
-      <div class="commentform_user">
-        <p>Veuillez vous connecter afin de pouvoir laisser un commentaire.</p>
-        <a href="{{ path('security_login') }}" class="btn btn-secondary">Se connecter</a>
+    <section id="comment_form">
+      <div class="add_comment_title">
+        <h4><i class="far fa-comment-dots"></i>Ajouter un commentaire</h4>
       </div>
-    {% endif %}
+      
+      <br>
+      {# Si l'utilisateur est pas connecté, on affiche le formulaire des commentaires #}
+      {% if app.user %}
+        {# Balise ouvrante du formulaire #}
+        {{ form_start(formComment) }}
+
+        {# Balises de champ de formulaire #}
+        {{ form_row(formComment.author, {'attr': {'placeholder': "Votre nom"}}) }}
+        {{ form_row(formComment.content, {'attr': {'placeholder': "Votre commentaire"}}) }}
+        
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+        {# Balise fermante du formulaire #}
+        {{ form_end(formComment) }}
+      {% else %}
+        <div class="commentform_user">
+          <p>Veuillez vous connecter afin de pouvoir laisser un commentaire.</p>
+          <a href="{{ path('security_login') }}" class="btn btn-secondary">Se connecter</a>
+        </div>
+      {% endif %}
+    </section>
 </div>
 
 

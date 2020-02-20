@@ -45,6 +45,18 @@ header {
     background:#0e8ca3;
 }
 
+#logo {
+    width: 20%;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+#logo img {
+    width: 55%;
+    border-radius: 0% 50% 115% 0%;
+}
+
 #hamburger-content {
     display: flex;
     position: absolute;
@@ -302,7 +314,6 @@ header {
 #main-banner {
     width: 100%;
     position: relative;
-    /*margin: 130px 0px 155px 0px;*/
     margin: 70px 0px 155px 0px;
 }
 
@@ -424,9 +435,16 @@ header {
 #education_header {
     position: absolute;
     left: -50%;
-    top: 15%;
+    top: 16%;
     transform: translate(-50%, -50%);
     /*animation: goToLeft 1s; Déclenchement de l'animation au scroll avec JQuery */
+}
+
+#education_header i {
+    color: #0e8ca3;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 #education_header a {
@@ -452,10 +470,7 @@ header {
 
 .scrollButton_down_skills {
     z-index: 20;
-    position: absolute;
-    top: 38%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+    text-align: center; 
 }
 
 .scrollButton_down_skills .fas {
@@ -466,7 +481,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 50px;
     padding: 0px 0px 30px 0px;
 }
 
@@ -541,22 +556,45 @@ header {
 
 #home_skills {
     position: relative;
-    margin: 60px 0px;
-    padding: 50px 20px 0px 20px;
+    margin: 0px 0px;
+    padding: 150px 20px 90px 20px;
+    overflow: hidden;
 }
 
 #home_skills h2 {
     text-align: center;
-    margin-bottom: 30px;
     color: #0e8ca3;
+}
+
+#skills_header {
+    position: absolute;
+    width: 260px;
+    left: 150%;
+    top: 14%;
+    transform: translate(-50%, -50%);
+}
+
+#skills_header i {
+    color: #e0ad2c;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#skills_header a {
+    font-size: 21px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #7a7b7f;
+    border-radius: 20% 1%;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    box-shadow: 10px 5px 5px #9e9fa3;
 }
 
 .scrollButton_down_experiences {
     z-index: 20;
-    position: absolute;
-    top: 24%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+    text-align: center;
 }
 
 .scrollButton_down_experiences .fas {
@@ -567,7 +605,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .skill_content {
@@ -624,10 +662,17 @@ header {
 
 #experiences_header {
     position: absolute;
-    width: 350px;
+    width: 385px;
     left: 150%;
-    top: 12%;
+    top: 14%;
     transform: translate(-50%, -50%);
+}
+
+#experiences_header i {
+    color: #e0ad2c;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 #experiences_header a {
@@ -659,10 +704,7 @@ header {
 
 .scrollButton_down_map {
     z-index: 20;
-    position: absolute;
-    top: 32%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+    text-align: center; 
 }
 
 .scrollButton_down_map .fas {
@@ -673,7 +715,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 90px;
+    margin-top: 50px;
 }
 
 .experience_image img {
@@ -774,8 +816,15 @@ header {
 #map_header {
     position: absolute;
     left: -50%;
-    top: 9%;
+    top: 10%;
     transform: translate(-50%, -50%);
+}
+
+#map_header i {
+    color: #e0ad2c;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 #map_header a {
@@ -946,7 +995,7 @@ footer img {
 
 #portfolio_copyright p {
     color:#9e9fa3;
-    margin: 0px 10px;
+    margin: 0px 0px;
     padding-top: 10px;
 }
 
@@ -1250,7 +1299,7 @@ footer img {
 }
 
 .card-img-top {
-    width:75%;
+    width:65%;
     margin-top: 20px;
 }
 
@@ -1617,7 +1666,12 @@ footer img {
 
 #card_publication_view {
     border: none;
-    margin-top: 60px;
+    margin-top: 140px;
+}
+
+#card_publication_view .card-header {
+    background: none;
+    color: #9e9fa3;
 }
 
 #publication_view_title {
@@ -1636,7 +1690,7 @@ footer img {
 }
 
 .image_block {
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 .image_block img {
@@ -1732,8 +1786,15 @@ footer img {
 /* Affichage tablette grand format jusqu'à 1024px (992px à 1024px : Ipad Pro) */
 @media all and (max-width: 1024px) {
 
-    /*************** Affichage du menu ***************/
+    /*** Afficgahe du logo ***/
     
+    #logo img {
+        width: 70%;
+    }
+    
+    
+    /*************** Affichage du menu ***************/
+
     #hamburger-content {
         display: none; /* On masque le menu 'ordinateur' */
     }
@@ -1792,10 +1853,6 @@ footer img {
         top: 12%;
     }
 
-    .scrollButton_down_skills {
-        top: 24%;
-    }
-
     .education_card {
         width: 38%;
         height: 220px;
@@ -1806,10 +1863,6 @@ footer img {
 
     /****** Affichage des compétences - page Home *****/
 
-    .scrollButton_down_experiences {
-        top: 25%;
-    }
-
     .skill_description p {
         font-size: 15px;
     }
@@ -1818,11 +1871,13 @@ footer img {
         font-size: 12px;
     }
 
-    /****** Affichage des experiences - page Home *****/
-    
-    .scrollButton_down_map {
-        top: 26%;
+    #skills_header {
+        width: 252px;
+        left: 150%;
+        top: 14%;
     }
+
+    /****** Affichage des experiences - page Home *****/
 
     .experience_period {
         width: 100%;
@@ -1874,32 +1929,46 @@ footer img {
     .card-footer .btn {
         width: 30%;
     }
+
+    /*** Affichage de la vue détaillée des articles ***/
+
+    .card-img-top {
+        width:80%;
+    }
+
+    #card_publication_view .card-body {
+        width:80%;
+    }
 }
 
 
 /* Affichage tablette moyen format jusqu'à 991px (768px à 991px : Ipad) */
 @media all and (max-width: 991px) {
 
+    /*** Affichage du logo ***/
+    
+    #logo img {
+        width: 90%;
+    }
+
     #profil-image img {
         width: 200px;
         height: 225px;
     }
     
-    /**** Affichage des formation - Page d'accueil ****/
+    /**** Affichage des formations - Page d'accueil ****/
 
     .education_link a {
         font-size: 12px;
     }
 
-    .scrollButton_down_skills {
-        top: 25%;
+     /**** Affichage des expériences - Page d'accueil ****/
+
+    #experiences_header {
+        top: 12%;
     }
 
     /****** Affichage des compétences - page Home *****/
-
-    .scrollButton_down_experiences {
-        top: 20%;
-    }
 
     .skill_content {
         width: 45%;
@@ -1914,12 +1983,12 @@ footer img {
         font-size: 12px;
     }
 
-    /****** Affichage des experiences - page Home *****/
-    
-    .scrollButton_down_map {
-        top: 26%;
+    #skills_header {
+        width: 252px;
+        left: 150%;
+        top: 10%;
     }
-
+   
     /************ Affichage du slider des projets ***********/
     
     #slider_container {
@@ -2003,13 +2072,39 @@ footer img {
         width: 49%;
     }
 
+    /*** Affichage des mentions légales ******/
+
+    .data_protection_content h3 {
+        font-size: 26px;
+    }
+
+    .data_protection_content p, .data_protection_content li {
+        font-size: 15px;
+    }
+
+     /*** Affichage de la vue détaillée des articles ***/
+
+     .card-img-top {
+        width:80%;
+    }
+
+    #card_publication_view .card-body {
+        width:80%;
+    }
 }
 
 
 /* Affichage tablette petit format jusqu'à 767px (576px à 767px : Samsung Galaxy Tab) */
 @media all and (max-width: 767px) {
 
+    /*** Affichage du logo ***/
+    
+    #logo img {
+        width: 100%;
+    }
+
     /****** Affichage du menu toogle *****/
+    
     .button-sign-in {
         font-size: 16px;
     }
@@ -2041,15 +2136,7 @@ footer img {
         width: 42%;
     }
 
-    .scrollButton_down_skills {
-        top: 25%;
-    }
-
     /****** Affichage des compétences - page Home *****/
-
-    .scrollButton_down_experiences {
-        top: 12%;
-    }
 
     .skill_content {
         width: 70%;
@@ -2068,6 +2155,12 @@ footer img {
         font-size: 12px;
     }
 
+    #skills_header {
+        width: 252px;
+        left: 150%;
+        top: 7%;
+    }
+
     /****** Affichage des experiences - page Home *****/
 
     .experience_wrap {
@@ -2076,10 +2169,6 @@ footer img {
 
     #experiences_header {
         top: 10%;
-    }
-
-    .scrollButton_down_map {
-        top: 24%;
     }
     
     .experience_content {
@@ -2201,11 +2290,49 @@ footer img {
         font-size: 25px;
     }
 
-}
+    /*** Affichage de la vue détaillée des articles ***/
 
+    .card-img-top {
+        width:90%;
+    }
+
+    #card_publication_view .card-header {
+        font-size: 14px;
+    }
+
+    #card_publication_view .card-body {
+        width:90%;
+    }
+
+    #comment_section #comment_row {
+        font-size: 14px;
+    }
+
+    #comment_form label, #comment_form input, #comment_form textarea {
+        font-size: 14px;
+    }
+
+    #comment_form .form-control {
+        width: 90%;
+        margin-left: 15px;
+    }
+
+    #comment_form button {
+        font-size: 14px;
+    }
+
+}
 
 /* Affichage mobile grand format jusqu'à 575px (471px à 575px)*/
 @media all and (max-width: 575px) {
+
+    /*** Affichage du logo ***/
+    
+    
+
+    #logo img {
+        width: 100%;
+    }
 
     .scrollButton_up {
         right: 20px;
@@ -2263,15 +2390,12 @@ footer img {
 
     #education_header {
         top: 6%;
+        width: 265px;
     }
 
     .education_card {
         width: 75%;
         height: 250px;
-    }
-
-    .scrollButton_down_skills {
-        top: 15%;
     }
 
     .education_card img {
@@ -2295,10 +2419,6 @@ footer img {
     
     /****** Affichage des compétences - page Home *****/
 
-    .scrollButton_down_experiences {
-        top: 14%;
-    }
-
     .skill_content {
         width: 80%;
         margin: 15px 15px 8px 60px;
@@ -2316,6 +2436,12 @@ footer img {
         font-size: 12px;
     }
 
+    #skills_header {
+        width: 252px;
+        left: 150%;
+        top: 7%;
+    }
+
     /****** Affichage des experiences - page Home *****/
 
     .experience_wrap {
@@ -2324,10 +2450,6 @@ footer img {
 
     #experiences_header {
         top: 10%;
-    }
-
-    .scrollButton_down_map {
-        top: 24%;
     }
     
     .experience_content {
@@ -2452,12 +2574,37 @@ footer img {
         height: 46px;
         font-size: 16px;
     }
-  
+
+    /*** Affichage des mentions légales ******/
+
+    .data_protection_title h2 {
+        font-size: 1.8em;
+    }
+
+    .data_protection_content h3 {
+        font-size: 24px;
+    }
+
+    .data_protection_content p, .data_protection_content li {
+        font-size: 14px;
+    }
+
+    /*** Affichage de la vue détaillée des articles ***/
+
+    #comment_form .form-control {
+        width: 90%;
+        margin-left: 0px;
+    }
 }
 
 
 /* Affichage mobile grand format jusqu'à 470px (421px à 470px : Pixel2) */
 @media all and (max-width: 470px) {
+
+    /*** Affichage du logo ***/
+    #logo {
+        width: 24%;
+    }
 
     /*************** Menu Toogle **************/
 
@@ -2529,6 +2676,7 @@ footer img {
 
     #education_header {
         top: 7%;
+        width: 212px;
     }
 
     #education_header a {
@@ -2559,8 +2707,8 @@ footer img {
 
     /****** Affichage des compétences - page Home *****/
 
-    .scrollButton_down_experiences {
-        top: 14%;
+    #home_skills h2 {
+        font-size: 1.9em;
     }
 
     .skill_content {
@@ -2580,6 +2728,16 @@ footer img {
         font-size: 12px;
     }
 
+    #skills_header {
+        width: 205px;
+        left: 150%;
+        top: 7%;
+    }
+
+    #skills_header a {
+        font-size: 16px;
+    }
+
     /****** Expériences - Page d'accueil *****/
 
     #home_experiences {
@@ -2587,7 +2745,7 @@ footer img {
     }
 
     #experiences_header {
-        width: 275px;
+        width: 306px;
     }
 
     #experiences_header a {
@@ -2701,11 +2859,36 @@ footer img {
         height: 44px;
         font-size: 15px;
     }
+
+    /*** Affichage des mentions légales ******/
+
+    .data_protection_title h2 {
+        font-size: 1.7em;
+    }
+
+    .data_protection_content h3 {
+        font-size: 22px;
+    }
+
+    .data_protection_content p, .data_protection_content li {
+        font-size: 13px;
+    }
 }
 
 
 /* Affichage mobile moyen format jusqu'à 420px (380px à 420px : Pixel2) */
 @media all and (max-width: 420px) {
+
+    /*** Affichage du logo ***/
+    
+    #logo {
+        top: -6px;
+        width: 23%;
+    }
+
+    #logo img {
+        width: 100%;
+    }
 
     /*************** Menu Toogle **************/
 
@@ -2734,10 +2917,6 @@ footer img {
 
     /****** Affichage des compétences - page Home *****/
 
-    .scrollButton_down_experiences {
-        top: 14%;
-    }
-
     .skill_content {
         width: 90%;
         margin: 15px 15px 4px 25px;
@@ -2753,6 +2932,16 @@ footer img {
 
     .skill_level {
         font-size: 12px;
+    }
+
+    #skills_header {
+        width: 205px;
+        left: 150%;
+        top: 7%;
+    }
+
+    #skills_header a {
+        font-size: 16px;
     }
 
     /****** Affichage du footer *****/
@@ -2900,11 +3089,50 @@ footer img {
     #admin_menu h3, #admin_menu h4, #content h3 {
         font-size: 22px;
     }
+
+    /*** Affichage des mentions légales ******/
+
+    .data_protection_title h2 {
+        font-size: 1.7em;
+    }
+
+    .data_protection_content h3 {
+        font-size: 20px;
+    }
+
+    .data_protection_content p, .data_protection_content li {
+        font-size: 13px;
+    }
+
+    /*** Affichage de la vue détaillée des articles ***/
+
+    .card-img-top {
+        width:95%;
+    }
+
+    #card_publication_view .card-body {
+        width:95%;
+    }
+
+    #card_publication_view em {
+        font-size: 14px;
+    }
 }
 
 
 /* Affichage mobile grand format jusqu'à 379px (Iphone 5) */
 @media all and (max-width: 379px) {
+
+    /*** Affichage du logo ***/
+    
+    #logo {
+        top: -10px;
+         width: 28%;
+    }
+
+    #logo img {
+        width: 100%;
+    }
 
     #user-message p {
         font-size: 13px;
@@ -2928,7 +3156,7 @@ footer img {
 
     #education_header {
         top: 7%;
-        width: 180px;
+        width: 207px;
     }
 
     #home_education h2 {
@@ -2998,10 +3226,6 @@ footer img {
         font-size: 1.7em;
     }
 
-    .scrollButton_down_experiences {
-        top: 18%;
-    }
-
     .skill_wrap {
         margin-top: 65px;
     }
@@ -3021,6 +3245,10 @@ footer img {
 
     .skill_level {
         font-size: 11px;
+    }
+
+    #skills_header {
+        top: 9%;
     }
 
     /************ Affichage du slider des projets ***********/
@@ -3088,6 +3316,10 @@ footer img {
         font-size: 14px;
     }
 
+    #map_header {
+        width: 180px;
+    }
+
     /*** Affichage du menu du back- Office ******/
 
     #dashboard-banner-title h1 {
@@ -3108,4 +3340,9 @@ footer img {
         font-size: 11px;
     }
 
+    /*** Affichage de la vue détaillée des articles ***/
+
+    #card_publication_view .card-body {
+        width:100%;
+    }
 }

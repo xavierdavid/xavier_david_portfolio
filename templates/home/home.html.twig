@@ -44,7 +44,7 @@
     {# Affichage des formations #}
     <section id="home_education">
         <div id="education_header">
-            <p><a href="{{ path('home_article') }}">Mes derniers articles</a></p>
+            <p><a href="{{ path('home_article') }}"><span><i class="fas fa-newspaper"></i></span>Mes derniers articles</a></p>
         </div>     
         <h2>Formation</h2>
         
@@ -85,6 +85,9 @@
 
     {# Affichage des compétences #}
     <section id="home_skills">
+        <div id="skills_header">
+            <p><a href="#"><span><i class="fas fa-file"></i></span>Télécharger mon CV !</a></p>
+        </div>
         <h2>Compétences</h2>
 
         <div class="scrollButton_down_experiences">
@@ -120,7 +123,7 @@
     {# Affichage des expériences professionnelles #}
     <section id="home_experiences">
         <div id="experiences_header">
-            <p><a href="{{ path('home_project') }}">En savoir plus sur mes réalisations</a></p>
+            <p><a href="{{ path('home_project') }}"><span><i class="fas fa-project-diagram"></i></span>En savoir plus sur mes réalisations</a></p>
         </div>
         <h2>Experiences</h2>
 
@@ -162,7 +165,7 @@
     {# Affichage de la carte du parcours professionnel #}
     <section id="home_map">
         <div id="map_header">
-            <p><a href="{{ path('contact') }}">Besoin d'infos ?</a></p>
+            <p><a href="{{ path('contact') }}"><span><i class="fas fa-info-circle"></i>Besoin d'infos ?</a></p>
         </div>
         {# Accueil de la carte #}
         <div id="map_description">

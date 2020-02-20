@@ -14,7 +14,7 @@
     {# Affichage d'un article #}
     <div class="card">
       <div class="card-header">
-      <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </em>
+      <em>Article publié le {{article.createdAt | date('d/m/Y')}} le {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}}</em>
       </div>
       <div class="image_block">
         <img src="{{ asset('uploads/images/' ~ article.imageFilename) }}" class="card-img-top" alt="...">
