@@ -248,9 +248,9 @@ class SkillController extends AbstractController
         // On récupère la liste des dernières compétences publiées ($limit)
         $lastSkills = $entityManager->getRepository(Skill::class)->findBy(
             array(), // Pas de critère
-            /*array('name' => 'asc'), // On trie par nom et ordre croissant
+            array('name' => 'asc'), // On trie par nom et ordre croissant
             $limit, // On sélectionne $limit annonces
-            0 // A partir de la première compétence*/
+            /*0 // A partir de la première compétence*/
         );
 
         return $this->render('skill/index_skills.html.twig', array(

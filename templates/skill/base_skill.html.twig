@@ -30,7 +30,16 @@
             {{render(controller('App\\Controller\\SkillController::lastSkills', {'limit': 3}))}}
             <br>
             <hr>
-            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a>         </div>
+            
+            {# Gestion des catégories #}
+            <h4>Catégories</h4> 
+            <div class="list-group">
+                <a href="{{ path('category') }}" class="list-group-item list-group-item-action">Gérer catégories</a>
+            </div> 
+            </br> 
+            <hr>
+            <a href="{{ path('admin_dashboard')}}" class="btn btn-info">Accueil tableau de bord</a> 
+        </div>
         
         <div id="content" class="col-md-9">
             {% block skill_body %}{% endblock %} 

@@ -24,7 +24,7 @@ class RegistrationType extends AbstractType
                 'label' => 'Mot de passe',
             ])
             ->add('confirm_password', PasswordType::class, [
-                'label' => 'Confirmation du mot de passe'
+                'label' => 'Mot de passe'
             ])
         ;
     }

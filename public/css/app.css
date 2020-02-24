@@ -401,6 +401,47 @@ header {
     text-align: center;
 }
 
+#first_paragraph {
+    margin-top: 35px;
+}
+
+#first_paragraph p {
+    color:#7a7979;
+    text-align: justify;
+    box-shadow: 0px -16px 20px -9px #dbdce2;
+    padding-top: 15px;
+}
+
+#first_paragraph span {
+    margin-right: 15px;
+}
+
+#first_paragraph i {
+    color: #e0ad2c;
+}
+
+#first_paragraph li {
+    list-style-type: none;
+    color: #0e8ca3;
+    font-weight: bold;
+}
+
+#second_paragraph p {
+    color: #0e8ca3;
+    font-weight: bold;
+    text-align: center; 
+}
+
+#second_paragraph span {
+    margin-right: 15px;
+}
+
+#second_paragraph i {
+    color: #e0ad2c;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
 .profil_title p {
     text-align: center;
     color: #e0ad2c;
@@ -411,7 +452,6 @@ header {
 .profil_title {
     margin-bottom: 25px;
 }
-
 
 
 /*****************************************************/
@@ -570,7 +610,7 @@ header {
     position: absolute;
     width: 260px;
     left: 150%;
-    top: 14%;
+    top: 11%;
     transform: translate(-50%, -50%);
 }
 
@@ -847,22 +887,30 @@ header {
     text-align: center;
 }
 
-#map_description p:first-child {
-    text-align: center;
+#map_description p {
+    text-align: justify;
 }
 
 #map_description p {
     text-align: justify;
 }
 
-.map_title p {
+#map_introduction span {
+    margin-right: 15px;
+}
+
+#map_introduction i {
+    color: #0e8ca3;
+}
+
+#map_title p {
     text-align: center;
     color: #e0ad2c;
     font-weight: bold;
     margin-bottom: 0px;
 }
 
-.map_title {
+#map_title {
     margin-bottom: 25px;
 }
 
@@ -1064,8 +1112,17 @@ footer img {
 
 .contact_header p {
     width: 40%;
-    margin-top: 40px;
+    margin-top: 50px;
     text-align: justify;
+}
+
+.contact_header span {
+    margin-right: 10px;
+}
+
+.contact_header span i {
+    font-size: 25px;
+    color: #0e8ca3;
 }
 
 #contact_image1 {
@@ -1145,6 +1202,14 @@ footer img {
 #contact_infos {
     padding: 15px;
     width: 100%;
+}
+
+#contact_infos span {
+    margin-right: 15px;
+}
+
+#contact_infos span i {
+    color: #e0ad2c;
 }
 
 #social_link {
@@ -1777,11 +1842,14 @@ footer img {
     margin:auto;
 }
 
+.form_registration label, .form_registration input {
+    font-size: 15px;
+}
+
 
 /*****************************************************/
 /***                  Média Queries                ***/
 /*****************************************************/
-
 
 /* Affichage tablette grand format jusqu'à 1024px (992px à 1024px : Ipad Pro) */
 @media all and (max-width: 1024px) {
@@ -1791,7 +1859,6 @@ footer img {
     #logo img {
         width: 70%;
     }
-    
     
     /*************** Affichage du menu ***************/
 
@@ -2125,6 +2192,21 @@ footer img {
         right: 8px;
         bottom: 49px;
     }
+
+    /*** Paragraphes d'introduction des pages 'Home' **/
+
+    #first_paragraph p, #second_paragraph p {
+        font-size: 14px;
+    }
+
+    #first_paragraph ul {
+        padding-left: 10px;
+    }
+
+    #first_paragraph li {
+        font-size: 13px;
+    }
+
     
     /****** Affichage des formations - page Home *****/
 
@@ -2251,6 +2333,15 @@ footer img {
     }
 
     /**** Affichage du bloc infos de la page de contact ****/
+
+    .contact_header span i {
+        font-size: 20px;
+        color: #0e8ca3;
+    }
+
+    .contact_header p {
+        font-size: 14px;
+    }
 
     .contact_footer {
         flex-wrap: wrap;
