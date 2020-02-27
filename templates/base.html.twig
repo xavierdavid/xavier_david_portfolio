@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
         {# Font Awesome link #}
         <script src="https://kit.fontawesome.com/44950cf195.js" crossorigin="anonymous"></script>
+        {# Jquery JS #}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         
         <title>{% block title %}Portfolio de Xavier DAVID{% endblock %}</title>
         
@@ -98,22 +100,6 @@
         
         {# Conteneur du bloc 'body' #}
         {% block body %}{% endblock %} 
-
-        {# Menu JS #}
-        <script src="{{ asset('js/menu.js') }}"></script>
-
-        {# Tiny MCE API CDN link #}
-            <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-            <script>tinymce.init({
-                selector: '.tinymce',
-                mode:"exact",
-                elements:"contenu",
-                entity_encoding : "raw",
-                encoding: "UTF-8",
-            })</script> 
-
-        {# Javascript #}
-        {% block javascript %}{% endblock %} 
        
     
         <footer>
@@ -142,6 +128,32 @@
                 </p>
             </div> 
         </footer> 
+
+        <section class="cookie_banner" style="display: none">
+            <p>En visitant ce site, vous acceptez <a href="{{ path('home_data_protection')}}">la politique des cookies</a><span><i class="fas fa-cookie-bite"></i></span></p>
+            <button class="close">&times;</button> {# Caractère spécial 'x' - Entité HTML '&times' pour fermer la fenêtre #}
+        </section>
+
+
+        {# Menu JS #}
+        <script src="{{ asset('js/menu.js') }}"></script>
+
+        {# Cookie Banner JS #}
+        <script src="{{ asset('js/cookie_banner.js') }}"></script>
+
+        {# Tiny MCE API CDN link #}
+            <script src="https://cdn.tiny.cloud/1/ap3ws4up4zey4cecb360l3ctoj2w9z3wfuu6l251n0kkuybj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+            <script>tinymce.init({
+                selector: '.tinymce',
+                mode:"exact",
+                elements:"contenu",
+                entity_encoding : "raw",
+                encoding: "UTF-8",
+            })</script> 
+
+        {# Javascript #}
+        {% block javascript %}{% endblock %} 
+
 
     </body>
 </html>

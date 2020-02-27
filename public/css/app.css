@@ -395,8 +395,21 @@ header {
 #home_profil {
     width: 70%;
     margin: auto;
+    position: relative;
 }
-    
+
+#circuit_image {
+    width: 60%;
+    position: absolute;
+    top: -50%;
+    opacity: 0.05;
+    left: -23%;
+}
+
+#circuit_image img {
+    width: 75%;
+}
+
 #home_profil h2, #home-profil p {
     text-align: center;
 }
@@ -606,6 +619,20 @@ header {
     color: #0e8ca3;
 }
 
+#circuit_image_skills {
+    width: 50%;
+    position: absolute;
+    top: 12%;
+    opacity: 0.05;
+    left: 62%;
+    rotate: 45%;
+    transform: rotate(90deg);
+}
+
+#circuit_image_skills img {
+    width: 75%;
+}
+
 #skills_header {
     position: absolute;
     width: 260px;
@@ -796,6 +823,14 @@ header {
 
 .experience_period {
     width: 30%;
+}
+
+.experience_period span {
+    margin-right: 5px;
+}
+
+.experience_period i {
+    color: #2d809e;
 }
 
 .experience_period p:after { 
@@ -1095,6 +1130,21 @@ footer img {
 
 .contact_wrap {
     margin-top: 30px;
+    position: relative;
+}
+
+#circuit_image_contact {
+    width: 50%;
+    position: absolute;
+    top: 15%;
+    opacity: 0.05;
+    left: 58%;
+    rotate: 45%;
+    transform: rotate(90deg);
+}
+
+#circuit_image_contact img {
+    width: 75%;
 }
 
 .contact_header {
@@ -1218,8 +1268,42 @@ footer img {
     margin-top: 30px;
 }
 
+/* Liens infobulles réseaux sociaux */
 #social_link a {
     margin: 0px 10px;
+}
+
+/* Style des infobulles de réseaux sociaux */
+#social_link a span {
+    position: absolute;
+    margin-top: -60px;
+    margin-left: -35px;
+    color: #ffffff;
+    background-color: #2d809e;
+    padding:15px;
+    border-radius:3px;
+    box-shadow:0 0 2px rgb(14,140,163,.5);
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+}
+
+/* Déclenchement de la transition infobulle au survol */
+#social_link a:hover span, a:focus span {
+    transform:scale(1) rotate(0);      
+}
+
+/* Ajout d'un pseudo-élément "pointe" sous l'infobulle */
+#social_link span:after {
+    position: absolute;
+    margin-top: 33px;
+    margin-left: -60%; /* Centrage du pseudo-élément par rapport au span */
+    content: " "; /* Création d'un bloc "vide" */
+    display: inline-block; /* Affichage inline-block pour que le bloc se comporte comme un élément inline */
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg); /* Rotation de l'objet de 45 degrés */
+    background-color: #2d809e;
+    z-index: -1; /* Affichage en arrière-plan */
 }
 
 #social_link p {
@@ -1249,7 +1333,6 @@ footer img {
     width: 100%;
     border-radius: 6px;
 }
-
 
 
 /*****************************************************/
@@ -1446,8 +1529,9 @@ footer img {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
-    font-size: 50px;
+    font-size: 65px;
     z-index: 20;
+    text-shadow: 7px 4px 6px rgba(233,228,228,0.65);
 }
 
 #banner-title-animate p i {
@@ -1848,13 +1932,61 @@ footer img {
 
 
 /*****************************************************/
+/***              Bannière de cookies              ***/
+/*****************************************************/
+
+.cookie_banner {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 5px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4f5054;
+    opacity: 0.7;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.cookie_banner p {
+    margin-bottom: 0px;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+}
+
+.cookie_banner a {
+    text-decoration: none;
+    color: #e0ad2c;
+}
+
+.cookie_banner span {
+    margin-left: 10px;
+}
+
+.cookie_banner span i {
+    color: #0e8ca3;
+}
+
+.close {
+    height: 20px;
+    background-color: #777;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+
+/*****************************************************/
 /***                  Média Queries                ***/
 /*****************************************************/
 
 /* Affichage tablette grand format jusqu'à 1024px (992px à 1024px : Ipad Pro) */
 @media all and (max-width: 1024px) {
 
-    /*** Afficgahe du logo ***/
+    /*** Affichage du logo ***/
     
     #logo img {
         width: 70%;
@@ -2005,6 +2137,20 @@ footer img {
 
     #card_publication_view .card-body {
         width:80%;
+    }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 60%;
+        top: -40%;
+        left: -23%;
+    }
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 15%;
+        left: 63%;
     }
 }
 
@@ -2158,6 +2304,26 @@ footer img {
     #card_publication_view .card-body {
         width:80%;
     }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 60%;
+        top: -27%;
+        left: -22%;
+    }
+
+    #circuit_image_skills {
+        width: 50%;
+        top: 22%;
+        left: 62%;
+    }
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 13%;
+        left: 63%;
+    }
 }
 
 
@@ -2207,7 +2373,6 @@ footer img {
         font-size: 13px;
     }
 
-    
     /****** Affichage des formations - page Home *****/
 
     #education_header {
@@ -2412,6 +2577,31 @@ footer img {
         font-size: 14px;
     }
 
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 60%;
+        top: -27%;
+        left: -20%;
+    }
+
+    #circuit_image_skills {
+        width: 50%;
+        top: 16%;
+        left: 60%;
+    }
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 12%;
+        left: 58%;
+    }
+
+    /*** Affichage de la bannière des cookies ***/
+
+    .cookie_banner p {
+        font-size: 14px;
+    }
 }
 
 /* Affichage mobile grand format jusqu'à 575px (471px à 575px)*/
@@ -2419,8 +2609,6 @@ footer img {
 
     /*** Affichage du logo ***/
     
-    
-
     #logo img {
         width: 100%;
     }
@@ -2507,7 +2695,6 @@ footer img {
         height: 15%;
     }
 
-    
     /****** Affichage des compétences - page Home *****/
 
     .skill_content {
@@ -2685,6 +2872,26 @@ footer img {
     #comment_form .form-control {
         width: 90%;
         margin-left: 0px;
+    }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 68%;
+        top: -21%;
+        left: -19%;
+    }
+
+    #circuit_image_skills {
+        width: 55%;
+        top: 17%;
+        left: 55%;
+    }
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 11%;
+        left: 58%;
     }
 }
 
@@ -2964,6 +3171,26 @@ footer img {
     .data_protection_content p, .data_protection_content li {
         font-size: 13px;
     }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 60%;
+        top: -22%;
+        left: -6%;
+    }
+
+    #circuit_image_skills {
+        width: 55%;
+        top: 17%;
+        left: 55%;
+    }
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 11%;
+        left: 58%;
+    }
 }
 
 
@@ -3208,6 +3435,20 @@ footer img {
     #card_publication_view em {
         font-size: 14px;
     }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image_contact {
+        width: 50%;
+        top: 13%;
+        left: 58%;
+    }
+
+    /*** Affichage de la bannière des cookies ***/
+
+    .cookie_banner p {
+        font-size: 12px;
+    }
 }
 
 
@@ -3435,5 +3676,31 @@ footer img {
 
     #card_publication_view .card-body {
         width:100%;
+    }
+
+    /*** Affichage de l'image du circuit imprimé ***/
+
+    #circuit_image {
+        width: 70%;
+        top: -17%;
+        left: -8%;
+    }
+
+    #circuit_image_skills {
+        width: 60%;
+        top: 22%;
+        left: 52%;
+    }
+
+    #circuit_image_contact {
+        width: 58%;
+        top: 14%;
+        left: 53%;
+    }
+
+    /*** Affichage de la bannière des cookies ***/
+
+    .cookie_banner p {
+        font-size: 12px;
     }
 }
