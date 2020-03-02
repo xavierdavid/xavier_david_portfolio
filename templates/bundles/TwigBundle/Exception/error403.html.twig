@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page non autorisée ! {% endblock title %}
+
+{% block body %}
+
+    <div class="container" id="error_container">
+        <h2><span><i class="fas fa-exclamation-circle"></i></span>Vous n'avez pas le droit d'accéder à cette ressource !</h2>
+        <p>Je vous invite à revenir sur la page d'accueil.</p>
+        <a href=" {{ path('home')}}" class="btn btn-primary">Retour à l'accueil</a>
+    
+    </div>
+
+{% endblock %}
