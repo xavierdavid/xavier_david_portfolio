@@ -31,10 +31,13 @@ services:
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%image_directory%'
-    
 
-    # Service d'envoi de notification par mail       
+
+    # Service d'envoi de notification par mail
     send_mailer:
         class: App\Service\SendEmail
         arguments:
             - '@mailer'
+
+
+    Doctrine\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'

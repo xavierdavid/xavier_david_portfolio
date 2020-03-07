@@ -98,15 +98,15 @@ header {
 }
 
 #hamburger-content #login span i, #hamburger-content #logout span i {
-    color: #e0ad2c; 
+    color: #e0ad2c;
 }
 
 #hamburger-content nav span {
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 #hamburger-content nav span i {
-    color: #e0ad2c; 
+    color: #e0ad2c;
 }
 
 .button-sign-in {
@@ -115,7 +115,7 @@ header {
 }
 
 #hamburger-sidebar-body #logout a:hover {
-    color: #e0ad2c; 
+    color: #e0ad2c;
 }
 
 .button-sign-in:hover {
@@ -128,14 +128,14 @@ header {
 }
 
 .button-sign-in span i {
-    color: #e0ad2c; 
+    color: #e0ad2c;
 }
 
 /* Style de l'icône hamburger */
 #hamburger-button {
     display: none; /* Bouton masqué par défaut : activé à l'aide de media queries */
     cursor: pointer;
-    background: none; 
+    background: none;
     border: none;
     font-size: 30px;
     vertical-align: top;
@@ -196,7 +196,7 @@ header {
 #hamburger-sidebar-body li:before {
     content: ' '; /* Contenu ajouté */
     width: 24px;
-    height: 24px; 
+    height: 24px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 16px;
@@ -205,16 +205,16 @@ header {
 
 /* Insertion d'images dans le contenu des pseudo-éléments de la sidebar */
 #hamburger-sidebar-body li:first-child:before {
-    background-image: url('../img/home.png'); 
+    background-image: url('../img/home.png');
 }
 #hamburger-sidebar-body li:nth-child(2):before {
-    background-image: url('../img/start-up.png'); 
+    background-image: url('../img/start-up.png');
 }
 #hamburger-sidebar-body li:nth-child(3):before {
-    background-image: url('../img/news.png'); 
+    background-image: url('../img/news.png');
 }
 #hamburger-sidebar-body li:last-child:before {
-    background-image: url('../img/phone-contact.png'); 
+    background-image: url('../img/phone-contact.png');
 }
 
 #hamburger-sidebar-body .button {
@@ -241,28 +241,28 @@ header {
     justify-content: center;
     padding-top: 15px;
     height: 60px;
-    background: #ffffff;    
+    background: #ffffff;
 }
 
 #user-message p {
     text-align: center;
     color: #e0ad2c;
     font-weight: bold;
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
 }
 
 #user-message p:before {
     content: ' '; /* Contenu ajouté */
     width: 24px;
-    height: 24px; 
+    height: 24px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 16px;
-    margin-bottom: 4px; 
+    margin-bottom: 4px;
 }
 
 #user-message p:before {
-    background-image: url('../img/user.png'); 
+    background-image: url('../img/user.png');
 }
 
 #admin-access {
@@ -271,8 +271,8 @@ header {
 
 #admin-access p {
     font-weight: bold;
-    margin-bottom: 0px; 
-    text-align: center;   
+    margin-bottom: 0px;
+    text-align: center;
 }
 
 #admin-access a {
@@ -284,15 +284,15 @@ header {
 #admin-access p:before {
     content: ' '; /* Contenu ajouté */
     width: 24px;
-    height: 24px; 
+    height: 24px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
-    margin-bottom: 4px;   
+    margin-bottom: 4px;
 }
 
 #admin-access p:before {
-    background-image: url('../img/admin-interface.png'); 
+    background-image: url('../img/admin-interface.png');
 }
 
 
@@ -320,7 +320,7 @@ header {
 #profil-image {
     position: absolute;
     top: 90%; /* à 100%/50% du parent référent */
-    left: 50%;    
+    left: 50%;
     transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
     z-index: 10;
 }
@@ -341,7 +341,7 @@ header {
     position: absolute;
     top: 130%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
 .scrollButton_down_education .fas {
@@ -364,7 +364,7 @@ header {
 }
 
 #banner-title h1 span {
-    color: #e0ad2c;  
+    color: #e0ad2c;
 }
 
 
@@ -377,9 +377,9 @@ header {
     display: block;
     position: fixed;
     right: 30px;
-    bottom: 90px; 
+    bottom: 90px;
     display: none;
-    cursor: pointer;  
+    cursor: pointer;
 }
 
 .scrollButton_up i {
@@ -442,7 +442,7 @@ header {
 #second_paragraph p {
     color: #0e8ca3;
     font-weight: bold;
-    text-align: center; 
+    text-align: center;
 }
 
 #second_paragraph span {
@@ -523,7 +523,7 @@ header {
 
 .scrollButton_down_skills {
     z-index: 20;
-    text-align: center; 
+    text-align: center;
 }
 
 .scrollButton_down_skills .fas {
@@ -552,7 +552,7 @@ header {
 
 .education_card img {
     width: 50%;
-    height: 35%; 
+    height: 35%;
 }
 
 .education_image {
@@ -766,12 +766,12 @@ header {
 #home_experiences h2 {
     color: #0e8ca3;
     font-weight: bold;
-    text-align: center;  
+    text-align: center;
 }
 
 .scrollButton_down_map {
     z-index: 20;
-    text-align: center; 
+    text-align: center;
 }
 
 .scrollButton_down_map .fas {
@@ -833,7 +833,7 @@ header {
     color: #2d809e;
 }
 
-.experience_period p:after { 
+.experience_period p:after {
     content: " ";
     display: inline-block;
     vertical-align: middle;
@@ -853,7 +853,7 @@ header {
 .experience_link {
     width: 30%;
     padding: 30px 5px;
-    text-align: end; 
+    text-align: end;
 }
 
 .experience_link a {
@@ -864,7 +864,7 @@ header {
     border: 2px solid #e0ad2c;
     border-radius: 20px;
     padding:10px;
-    
+
 }
 
 .experience_link a:hover {
@@ -915,9 +915,9 @@ header {
 
 #map_description {
     width: 70%;
-    margin: auto;  
+    margin: auto;
 }
-    
+
 #map_description h2 {
     text-align: center;
 }
@@ -1004,11 +1004,11 @@ footer img {
 #footer_item1 li:before {
     content: ' '; /* Contenu ajouté */
     width: 24px;
-    height: 24px; 
+    height: 24px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 16px;
-    margin-bottom: 4px; 
+    margin-bottom: 4px;
 }
 
 #footer_item1 ul {
@@ -1017,15 +1017,15 @@ footer img {
 
 /* Insertion d'images dans le contenu des pseudo-éléments des paragraphes du footer */
 #footer_item1 li:first-child:before {
-    background-image: url('../img/adress.png');   
+    background-image: url('../img/adress.png');
 }
 
 #footer_item1 li:nth-child(2):before {
-    background-image: url('../img/smartphone.png'); 
+    background-image: url('../img/smartphone.png');
 }
 
 #footer_item1 li:last-child:before {
-    background-image: url('../img/mail.png'); 
+    background-image: url('../img/mail.png');
 }
 
 #footer_item1 h4 {
@@ -1072,8 +1072,8 @@ footer img {
     justify-content: space-between;
     width: 100%;
     height: 60px;
-    background-color:#242425; 
-    padding: 10px; 
+    background-color:#242425;
+    padding: 10px;
 }
 
 #portfolio_copyright p {
@@ -1138,13 +1138,13 @@ footer img {
     position: absolute;
     top: 15%;
     opacity: 0.05;
-    left: 58%;
+    left: 56%;
     rotate: 45%;
     transform: rotate(90deg);
 }
 
 #circuit_image_contact img {
-    width: 75%;
+    width: 70%;
 }
 
 .contact_header {
@@ -1156,7 +1156,7 @@ footer img {
 
 .contact_header img {
     width: 120px;
-    height: 130px; 
+    height: 130px;
     margin-right: 25px;
 }
 
@@ -1224,7 +1224,7 @@ footer img {
 
 .form_contact {
     width : 80%;
-    margin:auto; 
+    margin:auto;
 }
 
 .form_contact button {
@@ -1289,7 +1289,7 @@ footer img {
 
 /* Déclenchement de la transition infobulle au survol */
 #social_link a:hover span, a:focus span {
-    transform:scale(1) rotate(0);      
+    transform:scale(1) rotate(0);
 }
 
 /* Ajout d'un pseudo-élément "pointe" sous l'infobulle */
@@ -1366,7 +1366,7 @@ footer img {
 }
 
 #dashboard-banner-title h1 span {
-    color: #e0ad2c;  
+    color: #e0ad2c;
 }
 
 #dashboard-menu {
@@ -1494,7 +1494,7 @@ footer img {
 #image-experience img {
     width: 120px;
     margin-left: 15px;
-} 
+}
 
 
 /*****************************************************/
@@ -1577,7 +1577,7 @@ footer img {
     margin-top: 15px;
     width: 720px;
     /*height: 600px;*/
-    overflow: hidden;  
+    overflow: hidden;
 }
 
 #slider {
@@ -1626,7 +1626,7 @@ footer img {
 }
 
 .slider_element h2 {
-    font-size: 25px;
+    font-size: 22px;
     margin-top: 15px;
 }
 
@@ -1672,9 +1672,9 @@ footer img {
     background-color: #0e8ca3;
     border-radius: 30px;
     text-align: center;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     margin-left: auto;
-    margin-right: auto;  
+    margin-right: auto;
 }
 
 .project_link a {
@@ -1707,18 +1707,18 @@ footer img {
     color:#9e9fa3;
 }
 
-#arrow_left .fas:hover, 
+#arrow_left .fas:hover,
 #arrow_right .fas:hover,
 #play .fas:hover,
 #pause .fas:hover {
-    color:#0e8ca3;   
+    color:#0e8ca3;
 }
 
-#arrow_left .fas:active, 
+#arrow_left .fas:active,
 #arrow_right .fas:active,
 #play .fas:active,
 #pause .fas:active {
-    transform: scale(.8); 
+    transform: scale(.8);
 }
 
 .action_controll {
@@ -1730,7 +1730,7 @@ footer img {
 }
 
 #play {
-    display: none; 
+    display: none;
 }
 
 
@@ -1796,9 +1796,9 @@ footer img {
     background-color: #0e8ca3;
     border-radius: 30px;
     text-align: center;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     margin-left: auto;
-    margin-right: auto;  
+    margin-right: auto;
 }
 
 #publication_link a {
@@ -2005,11 +2005,11 @@ footer img {
 @media all and (max-width: 1024px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo img {
         width: 70%;
     }
-    
+
     /*************** Affichage du menu ***************/
 
     #hamburger-content {
@@ -2025,7 +2025,7 @@ footer img {
     }
 
     .sidebar-activated {
-        transform: translateX(0) !important; /* Activation de la propriété transform avec javascript */    
+        transform: translateX(0) !important; /* Activation de la propriété transform avec javascript */
     }
 
     #hamburger-sidebar-body ul a {
@@ -2034,7 +2034,7 @@ footer img {
         font-size: 16px;
         font-weight: bold;
     }
-    
+
     #connection a {
         width: 50%;
         font-weight: bold;
@@ -2049,8 +2049,8 @@ footer img {
         width: 100%;
         margin: auto;
         background: #0e8ca3;
-        border-radius: 5px; 
-        margin-top: 35px;  
+        border-radius: 5px;
+        margin-top: 35px;
     }
 
     .button-sign-in:hover {
@@ -2167,8 +2167,12 @@ footer img {
 
     #circuit_image_contact {
         width: 50%;
-        top: 15%;
-        left: 63%;
+        top: 16%;
+        left: 58%;
+    }
+
+    #circuit_image_contact img {
+        width: 60%;
     }
 }
 
@@ -2177,7 +2181,7 @@ footer img {
 @media all and (max-width: 991px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo img {
         width: 90%;
     }
@@ -2186,7 +2190,7 @@ footer img {
         width: 200px;
         height: 225px;
     }
-    
+
     /**** Affichage des formations - Page d'accueil ****/
 
     .education_link a {
@@ -2219,9 +2223,9 @@ footer img {
         left: 150%;
         top: 10%;
     }
-   
+
     /************ Affichage du slider des projets ***********/
-    
+
     #slider_container {
         width: 690px;
     }
@@ -2339,8 +2343,8 @@ footer img {
 
     #circuit_image_contact {
         width: 50%;
-        top: 13%;
-        left: 63%;
+        top: 15%;
+        left: 55%;
     }
 }
 
@@ -2349,13 +2353,13 @@ footer img {
 @media all and (max-width: 767px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo img {
         width: 100%;
     }
 
     /****** Affichage du menu toogle *****/
-    
+
     .button-sign-in {
         font-size: 16px;
     }
@@ -2363,7 +2367,7 @@ footer img {
     /****** Affichage de la bannière - page Home *****/
 
     #banner-title {
-        top: 36%; 
+        top: 36%;
     }
 
     #banner-title h1 {
@@ -2435,7 +2439,7 @@ footer img {
     #experiences_header {
         top: 10%;
     }
-    
+
     .experience_content {
         width: 100%;
         padding-left: 5%;
@@ -2460,7 +2464,7 @@ footer img {
         left: 27%;
         top: 39%;
     }
-    
+
     #footer_item1 h4 {
         font-size: 20px;
         margin-bottom: 16px;
@@ -2480,7 +2484,7 @@ footer img {
     }
 
     /************ Affichage du slider des projets ***********/
-    
+
     #slider_container {
         width: 510px;
     }
@@ -2505,11 +2509,11 @@ footer img {
     }
 
     /************** Affichage des publications *************/
-    
+
     .publication_container {
         flex-wrap: wrap;
     }
-    
+
     #publication_deck {
         width: 33em;
         margin-bottom: 60px;
@@ -2541,11 +2545,15 @@ footer img {
     }
 
     /*** Affichage de la map de la page de contact ***/
-    
+
     #contact_map {
         width: 500px;
-     }
-     
+    }
+
+    #iframe_map {
+        width: 538px !important;
+    }
+
     #contact_map iframe {
         width: 500px;
     }
@@ -2558,7 +2566,7 @@ footer img {
 
     .jumbotron h1 {
         font-size: 35px;
-    } 
+    }
 
     #admin_menu h3, #admin_menu h4, #content h3 {
         font-size: 25px;
@@ -2580,6 +2588,10 @@ footer img {
 
     #comment_section #comment_row {
         font-size: 14px;
+    }
+
+    .commentform_user {
+        display: block;
     }
 
     #comment_form label, #comment_form input, #comment_form textarea {
@@ -2611,8 +2623,8 @@ footer img {
 
     #circuit_image_contact {
         width: 50%;
-        top: 12%;
-        left: 58%;
+        top: 13%;
+        left: 54%;
     }
 
     /*** Affichage de la bannière des cookies ***/
@@ -2626,7 +2638,7 @@ footer img {
 @media all and (max-width: 575px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo img {
         width: 100%;
     }
@@ -2648,13 +2660,13 @@ footer img {
         font-size: 14px;
         text-align: center;
     }
-    
+
     /****** Affichage de la bannière - page Home *****/
-   
+
     #main-banner {
         margin: 70px 0px 115px 0px;
     }
-    
+
     #banner-title {
         top: 36%;
     }
@@ -2682,7 +2694,7 @@ footer img {
         right: 8px;
         bottom: 49px;
     }
-    
+
     /****** Affichage des formations - page Home *****/
 
     #education_header {
@@ -2747,7 +2759,7 @@ footer img {
     #experiences_header {
         top: 10%;
     }
-    
+
     .experience_content {
         width: 100%;
         padding-left: 5%;
@@ -2766,7 +2778,7 @@ footer img {
     }
 
     /************ Affichage du footer ***********/
-    
+
     #footer_item1 h4 {
         font-size: 20px;
     }
@@ -2781,9 +2793,9 @@ footer img {
 
     footer img {
         width: 130%;
-        height: 105%;
+        height: 90%;
         left: -25%;
-        top: -4%;
+        top: -2%;
     }
 
     #footer_item1 {
@@ -2796,11 +2808,11 @@ footer img {
     }
 
     /************ Affichage du slider des projets ***********/
-    
+
     .project_wrap h1 {
         font-size: 35px;
     }
-   
+
     #slider_container {
         width: 418px;
     }
@@ -2831,7 +2843,7 @@ footer img {
     }
 
     /********** Affichage du formulaire de contact **********/
-    
+
     .contact_wrap h1 {
         font-size: 35px;
     }
@@ -2849,8 +2861,12 @@ footer img {
     /*** Affichage de ma map de la page de contact ***/
     #contact_map {
         width: 400px;
-     }
-     
+    }
+
+    #iframe_map {
+        width: 435px !important;
+    }
+
     #contact_map iframe {
         width: 400px;
     }
@@ -2864,7 +2880,7 @@ footer img {
     #dashboard-banner-title h1 {
         font-size: 40px;
     }
-    
+
     .dashboard_button {
         width: 170px;
         height: 46px;
@@ -3085,7 +3101,7 @@ footer img {
     }
 
     /****** Map - Page d'accueil *****/
-    
+
     #map_header a {
         font-size: 16px;
     }
@@ -3151,14 +3167,18 @@ footer img {
     }
 
     /*** Affichage de la map de la page de contact ***/
-    
+
     #contact_map {
         width: 370px;
-     }
-     
-     #contact_map iframe {
+    }
+
+    #iframe_map {
+        width: 375px !important;
+    }
+
+    #contact_map iframe {
         width: 370px;
-     }
+    }
 
     /*** Affichage du menu du back- Office ******/
 
@@ -3169,7 +3189,7 @@ footer img {
     #dashboard-banner-title h1 {
         font-size: 35px;
     }
-    
+
     .dashboard_button {
         width: 160px;
         height: 44px;
@@ -3216,7 +3236,7 @@ footer img {
 @media all and (max-width: 420px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo {
         top: -6px;
         width: 23%;
@@ -3233,7 +3253,7 @@ footer img {
     }
 
     /****** Map - Page d'accueil *****/
-    
+
     #map_header a {
         font-size: 16px;
     }
@@ -3281,7 +3301,7 @@ footer img {
     }
 
     /****** Affichage du footer *****/
-    
+
     #footer_link a {
         font-size: 13px;
     }
@@ -3293,7 +3313,7 @@ footer img {
     #portfolio_copyright p {
         font-size: 11px;
     }
-    
+
     #footer_item1 {
         left: 12%;
         top: 33%;
@@ -3301,10 +3321,10 @@ footer img {
     }
 
     footer img {
-        width: 179%;
-        height: 82%;
-        left: -63%;
-        top: 4%;
+        width: 166%;
+        height: 84%;
+        left: -55%;
+        top: 1%;
     }
 
     #portfolio_copyright a {
@@ -3317,7 +3337,7 @@ footer img {
     }
 
     /************ Affichage du slider des projets ***********/
-   
+
     #slider_container {
         width: 351px;
     }
@@ -3409,7 +3429,7 @@ footer img {
     }
 
     /*** Affichage du menu du back- Office ******/
-    
+
     .dashboard_button {
         width: 150px;
     }
@@ -3420,7 +3440,7 @@ footer img {
 
     .jumbotron h1 {
         font-size: 30px;
-    } 
+    }
 
     #admin_menu h3, #admin_menu h4, #content h3 {
         font-size: 22px;
@@ -3474,7 +3494,7 @@ footer img {
 @media all and (max-width: 379px) {
 
     /*** Affichage du logo ***/
-    
+
     #logo {
         top: -10px;
          width: 28%;
@@ -3602,7 +3622,7 @@ footer img {
     }
 
     /************ Affichage du slider des projets ***********/
-   
+
     .project_wrap h1 {
         font-size: 1.5em;
         margin-bottom: 30px;
@@ -3656,13 +3676,17 @@ footer img {
 
     #contact_map {
         width: 300px;
-     }
-     
-     #contact_map iframe {
-        width: 300px;
-     }
+    }
 
-     #map_description p {
+    #iframe_map {
+        width: 310px !important;
+    }
+
+    #contact_map iframe {
+        width: 300px;
+    }
+
+    #map_description p {
         font-size: 14px;
     }
 
@@ -3675,7 +3699,7 @@ footer img {
     #dashboard-banner-title h1 {
         font-size: 30px;
     }
-    
+
     .dashboard_button {
         width: 150px;
         height: 44px;

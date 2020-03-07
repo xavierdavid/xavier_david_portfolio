@@ -5,7 +5,8 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+#use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -14,8 +15,8 @@ class CategoryController extends AbstractController
     /**
      * @Route("/category", name="category")
      */
-    public function allCategories(Request $request, ObjectManager $manager) {
-        
+    public function allCategories(Request $request, EntityManagerInterface $manager) {
+
         // On récupère et on affiche les catégories
 
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Category'
@@ -24,7 +25,7 @@ class CategoryController extends AbstractController
         //$categories = $repository->findAll();
         $categories = $repository->findMyCategories();
 
-        // Création et gestion du formulaire d'ajout de catégories 
+        // Création et gestion du formulaire d'ajout de catégories
         // On crée une instance 'vide' de la classe 'Category'
         $category = new Category();
 
@@ -34,10 +35,10 @@ class CategoryController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $category contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
-            // On demande au manager de persister l'entité 'category' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'category' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($category);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -46,18 +47,18 @@ class CategoryController extends AbstractController
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'La catégorie a bien été ajoutée');
-            
-            // Après avoir effectué la requête, on redirige vers la route 'category' 
+
+            // Après avoir effectué la requête, on redirige vers la route 'category'
             return $this->redirectToRoute('category');
         }
 
         // On renvoie une réponse - Affichage des réponses par le template category/all_categories.html.twig
-        return $this->render('category/all_categories.html.twig', [ 
+        return $this->render('category/all_categories.html.twig', [
             'categories' => $categories,
             'formCategory' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue
         ]);
-        
-        
+
+
     }
 
 
@@ -66,19 +67,19 @@ class CategoryController extends AbstractController
     /**
      * @Route("/category/delete/{id}", name="category_delete")
      */
-    public function categoryDelete($id, Request $request, ObjectManager $manager){
-        // Méthode qui récupère et supprime une catégorie 
+    public function categoryDelete($id, Request $request, EntityManagerInterface $manager){
+        // Méthode qui récupère et supprime une catégorie
 
-        // On sélectionne les données de la catégorie  
+        // On sélectionne les données de la catégorie
         $repository = $this->getDoctrine()->getRepository(Category::class);
         $category = $repository->find($id);
 
-        // Si la catégorie n'existe pas ... 
+        // Si la catégorie n'existe pas ...
         if(null === $category) {
             throw new NotFoundHttpException(("La catégorie d'id " .$id." n'existe pas." ));
         }
 
-        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)     
+        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)
         $form = $this->get('form.factory')->create();
 
         // On fait le lien Requête <-> Formulaire. La variable $category contient alors les valeurs 'vides' du formulaire
@@ -89,7 +90,7 @@ class CategoryController extends AbstractController
             $manager->remove($category);
             $manager->flush();
             $request->getSession()->getFlashBag()->add('notice', "La catégorie a bien été supprimée.");
-        
+
             // On redirige vers la route 'category'
             return $this->redirectToRoute('category');
         }

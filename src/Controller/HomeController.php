@@ -10,9 +10,10 @@ use App\Entity\Education;
 use App\Form\CommentType;
 use App\Entity\Experience;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+#use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType; 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -33,13 +34,13 @@ class HomeController extends AbstractController
         // Sélection des données de l'entité 'Skill'
         $repositorySkills = $this->getDoctrine()->getRepository(Skill::class);
 
-        // On fixe à 4 le nombre limite de formations à afficher sur la page d'accueil 
+        // On fixe à 4 le nombre limite de formations à afficher sur la page d'accueil
         $limit = 4;
-        
-        // Récupération des 'expériences' 
+
+        // Récupération des 'expériences'
         $experiences = $repositoryExperiences->findAll();
 
-        // Récupération des 'formation' 
+        // Récupération des 'formation'
         $educations = $repositoryEducation->getFrontEducations($limit);
 
         // Récupération des 'compétences'
@@ -62,16 +63,16 @@ class HomeController extends AbstractController
     public function homeArticles(){
         // Méthode qui récupère et affiche les derniers articles publiés dans la section frontend
 
-        // On fixe le nombre d'articles à afficher dans la section frontend 
+        // On fixe le nombre d'articles à afficher dans la section frontend
         $limit = 2;
 
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Article'
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
-        // On récupère les articles 
+        // On récupère les articles
         $articles = $repository->getLastArticles($limit);
-        
-        // Envoi de la réponse au template pour l'affichage 
+
+        // Envoi de la réponse au template pour l'affichage
         return $this->render('home/home_article.html.twig', [
             'articles' => $articles
         ]);
@@ -81,22 +82,22 @@ class HomeController extends AbstractController
     /**
      * @Route("/home_article_view/{id}", name="home_article_view", requirements={"id"="\d+"})
      */
-    public function homeArticleView($id, Request $request, ObjectManager $manager){
-        // Méthode qui récupère et affiche l'article avec l'identifiant $id 
-        
-        // Sélection des données 
+    public function homeArticleView($id, Request $request, EntityManagerInterface $manager){
+        // Méthode qui récupère et affiche l'article avec l'identifiant $id
+
+        // Sélection des données
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        // Récupération de l'article 
+        // Récupération de l'article
         $article = $repository->find($id);
 
-        // Si l'article $id n'existe pas... 
+        // Si l'article $id n'existe pas...
         if (null === $article) {
             throw new NotFoundHttpException("L'article d'id ".$id." n'existe pas.");
         }
 
-        // Création et gestion du formulaire des commentaires 
-         
-        // On créé une instance de la classe 'Comment' 
+        // Création et gestion du formulaire des commentaires
+
+        // On créé une instance de la classe 'Comment'
         $comment = new Comment();
         // On créé un formulaire lié à notre instance 'comment' à l'aide de notre classe de formulaire CommentType
         $form = $this->createForm(CommentType::class, $comment);
@@ -104,13 +105,13 @@ class HomeController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $comment contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
             $comment->setCreatedAt(new \DateTime()) // On rajoute la date de création du commentaire ...
                     ->setArticle($article); // On rattache le commentaire à l'article en cours
 
-            // On demande au manager de persister l'entité 'comment' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'comment' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($comment);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -125,23 +126,23 @@ class HomeController extends AbstractController
                 'id' => $article->getId()
             ]);
         }
-        
+
         return $this->render('home/home_article_view.html.twig', [
             'article' => $article,
             'formComment' => $form->createView() // On transmet le résultat de la méthode créateView() de l'objet $form à la vue
-        ]);  
+        ]);
     }
 
 
     /**
      * @Route("/home_project",  name="home_project")
      */
-    public function homeProjects(Request $request, ObjectManager $manager){
-        // Méthode qui récupère et affiche les projets publiés 
+    public function homeProjects(){
+        // Méthode qui récupère et affiche les projets publiés
 
-        // Sélection des données à l'aide du repository 
+        // Sélection des données à l'aide du repository
         $repository = $this->getDoctrine()->getRepository(Project::class);
-        // Récupération des projets 
+        // Récupération des projets
         $projects = $repository->getLastProjects();
 
         // Réponse et affichage de la vue
@@ -156,7 +157,7 @@ class HomeController extends AbstractController
     public function dataProtection() {
         // Méthode qui affiche la politique de confidentialité et de protection des données
 
-        // Réponse et affichage de la vue 
+        // Réponse et affichage de la vue
         return $this->render('home/home_data_protection.html.twig');
     }
 

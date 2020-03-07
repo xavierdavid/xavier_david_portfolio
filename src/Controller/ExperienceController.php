@@ -6,7 +6,8 @@ use App\Entity\Experience;
 use App\Form\ExperienceType;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+#use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -49,9 +50,9 @@ class ExperienceController extends AbstractController
     /**
      * @Route("/admin/experience/create", name="experience_create")
      */
-    public function createExperience(Request $request, ObjectManager $manager, FileUploader $fileUploader) {
-        // Méthode qui créé une nouvelle expérience - Injection de dépendance : objet 'Request', objet 'ObjectManager' et service 'FileUploader'
-    
+    public function createExperience(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader) {
+        // Méthode qui créé une nouvelle expérience - Injection de dépendance : objet 'Request', objet 'EntityManagerInterface' et service 'FileUploader'
+
         // On crée une instance 'vide' de la classe Experience
         $experience = new Experience();
 
@@ -61,28 +62,30 @@ class ExperienceController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $experience contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
-            // On rajoute la date de création de l'expérience ...  
+            // On rajoute la date de création de l'expérience ...
             $experience->setCreatedAt(new \DateTime());
+            // On rajoute la date de mise à jour de l'expérience ...
+            $experience->setUpdatedAt(new \DateTime());
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
             // On le récupère avec la méthode getData()
             $imageFile = $form['imageFilename']->getData();
 
-            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            // Si un fichier image est présent (Rappel : le champ est facultatif)...
             if($imageFile) {
-                
+
                 // On utilise le service FileUploader pour télécharger le fichier
-                $newFilename = $fileUploader->upload($imageFile);              
-                
+                $newFilename = $fileUploader->upload($imageFile);
+
                 // On met à jour la propriété imageFilename de l'entite 'Experience' pour stocker le nom du fichier dans la base de données
                 // On utilse la méthode 'setImageFilename' de l'entité 'Experience'
                 $experience->setImageFilename($newFilename);
             }
-    
-            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+
+            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($experience);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -91,7 +94,7 @@ class ExperienceController extends AbstractController
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'Expérience bien enregistrée');
-            
+
             // Après avoir effectué la requête, on redirige vers la route 'experience_view' avec en paramètre l'identifiant de l'expérience qui vient d'être créée
             return $this->redirectToRoute('experience_view', [
                 'id' => $experience->getId()
@@ -108,7 +111,7 @@ class ExperienceController extends AbstractController
     /**
      * @Route("/admin/experience/edit/{id}", name="experience_edit", requirements={"id"="\d+"})
      */
-    public function editExperience($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
+    public function editExperience($id, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie une expérience
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Experience'
         // Injection du service FileUploader
@@ -129,26 +132,26 @@ class ExperienceController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $experience contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
-            // On rajoute la date de mise à jour de l'expérience ...  
+            // On rajoute la date de mise à jour de l'expérience ...
             $experience->setUpdatedAt(new \DateTime());
 
             // On traite le fichier image téléchargé dans le formulaire dans le champ 'image'
             // On le récupère avec la méthode getData()
             $imageFile = $form['imageFilename']->getData();
 
-            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            // Si un fichier image est présent (Rappel : le champ est facultatif)...
             if($imageFile) {
                 // On utilise le service FileUploader pour télécharger le fichier
-                $newFilename = $fileUploader->upload($imageFile);              
-                
+                $newFilename = $fileUploader->upload($imageFile);
+
                 // On met à jour la propriété imageFilename de l'entite Project pour stocker le nom du fichier dans la base de données
                 $experience->setImageFilename($newFilename);
             }
 
-            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'experience' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($experience);
             // On demande au manager d'exécuter la requête ('INSERT INTO')
             $manager->flush();
@@ -156,7 +159,7 @@ class ExperienceController extends AbstractController
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', "L'expérience a bien été modifiée");
-            
+
             // Après avoir effectué la requête, on redirige vers la route 'experience_view' avec en paramètre l'identifiant de l'expérience qui vient d'être modifiée
             return $this->redirectToRoute('experience_view', [
                 'id' => $experience->getId()
@@ -178,7 +181,7 @@ class ExperienceController extends AbstractController
 
         //On sélectionne les données avec le repository qui gère l'entité 'Experience'
         $repository = $this->getDoctrine()->getRepository(Experience::class);
-        // On récupère l'expérience correspondant à l'identifiant 
+        // On récupère l'expérience correspondant à l'identifiant
         $experience = $repository->find($id);
 
         // Si l'entité 'Experience' est nulle (l'id $id de l'expérience n'existe pas) ...
@@ -186,19 +189,19 @@ class ExperienceController extends AbstractController
             // Alors on lance une exception indiquant que l'expérience n'existe pas
             throw new NotFoundHttpException("L'expérience d'id ".$id." n'existe pas.");
         }
-        
+
         return $this->render('experience/experience_view.html.twig', [
             'experience' => $experience
         ]);
     }
 
-    
+
     /**
      * @Route("/admin/experience/delete/{id}", name="experience_delete", requirements={"id"="\d+"})
      */
-    public function experienceDelete($id, Request $request, ObjectManager $manager){
+    public function experienceDelete($id, Request $request, EntityManagerInterface $manager){
         // Méthode qui récupère et supprime une expérience
-        
+
         // On sélectionne les données
         $repository = $this->getDoctrine()->getRepository(Experience::class);
         $experience = $repository->find($id);
@@ -207,7 +210,7 @@ class ExperienceController extends AbstractController
             throw new NotFoundHttpException(("L'expérience d'id " .$id." n'existe pas." ));
         }
 
-        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)     
+        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)
         $form = $this->get('form.factory')->create();
 
         // On fait le lien Requête <-> Formulaire. La variable $experience contient alors les valeurs 'vides' du formulaire
@@ -218,7 +221,7 @@ class ExperienceController extends AbstractController
             $manager->remove($experience);
             $manager->flush();
             $request->getSession()->getFlashBag()->add('notice', "L'expérience a bien été supprimée.");
-        
+
             // On redirige vers la route 'experience'
             return $this->redirectToRoute('experience');
         }
@@ -236,7 +239,7 @@ class ExperienceController extends AbstractController
         // On récupère le service EntityManager de l'ORM Doctrine
         $entityManager = $this->getDoctrine()->getManager();
 
-        // On récupère la liste des dernières expériences publiées ($limit) ... 
+        // On récupère la liste des dernières expériences publiées ($limit) ...
         // ... à l'aide de la requête personnalisée getLastExperiences() de ExperienceRepository
         $lastExperiences = $entityManager->getRepository(Experience::class)->getLastExperiences($limit);
 
@@ -253,18 +256,18 @@ class ExperienceController extends AbstractController
     {
         //On sélectionne les données avec le repository qui gère l'entité 'Experience'
         $repository = $this->getDoctrine()->getRepository(Experience::class);
-        // On récupère les données des expériences professionnelles au format JSON... 
-        // ... pour les exploiter en Javascript avec Ajax 
+        // On récupère les données des expériences professionnelles au format JSON...
+        // ... pour les exploiter en Javascript avec Ajax
         $experiences = $repository->findAll();
 
         return $this->Json([
-            'code'=> 200, 
+            'code'=> 200,
             'message'=>'Tout fonctionne',
             'experiences' => $experiences
         ], 200);
     }
 
-    
-    
+
+
 
 }

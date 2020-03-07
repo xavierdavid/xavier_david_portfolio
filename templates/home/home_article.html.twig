@@ -10,14 +10,14 @@
 <div id="banner-image">
     <figure>
         <img src="{{ asset('img/background-technology.jpg') }}" alt="banner-image-technology">
-    </figure> 
+    </figure>
     <div id="banner-title-animate">
         <h1>Publications</h1>
         <p><span><i class="fas fa-rss fa-2x"></i></span>Dernières news et infos ...</p>
     </div>
 </div>
 
-<div class="container"> 
+<div class="container">
     <section class="publication_wrap">
         {# Titre de la section 'Publications' #}
         <div class="publication_title">
@@ -26,13 +26,13 @@
 
         <h1>Derniers articles</h1>
         <div id="first_paragraph">
-            <p><em>Découvrez mes publications 'à la une', puisées dans l'actualités du web. Toutes les dernières informations pertinentes qui ont retenu mon attention et qui peuvent, je pense, vous intéresser... N'hésitez-pas à réagir, à partager d'autres contenus et à laisser des commentaires !</em></p>
+            <p><em>Découvrez mes publications 'à la une', puisées dans l'actualité du web. Toutes les dernières informations pertinentes qui ont retenu mon attention et qui peuvent, je pense, vous intéresser... N'hésitez-pas à réagir, à partager d'autres contenus et à laisser des commentaires !</em></p>
         </div>
         <div id="second_paragraph">
             <p><span><i class="far fa-smile-wink fa-2x"></i></span>Veille technologique - Langages informatiques les plus plébiscités - Dernières tendances en matière de frameworks - Bonnes pratiques de programmation - Marché de l'emploi - Ressources...</p>
         </div>
         <hr>
-        
+
         {# Affichage des dernières publications #}
         <article class="publication_container">
             {% for article in articles %}
@@ -49,7 +49,7 @@
                             <div id="publication_link">
                                 <a href="{{ path('home_article_view', {'id' : article.id}) }}">Lire la suite</a>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

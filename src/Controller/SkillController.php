@@ -6,7 +6,8 @@ use App\Entity\Skill;
 use App\Form\SkillType;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+#use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -24,7 +25,7 @@ class SkillController extends AbstractController
             throw $this->createNotFoundException('Page "'.$page.'" inexistante');
         }
 
-        // On fixe le nombre de compétence à afficher par page 
+        // On fixe le nombre de compétence à afficher par page
         $nbPerPage = 5;
 
         // On récupère les données avec le repository qui gère l'entité Skill
@@ -33,7 +34,7 @@ class SkillController extends AbstractController
         // On récupère toutes les compétences
         $skills = $repository->getSkills($page, $nbPerPage);
 
-        // On calcule le nombre de page à afficher dans la vue 
+        // On calcule le nombre de page à afficher dans la vue
         $nbPages = ceil(count($skills) / $nbPerPage);
 
         // On renvoie une réponse à afficher au template
@@ -50,9 +51,9 @@ class SkillController extends AbstractController
     /**
      * @Route("/admin/skill/create", name="skill_create")
      */
-    public function createSkill(Request $request, ObjectManager $manager) {
-        // Méthode qui créé une nouvelle compétence - Injection de l'objet 'Request' et de l'objet 'ObjectManager'
-        
+    public function createSkill(Request $request, EntityManagerInterface $manager) {
+        // Méthode qui créé une nouvelle compétence - Injection de l'objet 'Request' et de l'objet 'EntityManagerInterface'
+
         // On crée une instance 'vide' de la classe Skill
         $skill = new Skill();
 
@@ -62,7 +63,7 @@ class SkillController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $skill contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
 
@@ -70,7 +71,7 @@ class SkillController extends AbstractController
             // On le récupère avec la méthode getData()
             $imageFile = $form['imageFilename']->getData();
 
-            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            // Si un fichier image est présent (Rappel : le champ est facultatif)...
             if($imageFile) {
                 // On récupère le nom original du fichier
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -81,7 +82,7 @@ class SkillController extends AbstractController
                 // On déplace le fichier vers le répertoire où seront stockées les images
                 try {
                     $imageFile->move($this->getParameter('image_directory'),$newFilename);
-                
+
                 } catch (FileException $e) {
                     // ... On lance une exception dans le cas où le téléchargement connaîtrait une anomalie
                 }
@@ -90,8 +91,8 @@ class SkillController extends AbstractController
                 // On utilse la méthode 'setImageFilename' de l'entité 'Skill'
                 $skill->setImageFilename($newFilename);
             }
-    
-            // On demande au manager de persister l'entité 'skill' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+
+            // On demande au manager de persister l'entité 'skill' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($skill);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -100,7 +101,7 @@ class SkillController extends AbstractController
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', 'Compétence bien enregistrée');
-            
+
             // Après avoir effectué la requête, on redirige vers la route 'skill_view' avec en paramètre l'identifiant de la compétence qui vient d'être créée
             return $this->redirectToRoute('skill_view', [
                 'id' => $skill->getId()
@@ -122,7 +123,7 @@ class SkillController extends AbstractController
 
         // On sélectionne les données avec le repository qui gère l'entité 'Skill'
         $repository = $this->getDoctrine()->getRepository(Skill::class);
-        // On récupère la compétence correspondante à l'identifiant 
+        // On récupère la compétence correspondante à l'identifiant
         $skill = $repository->find($id);
 
         // Si l'entité 'Skill' est nulle (l'id $id de la compétence n'existe pas) ...
@@ -130,7 +131,7 @@ class SkillController extends AbstractController
             // Alors on lance une exception indiquant que la compétence n'existe pas
             throw new NotFoundHttpException("La compétence d'id ".$id." n'existe pas.");
         }
-        
+
         return $this->render('skill/skill_view.html.twig', [
             'skill' => $skill
         ]);
@@ -140,10 +141,10 @@ class SkillController extends AbstractController
     /**
      * @Route("/admin/skill/edit/{id}", name="skill_edit", requirements={"id"="\d+"})
      */
-    public function editSkill($id, Request $request, ObjectManager $manager, FileUploader $fileUploader){
+    public function editSkill($id, Request $request, EntityManagerInterface $manager, FileUploader $fileUploader){
         // Méthode qui récupère et modifie une compétence
         // Injection du service FileUploader
-        
+
         // On sélectionne les données à l'aide du repository qui gère l'entité 'Skill'
         $repository = $this->getDoctrine()->getRepository(Skill::class);
 
@@ -162,7 +163,7 @@ class SkillController extends AbstractController
         // On fait le lien Requête <-> Formulaire. La variable $skill contient alors les valeurs entrées dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide
         if($form->isSubmitted() && $form->isValid()){
 
@@ -170,16 +171,16 @@ class SkillController extends AbstractController
             // On le récupère avec la méthode getData()
             $imageFile = $form['imageFilename']->getData();
 
-            // Si un fichier image est présent (Rappel : le champ est facultatif)... 
+            // Si un fichier image est présent (Rappel : le champ est facultatif)...
             if($imageFile) {
                 // On utilise le service FileUploader pour télécharger le fichier
-                $newFilename = $fileUploader->upload($imageFile);              
-                
+                $newFilename = $fileUploader->upload($imageFile);
+
                 // On met à jour la propriété imageFilename de l'entite Skill pour stocker le nom du fichier dans la base de données
                 $skill->setImageFilename($newFilename);
             }
 
-            // On demande au manager de persister l'entité 'skill' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+            // On demande au manager de persister l'entité 'skill' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($skill);
             // On demande au manager d'exécuter la requête ('INSERT INTO')
             $manager->flush();
@@ -187,7 +188,7 @@ class SkillController extends AbstractController
             // On définit une message flash (variable de session qui ne dure que sur une seule page) ...
             // ... à l'aide de la méthode 'add' qui utilise en interne l'objet SESSION
             $request->getSession()->getFlashBag()->add('notice', "La compétence a bien été modifiée");
-            
+
             // Après avoir effectué la requête, on redirige vers la route 'skill_view' avec en paramètre l'identifiant de la compétence qui vient d'être modifiée
             return $this->redirectToRoute('skill_view', [
                 'id' => $skill->getId()
@@ -206,9 +207,9 @@ class SkillController extends AbstractController
     /**
      * @Route("/admin/skill/delete/{id}", name="skill_delete", requirements={"id"="\d+"})
      */
-    public function skillDelete($id, Request $request, ObjectManager $manager){
+    public function skillDelete($id, Request $request, EntityManagerInterface $manager){
         // Méthode qui récupère et supprime une compétence
-        
+
         // On sélectionne les données
         $repository = $this->getDoctrine()->getRepository(Skill::class);
         $skill = $repository->find($id);
@@ -217,7 +218,7 @@ class SkillController extends AbstractController
             throw new NotFoundHttpException(("La compétence d'id " .$id." n'existe pas." ));
         }
 
-        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)     
+        // On crée un formulaire vide, avec une protection contre les éventuelles attaques CSRF (Cross Site Request Forgery)
         $form = $this->get('form.factory')->create();
 
         // On fait le lien Requête <-> Formulaire. La variable $skill contient alors les valeurs 'vides' du formulaire
@@ -228,7 +229,7 @@ class SkillController extends AbstractController
             $manager->remove($skill);
             $manager->flush();
             $request->getSession()->getFlashBag()->add('notice', "La compétence a bien été supprimée.");
-        
+
             // On redirige vers la route 'skill'
             return $this->redirectToRoute('skill');
         }

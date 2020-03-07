@@ -6,7 +6,8 @@ use App\Entity\User;
 use App\Service\SendEmail;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+#use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -19,21 +20,21 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="security_registration")
      */
-    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder, SendEmail $notification) {
-        // Injection de dépendances : on a besoin de la requête HTTP pour analyser les informations saisies dans le formulaire ... 
-        // ... de l'objectManager de Doctrine pour enregistrer l'utilisateur en base de données ... 
+    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, SendEmail $notification) {
+        // Injection de dépendances : on a besoin de la requête HTTP pour analyser les informations saisies dans le formulaire ...
+        // ... de l'EntityManagerInterface de Doctrine pour enregistrer l'utilisateur en base de données ...
         // ... Ainsi que de UserPasswordEncoderInterface pour encoder le mot de passe de l'utilisateur
-        
+
         // On créé un nouvel objet 'vide' de la classe 'User'
         $user = new User();
-        
+
         // On créé un formulaire lié à notre instance 'user' à l'aide de notre classe de formulaire RegistrationType
         $form = $this->createForm(RegistrationType::class, $user);
 
         // On fait le lien entre la requête et le formulaire. La variable $user contient alors les valeurs saisies dans le formulaire
         $form->handleRequest($request);
 
-        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form 
+        // On vérifie que le formulaire a été soumis à l'aide de la méthode isSubmitted de la classe Form
         // On vérifie également qu'il est valide à l'aide de la méthode isValid
         if($form->isSubmitted() && $form->isValid()){
 
@@ -45,14 +46,14 @@ class SecurityController extends AbstractController
             // On envoi une notification par mail à l'utilisateur pour lui confirmer l'inscription et lui rappeler son identifiant et son mot de passe
             // On utilise pour cela le service SendEmail pour envoyer un email de notification à l'utilisateur
             $notification->emailUserNotification($user);
-            
-            // On modifie le mot passe en le remplaçant par le mot de passe crypté 
+
+            // On modifie le mot passe en le remplaçant par le mot de passe crypté
             $user->setPassword($hash);
 
-            // On attribue le rôle USER_USER par défaut à tous les utilisateurs 
+            // On attribue le rôle USER_USER par défaut à tous les utilisateurs
             $user->setRoles(array('ROLE_USER'));
-            
-            // On demande au manager de persister l'entité 'user' : on l'enregistre pour qu'elle soit gérée par Doctrine 
+
+            // On demande au manager de persister l'entité 'user' : on l'enregistre pour qu'elle soit gérée par Doctrine
             $manager->persist($user);
 
             // On demande au manager d'exécuter la requête ('INSERT INTO')
@@ -85,10 +86,10 @@ class SecurityController extends AbstractController
         // Gestion des erreurs d'identification
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // Dernier identifiant saisi par l'utilisateur 
+        // Dernier identifiant saisi par l'utilisateur
         $lastUsername= $authenticationUtils->getLastUsername();
 
-        // Renvoie vers la vue pour le traitement 
+        // Renvoie vers la vue pour le traitement
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error
@@ -107,8 +108,8 @@ class SecurityController extends AbstractController
      * @Route("/admin/dashboard", name="admin_dashboard")
      */
     public function adminDashboard(){
-        
-        return $this->render('security/admin_dashboard.html.twig');  
+
+        return $this->render('security/admin_dashboard.html.twig');
     }
 
 }
