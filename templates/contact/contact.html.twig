@@ -11,11 +11,11 @@
 <div id="banner-image">
     <figure>
         <img src="{{ asset('img/background-technology.jpg') }}" alt="">
-    </figure> 
+    </figure>
     <div id="banner-title-animate">
         <h1>Contact</h1>
         <p><span><i class="fas fa-hands-helping fa-2x"></i></span>Des projets ? Je suis à votre écoute ...</p>
-    </div>  
+    </div>
 </div>
 
 
@@ -25,7 +25,7 @@
         </div>
     <div class="contact_header">
         <img src="{{ asset('img/crayons.jpg') }}" alt="boite à crayons">
-        <p><span><i class="fas fa-smile-wink fa-2x"></i></span><em> Une idée ? Un projet ? Vous avez des questions ? Faisons connaissance. Laissez-moi un message et vos coordonnées, je me ferai un plaisir de vous répondre !</em></p> 
+        <p><span><i class="fas fa-smile-wink fa-2x"></i></span><em> Une idée ? Un projet ? Vous avez des questions ? Faisons connaissance. Laissez-moi un message et vos coordonnées, je me ferai un plaisir de vous répondre !</em></p>
    </div>
 
     {# Titre de la section 'Contact' #}
@@ -34,7 +34,7 @@
     </div>
 
     <h1>Me contacter</h1>
-    
+
     <div class="container">
         {# On affiche tous les messages flash dont le nom est « notice » #}
         {% for message in app.session.flashbag.get('notice') %}
@@ -60,27 +60,37 @@
                 {{ form_end(formContact) }}
             </div>
         </div>
-    </div> 
-    
+    </div>
+
     <div class="contact_footer">
         <div class="contact_adresse">
             <div id="contact_image1">
                 <figure>
                     <img src="{{ asset('img/profil-image.jpg') }}" alt="profil-image">
-                </figure> 
+                </figure>
             </div>
             <div id="contact_infos">
                 <p><span><i class="far fa-comment-dots fa-2x"></i></span>Prenons le temps de faire le point ensemble sur vos besoins. Je suis à votre écoute afin de vous aider à définir les fonctionnalités de votre future application web, à faire les choix techniques adaptés, à créer le maquettage du design et l'intégration de vos contenus, mais également à rédiger un cahier des charges... N'hésitez-pas à me contacter !</p>
                 <div id="social_link">
                     <p>Suivez-moi sur : </p>
                     <a href="https://github.com/xavierdavid" target="_blank"><i class="fab fa-github fa-2x"></i><span>Github</span></a>
-                    <a href="https://fr.linkedin.com/in/xavier-david-841780176?trk=people-guest_people_search-card" target="_blank"><i class="fab fa-linkedin fa-2x"></i><span>LinkedIn</span></a>      
+                    <a href="https://fr.linkedin.com/in/xavier-david-841780176?trk=people-guest_people_search-card" target="_blank"><i class="fab fa-linkedin fa-2x"></i><span>LinkedIn</span></a>
                 </div>
             </div>
         </div>
+
+        {# Carte de géolocalisation #}
         <div id="contact_map">
-            <div id="iframe_map" style="width: 600px;position: relative;"><iframe width="600" height="340" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=2%20impasse%20des%20renardi%C3%A8res%20-%2028190%20Fontaine%20la%20Guyon+(Xavier%20DAVID)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/ja/">googlemapsgen (ja)</a> & <a href="https://www.buyinstagramfollowersreviews.net/">5 ways to clean up your twitter pro buy followers guide</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+            {# Google Map - Googlemapsgenerator - Option 1#}
+            {#<div id="iframe_map" style="width: 600px;position: relative;"><iframe width="600" height="340" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=2%20impasse%20des%20renardi%C3%A8res%20-%2028190%20Fontaine%20la%20Guyon+(Xavier%20DAVID)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/ja/">googlemapsgen (ja)</a> & <a href="https://www.buyinstagramfollowersreviews.net/">5 ways to clean up your twitter pro buy followers guide</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />#}
+
+            {# Google Map - Googlemapsgenerator - Option 2#}
+            {#<div id="iframe_map" style="width: 600px;position: relative;"><iframe width="600" height="340" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=2%20impasse%20des%20renardi%C3%A8res%20-%2028190%20Fontaine%20la%20Guyon+(Xavier%20DAVID)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />#}
+
+            {# Openstreetmap #}
+            <div id="iframe_map" style="width: 600px;position: relative;"><iframe width="600px" height="340px" frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/fr/map/xavier-david-developpeur-web_428674?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe></div><br />
         </div>
+        
     </div>
 </section>
 {% endblock %}
