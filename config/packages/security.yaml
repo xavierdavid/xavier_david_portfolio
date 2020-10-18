@@ -1,23 +1,23 @@
 security:
 
     # Définition du type d'encodage #
-    encoders:  
+    encoders:
         # Classe concernées par l'encodage #
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     # Localisation des données utilisateurs #
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    providers: 
+    providers:
         in_memory: { memory: null }
             # Nom du provider #
         in_database:
-                entity: 
+                entity:
                     # Nom de la classe entité qui représente les utilisateurs #
                     class: 'App\Entity\User'
                     # Nom de la propriété permettant d'identifier les utilisateurs #
                     property: 'email'
-    
+
     # Pare-feu : identification des parties à protéger et des méthodes de protection #
     firewalls:
         dev:
@@ -28,7 +28,7 @@ security:
             # Nom du provider à utiliser pour le Firewall #
             provider: 'in_database'
             # Mode d'identification : un formulaire de login 'form_login' #
-            form_login: 
+            form_login:
                 # Localisation du formulaire de login : nom de la route #
                 login_path: 'security_login'
                 # Localisation de la vérification des données du formulaire de login : nom de la route #
@@ -40,13 +40,13 @@ security:
                 # Nom de la route de déconnexion #
                 path: 'security_logout'
                 # Route cible après déconnexion #
-                target: 'home' 
+                target: 'home'
             # Se souvenir des paramètres d'identification : cookie
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800 # Délais de mémorisation d'une semaine en secondes
                 path: /
-            
+
             # Authentification
             guard:
                 authenticators:
@@ -60,7 +60,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    
+
     # Rôles et contrôle des accès : hierarchisation des rôles
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY } # Permettre l'accès au formulaire de login à tous les utilisateurs anonymes #

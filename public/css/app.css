@@ -731,7 +731,7 @@ header {
     position: absolute;
     width: 385px;
     left: 150%;
-    top: 14%;
+    top: 11%;
     transform: translate(-50%, -50%);
 }
 
@@ -2200,7 +2200,7 @@ footer img {
      /**** Affichage des expériences - Page d'accueil ****/
 
     #experiences_header {
-        top: 12%;
+        top: 9%;
     }
 
     /****** Affichage des compétences - page Home *****/
@@ -2427,7 +2427,7 @@ footer img {
     #skills_header {
         width: 252px;
         left: 150%;
-        top: 7%;
+        top: 6%;
     }
 
     /****** Affichage des experiences - page Home *****/
@@ -2437,7 +2437,7 @@ footer img {
     }
 
     #experiences_header {
-        top: 10%;
+        top: 9%;
     }
 
     .experience_content {
@@ -2757,7 +2757,7 @@ footer img {
     }
 
     #experiences_header {
-        top: 10%;
+        top: 8%;
     }
 
     .experience_content {

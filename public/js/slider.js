@@ -23,11 +23,11 @@ class Slider {
         this.totalItem = sliderItem.length, // Nombre d'éléments du slider
         this.firstItem = sliderItem[0], // Premier élément du slider
         this.lastItem = sliderItem[sliderItem.length - 1], // Dernier élément du slider
-        this.timer = 5000, // Défilement automatique toutes les 3 secondes
+        this.timer = 5000, // Défilement automatique toutes les 5 secondes
         this.allowShift = true, // Autoriser le décalage pour passer à l'item suivant ou précédent
         this.posX1 = 0,
         this.posX2 = 0,
-        this.posInitial, 
+        this.posInitial,
         this.posFinal,
         this.threshold = 100,
         this.index = 0, // Index initial
@@ -36,7 +36,7 @@ class Slider {
     }
 
     sliderInit() {
-        // Méthode permettant d'initialiser le slider 
+        // Méthode permettant d'initialiser le slider
 
         // Paramétrage d'un slider infini
         let cloneFirstItem = this.firstItem.cloneNode(true); // Clonage du premier élément du slider
@@ -59,20 +59,20 @@ class Slider {
         // Déplacement vers l'élément précédent au clic sur le bouton 'prev'
         prev.addEventListener("click", this.shiftSlide.bind(this,-1));
         // Vérification de l'index à la fin de chaque transition du slider
-        slider.addEventListener("transitionend", this.checkIndex.bind(this)); 
-    }       
-    
+        slider.addEventListener("transitionend", this.checkIndex.bind(this));
+    }
+
     shiftSlide(dir){
         // Méthode permettant de déplacer le slider vers la gauche ou vers la droite
 
         // On affecte une propriété de transition à l'élément #slider
         slider.style.transition = "all 0.7s";
-        
+
         // Ajout de la classe 'shifting' à l'élément #slider pour activer la transition css
         slider.classList.add("shifting");
         // Si le déplacement du slider est possible
         if(this.allowShift){
-            // On définit l'origine le point de départ du déplacement de l'élément #slider 
+            // On définit l'origine le point de départ du déplacement de l'élément #slider
             // Il est défini ici sur le coin supérieur gauche de l'élément slider
             // Position du coin supérieur gauche de l'élément slider
             this.posInitial = slider.offsetLeft;
@@ -81,7 +81,7 @@ class Slider {
             if (dir == 1){
                 // On définit la valeur de la propriété 'left' en pixels
                 slider.style.left = (this.posInitial - this.itemSize) + "px";
-                // On incrémente l'index 
+                // On incrémente l'index
                 this.index++;
 
             } else if (dir == -1){
@@ -96,8 +96,8 @@ class Slider {
         // Après chaque transition, on supprime la classe 'shifting' à l'élément #slider pour désactiver la transition css
         slider.classList.remove("shifting");
 
-        // On teste ensuite la valeur de l'index 
-        
+        // On teste ensuite la valeur de l'index
+
         // Si l'on se trouve sur le clone du dernier élément (au début du slider)
         if (this.index == -1) {
             // Alors on redéfinit la valeur de la propriété 'left' pour se repositionner sur le dernier élément du slider
@@ -128,11 +128,11 @@ class Slider {
     }
 
     playSlider() {
-        // Mise en marche du défilement automatique 
+        // Mise en marche du défilement automatique
         this.intervalSlider = setInterval(this.shiftSlide.bind(this,1),this.timer);
         // On masque le bouton 'play'
         play.style.display = "none";
-        // On affiche le bouton 'pause' 
+        // On affiche le bouton 'pause'
         pause.style.display = "block";
     }
 
@@ -141,14 +141,14 @@ class Slider {
 
 
 
-// Création d'un nouvel objet 'slider' par instanciation 
+// Création d'un nouvel objet 'slider' par instanciation
 let projectSlider = new Slider();
 
 // Appel de la fonction d'initialisation du slider
 projectSlider.sliderInit();
 
 
-// Gestion du slider avec les flèches du clavier 
+// Gestion du slider avec les flèches du clavier
 /*document.addEventListener("keydown", function(evt){
     if(evt.which === 39){ // Flèche droite du clavier
         projectSlider.shiftSlide(1);
@@ -159,21 +159,21 @@ projectSlider.sliderInit();
 });*/
 
 
-// Affichage dynamique de la <div> de contenu des projets 
+// Affichage dynamique de la <div> de contenu des projets
 // La méthode 'getElementsByClassName'retourne un type HTMLCollection
 // On parcours tous les éléments (d'indice i) de cette collection pour récupérer chaque élément moreLink et ProjectView
 for(let i=0; i <moreLink.length; i++) {
     moreLink[i].addEventListener("click", function(evt) {
-        // On annule le comportement par défaut du lien 
+        // On annule le comportement par défaut du lien
         evt.preventDefault();
 
-        // On stoppe le défilement du slider 
+        // On stoppe le défilement du slider
         projectSlider.pauseSlider();
 
         // On masque la barre de contrôle du slider
         sliderControll.style.display = "none";
 
-        // On masque l'élément 'moreLink' 
+        // On masque l'élément 'moreLink'
         moreLink[i].style.display = "none";
         // On affiche l'élément 'lessLink'
         lessLink[i].style.display = "block";
@@ -184,19 +184,19 @@ for(let i=0; i <moreLink.length; i++) {
     })
 }
 
-// Fermeture dynamique de la <div> de contenu des projets 
+// Fermeture dynamique de la <div> de contenu des projets
 for(let i=0; i <lessLink.length; i++) {
     lessLink[i].addEventListener("click", function(evt) {
-        // On annule le comportement par défaut du lien 
+        // On annule le comportement par défaut du lien
         evt.preventDefault();
 
         // On affiche la barre de contrôle du slider
         sliderControll.style.display = "flex";
 
-        // On lance le défilement du slider 
+        // On lance le défilement du slider
         projectSlider.playSlider();
 
-        // On masque l'élément 'lessLink' 
+        // On masque l'élément 'lessLink'
         lessLink[i].style.display = "none";
         // On affiche l'élément 'moreLink'
         moreLink[i].style.display = "block";
@@ -206,8 +206,3 @@ for(let i=0; i <lessLink.length; i++) {
         projectView[i].style.display = "none";
     })
 }
-
-
-
-
-
