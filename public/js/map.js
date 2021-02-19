@@ -24,13 +24,14 @@ class Map {
     // Méthode qui créée une nouvelle carte pour la réservation à l'aide l'API Leaflet
     createMap() {
         // On charge les tuiles et on les ajoute à la carte
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            minZoom: 1,
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieGF2ZGF2MjgiLCJhIjoiY2tsY2xodzg5MHFybjJvcDBvY2cxbDlnbyJ9.sfM7hfI6aGQJaIJhBnjEOA', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets',
-            accessToken: 'your.mapbox.access.token',
-        }).addTo(this.mymap); 
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(this.mymap);
 
         // On appelle la méthode getExperienceOnMap pour récupérer les infos des expériences ... 
         // ... et les afficher sur la carte
