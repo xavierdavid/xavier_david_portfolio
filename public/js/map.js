@@ -24,13 +24,9 @@ class Map {
     // Méthode qui créée une nouvelle carte pour la réservation à l'aide l'API Leaflet
     createMap() {
         // On charge les tuiles et on les ajoute à la carte
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieGF2ZGF2MjgiLCJhIjoiY2tsY2xodzg5MHFybjJvcDBvY2cxbDlnbyJ9.sfM7hfI6aGQJaIJhBnjEOA', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'your.mapbox.access.token'
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.mymap);
 
         // On appelle la méthode getExperienceOnMap pour récupérer les infos des expériences ... 
@@ -78,7 +74,7 @@ class Map {
                 // On instancie un nouvel objet AjaxRequest
                 let geolocalisationRequest = new AjaxRequest();
 
-                // Récupération des données : longitude et latiude de l'adresse complète au format JSON, 1 résultat uniquement
+                // Récupération des données : longitude et latitude de l'adresse complète au format JSON, 1 résultat uniquement
                 geolocalisationRequest.ajaxGet("https://nominatim.openstreetmap.org/search?q='"+experienceAddress+"'&format=json&addressdetails=1&limit=1&polygon_svg=1", function(reponse){
                     
                     // On transforme la réponse JSON en un tableau d'objets Javascript
